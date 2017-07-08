@@ -7,4 +7,5 @@ testSendingAnyMessageSignalsError
 	self
 		should: [ unresolvedSystemDependency dateTime ]
 		raise: Error
-		withDescription: 'Unresolved system dependency to Time System Interface'
+		whoseDescriptionIncludes: 'Unresolved system dependency to Time System Interface'
+		description: 'Expected: Unresolved system dependency to Time System Interface'

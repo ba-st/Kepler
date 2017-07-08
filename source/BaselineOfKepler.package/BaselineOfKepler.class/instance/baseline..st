@@ -8,7 +8,7 @@ baseline: spec
 			spec
 				package: 'Kepler-Identifier';
 				package: 'Kepler-System' with: [ spec requires: #('Buoy') ];
-				package: 'Kepler-Time' with: [ spec requires: #('Kepler-System') ];
+				package: 'Kepler-Time' with: [ spec requires: #('Kepler-System' 'Chalten') ];
 				package: 'Kepler-Notifications' with: [ spec requires: #('Kepler-System') ].
 			spec
 				package: 'Kepler-Identifier-Tests' with: [ spec requires: #('Kepler-Identifier') ];

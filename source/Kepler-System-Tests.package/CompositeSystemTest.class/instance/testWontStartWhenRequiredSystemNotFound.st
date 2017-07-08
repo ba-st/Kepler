@@ -3,7 +3,6 @@ testWontStartWhenRequiredSystemNotFound
 
 	| system |
 
-	system := CompositeSystem
-		of: (Array with: (DataManagementSystem using: (FixedNumberProvider providing: 1))).
+	system := CompositeSystem of: (Array with: TestSystem new).
 
 	self should: [ system startUp ] raise: SystemImplementationNotFound

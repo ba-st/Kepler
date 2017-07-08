@@ -3,11 +3,10 @@ testSendingMessagesToSystemWithUnresolvedSystemDependencyFails
 
 	| system |
 
-	system := CompositeSystem
-		of: (Array with: (DataManagementSystem using: (FixedNumberProvider providing: 1))).
+	system := CompositeSystem of: (Array with: TestSystem new).
 
 	self
-		should: [ ((system systemImplementing: DataManagementSystemInterface)
-				registerChannelNamed: 'Channel #1') ]
+		should: [ (system systemImplementing: TestInterface) currentDateTime ]
 		raise: Error
-		withDescription: 'Unresolved system dependency to Time System Interface'
+		whoseDescriptionIncludes: 'Unresolved system dependency to Time System Interface'
+		description: 'Expected: Unresolved system dependency to Time System Interface'
