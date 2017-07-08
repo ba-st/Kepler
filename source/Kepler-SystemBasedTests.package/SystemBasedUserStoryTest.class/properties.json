@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Kepler-SystemBasedTests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"timeSource",
+		"identifierProvider",
+		"rootSystem",
+		"systemBuilder"
+	],
+	"name" : "SystemBasedUserStoryTest",
+	"type" : "normal"
+}

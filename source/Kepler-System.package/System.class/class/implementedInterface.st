@@ -1,0 +1,4 @@
+system specification
+implementedInterface
+
+	self subclassResponsibility 

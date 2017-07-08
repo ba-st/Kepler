@@ -1,0 +1,4 @@
+*Kepler-Notifications-Tests-SystemModel
+requireEventNotificationSystem
+
+	systemBuilder add: EventNotificationSystem new

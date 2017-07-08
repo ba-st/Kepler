@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IdentifierProvider",
+	"category" : "Kepler-Identifier",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"identifier"
+	],
+	"name" : "FixedNumberProvider",
+	"type" : "normal"
+}

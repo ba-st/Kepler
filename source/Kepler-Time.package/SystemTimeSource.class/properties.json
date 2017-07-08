@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TimeSource",
+	"category" : "Kepler-Time",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SystemTimeSource",
+	"type" : "normal"
+}

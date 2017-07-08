@@ -1,0 +1,18 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Kepler',
+      #directory : 'source',
+      #load : [ 'Development' ],
+      #platforms : [ #pharo ]
+    } 
+  ], 
+  #testing : {
+    #coverage : {
+      #packages : [ 'Kepler.*' ]
+    },
+    #include : {  
+      #packages : [ 'Kepler.*' ]
+    }    
+  }
+}
