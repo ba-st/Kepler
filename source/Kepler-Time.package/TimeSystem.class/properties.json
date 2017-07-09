@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "System",
+	"category" : "Kepler-Time",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"timeSource"
+	],
+	"name" : "TimeSystem",
+	"type" : "normal"
+}

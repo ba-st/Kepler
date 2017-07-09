@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "System",
+	"category" : "Kepler-Notifications-SystemModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"subscriptions"
+	],
+	"name" : "EventNotificationSystem",
+	"type" : "normal"
+}

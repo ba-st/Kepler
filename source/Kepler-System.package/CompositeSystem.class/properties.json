@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "SystemImplementation",
+	"category" : "Kepler-System",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"systems"
+	],
+	"name" : "CompositeSystem",
+	"type" : "normal"
+}

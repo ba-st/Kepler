@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "FranciscoOrtizPenaloza 9/24/2014 18:36",
+	"super" : "TimeSource",
+	"category" : "Kepler-Time",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"dateTime"
+	],
+	"name" : "FixedTimeSource",
+	"type" : "normal"
+}

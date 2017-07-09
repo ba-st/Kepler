@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kepler-System",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"systems"
+	],
+	"name" : "CompositeSystemBuilder",
+	"type" : "normal"
+}

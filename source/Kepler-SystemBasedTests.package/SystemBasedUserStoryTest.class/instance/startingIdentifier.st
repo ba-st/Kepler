@@ -1,0 +1,4 @@
+accessing
+startingIdentifier
+
+	^ 1

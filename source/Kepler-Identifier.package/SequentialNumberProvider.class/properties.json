@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "IdentifierProvider",
+	"category" : "Kepler-Identifier",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"last"
+	],
+	"name" : "SequentialNumberProvider",
+	"type" : "normal"
+}

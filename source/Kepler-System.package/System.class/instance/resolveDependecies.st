@@ -1,0 +1,4 @@
+dependency resolution
+resolveDependecies
+
+	self subclassResponsibility 

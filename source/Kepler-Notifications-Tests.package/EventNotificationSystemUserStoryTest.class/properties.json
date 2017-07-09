@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "SystemBasedUserStoryTest",
+	"category" : "Kepler-Notifications-Tests-SystemModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"hasBeenNotified"
+	],
+	"name" : "EventNotificationSystemUserStoryTest",
+	"type" : "normal"
+}
