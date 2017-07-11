@@ -1,4 +1,4 @@
 dependency resolution
 currentDateTime
 
-	^ timeSystem currentDateTime
+	^ timeSystem dateTime
