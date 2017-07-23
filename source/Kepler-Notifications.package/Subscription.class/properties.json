@@ -2,11 +2,7 @@
 	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Kepler-Notifications-SystemModel",
-	"classinstvars" : [
-		"subject",
-		"eventType",
-		"messageToSend"
-	],
+	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
