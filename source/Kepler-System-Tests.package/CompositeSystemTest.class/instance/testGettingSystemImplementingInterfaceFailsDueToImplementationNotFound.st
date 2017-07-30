@@ -6,5 +6,5 @@ testGettingSystemImplementingInterfaceFailsDueToImplementationNotFound
 	system := CompositeSystem of: #().
 
 	self
-		should: [ system systemImplementing: TimeSystemInterface ]
+		should: [ system systemImplementing: #TimeSystemInterface ]
 		raise: SystemImplementationNotFound

@@ -5,4 +5,7 @@ os:
   - linux
 
 smalltalk:
-  - Pharo-6.0
+  - Pharo-stable
+
+notifications:
+  slack: iot-uca:IzVszOZZukzaJa1jQza5bJH8

@@ -1,7 +1,7 @@
 actions
-defineTimeSystemInterface
+registerTimeSystemInterface
 
 	self
-		defineSystemInterfaceOn: #TimeSystemInterface
+		registerInterfaceAs: #TimeSystemInterface
 		named: 'Time System Interface'
 		offering: #(#dateTime #timeOfDay)

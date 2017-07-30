@@ -3,7 +3,7 @@ testSendingAnyMessageSignalsError
 
 	| unresolvedSystemDependency |
 
-	unresolvedSystemDependency := UnresolvedSystemDependency to: TimeSystemInterface.
+	unresolvedSystemDependency := UnresolvedSystemDependency to: Interfaces >> #TimeSystemInterface.
 	self
 		should: [ unresolvedSystemDependency dateTime ]
 		raise: Error

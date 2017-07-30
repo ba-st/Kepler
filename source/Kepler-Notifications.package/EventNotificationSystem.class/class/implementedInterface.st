@@ -1,4 +1,4 @@
 system specification
 implementedInterface
 
-	^ EventNotificationSystemInterface
+	^ Interfaces >> #EventNotificationSystemInterface

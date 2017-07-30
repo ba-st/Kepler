@@ -1,7 +1,7 @@
 actions
-defineTestInterface
+registerTestInterface
 
 	self
-		defineSystemInterfaceOn: #TestInterface
+		registerInterfaceAs: #TestInterface
 		named: 'Test Interface'
 		offering: #(#currentDateTime)

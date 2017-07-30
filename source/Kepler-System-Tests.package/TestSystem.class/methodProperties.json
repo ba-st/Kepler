@@ -2,12 +2,12 @@
 	"instance" : {
 		"currentDateTime" : "JulianMaestri 7/9/2017 20:25",
 		"isStarted" : "JulianMaestri 7/9/2017 20:35",
-		"initialize" : "JulianMaestri 7/9/2017 20:34",
-		"resolveDependecies" : "JulianMaestri 7/8/2017 18:11",
+		"initialize" : "JulianMaestri 7/30/2017 20:13",
+		"resolveDependecies" : "JulianMaestri 7/30/2017 20:08",
 		"shutDown" : "JulianMaestri 7/9/2017 20:34",
 		"startUp" : "JulianMaestri 7/9/2017 20:34"
 	},
 	"class" : {
-		"implementedInterface" : "JulianMaestri 7/8/2017 18:10"
+		"implementedInterface" : "fortizpenaloza 7/30/2017 17:00"
 	}
 }

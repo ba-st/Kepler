@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "fortizpenaloza 7/30/2017 16:12",
+	"super" : "Error",
+	"category" : "Kepler-System",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SystemInterfaceNotFound",
+	"type" : "normal"
+}

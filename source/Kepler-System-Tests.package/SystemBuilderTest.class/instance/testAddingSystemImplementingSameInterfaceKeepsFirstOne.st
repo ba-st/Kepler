@@ -14,4 +14,4 @@ testAddingSystemImplementingSameInterfaceKeepsFirstOne
 	builder add: anotherTimeSystem.
 	system := builder build.
 
-	self assert: (system systemImplementing: TimeSystemInterface) equals: timeSystem
+	self assert: (system systemImplementing: #TimeSystemInterface) equals: timeSystem
