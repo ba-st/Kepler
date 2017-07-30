@@ -1,4 +1,4 @@
 *Kepler-Notifications-Tests-SystemModel
 eventNotificationSystem
 
-	^ rootSystem systemImplementing: EventNotificationSystemInterface 
+	^ rootSystem systemImplementing: #EventNotificationSystemInterface 

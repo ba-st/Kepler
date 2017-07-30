@@ -2,5 +2,5 @@ system lookup
 systemImplementing: aSystemInterface
 
 	^ self
-		systemImplementing: aSystemInterface
+		systemImplementing: Interfaces >> aSystemInterface
 		ifNone: [ SystemImplementationNotFound signal: aSystemInterface ]

@@ -1,4 +1,4 @@
 accessing-system
 timeSystem
 
-	^ rootSystem systemImplementing: TimeSystemInterface
+	^ rootSystem systemImplementing: #TimeSystemInterface

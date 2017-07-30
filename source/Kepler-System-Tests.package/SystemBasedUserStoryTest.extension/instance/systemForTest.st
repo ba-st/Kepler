@@ -1,4 +1,4 @@
 *Kepler-System-Tests
 systemForTest
 
-	^ rootSystem systemImplementing: TestInterface
+	^ rootSystem systemImplementing: #TestInterface

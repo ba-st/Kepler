@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "SystemImplementationNotFound",
+	"name" : "SystemInterfaceNotFound",
 	"type" : "normal"
 }

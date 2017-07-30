@@ -7,4 +7,4 @@ testGettingSystemImplementingInterface
 
 	system := CompositeSystem of: (Array with: timeSystem).
 
-	self assert: (system systemImplementing: TimeSystemInterface) equals: timeSystem
+	self assert: (system systemImplementing: #TimeSystemInterface) equals: timeSystem
