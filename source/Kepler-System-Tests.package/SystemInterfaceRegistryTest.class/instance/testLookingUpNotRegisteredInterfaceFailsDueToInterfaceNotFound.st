@@ -5,8 +5,4 @@ testLookingUpNotRegisteredInterfaceFailsDueToInterfaceNotFound
 
 	registry := SystemInterfaceRegistry empty.
 
-	self
-		should: [ registry >> #AnotherTestInterface ]
-		raise: SystemInterfaceNotFound
-		whoseDescriptionIncludes: 'System interface not found under #AnotherTestInterface'
-		description: 'SystemInterfaceNotFound: System interface not found under #AnotherTestInterface'
+	self should: [ registry >> #AnotherTestInterface ] raise: Error withExceptionDo: [ :signal | self assert: signal messageText equals: 'System interface not found under #AnotherTestInterface' ]

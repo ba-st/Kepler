@@ -2,5 +2,5 @@ initialize-release
 initialize
 
 	super initialize.
-	timeSystem := self unresolvedSystemDependencyTo: Interfaces >> #TimeSystemInterface.
+	timeSystem := self unresolvedSystemDependencyTo: #TimeSystemInterface.
 	started := false

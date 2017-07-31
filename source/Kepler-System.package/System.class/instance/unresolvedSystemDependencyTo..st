@@ -1,4 +1,4 @@
 dependency resolution
 unresolvedSystemDependencyTo: aSystemInterface
 
-	^ UnresolvedSystemDependency to: aSystemInterface
+	^ UnresolvedSystemDependency to: Interfaces >> aSystemInterface

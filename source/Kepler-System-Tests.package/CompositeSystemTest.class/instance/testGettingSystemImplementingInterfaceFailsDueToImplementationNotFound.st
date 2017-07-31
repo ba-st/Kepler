@@ -7,4 +7,5 @@ testGettingSystemImplementingInterfaceFailsDueToImplementationNotFound
 
 	self
 		should: [ system systemImplementing: #TimeSystemInterface ]
-		raise: SystemImplementationNotFound
+		raise: Error
+		withExceptionDo: [ :signal | self assert: signal messageText equals: 'System implementing ''Time System Interface'' not found' ]

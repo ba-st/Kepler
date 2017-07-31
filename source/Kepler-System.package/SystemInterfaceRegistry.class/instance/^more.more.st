@@ -3,4 +3,4 @@ lookup
 
 	^ interfaces
 		at: aKey
-		ifAbsent: [ SystemInterfaceNotFound signal: aKey ]
+		ifAbsent: [ Error signal: ('System interface not found under #<1s>' expandMacrosWith: aKey) ]

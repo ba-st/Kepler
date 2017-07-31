@@ -1,6 +1,4 @@
 system lookup
-systemImplementing: aSystemInterface ifNone: aNoneBlock
+systemImplementing: anInterfaceName ifNone: aNoneBlock
 
-	^ systems
-		detect: [ :subsystem | subsystem implements: aSystemInterface ]
-		ifNone: aNoneBlock
+	^ systems detect: [ :subsystem | subsystem implements: Interfaces >> anInterfaceName ] ifNone: aNoneBlock
