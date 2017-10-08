@@ -1,14 +1,12 @@
 {
 	"instance" : {
 		"timeSystem" : "fortizpenaloza 7/30/2017 17:05",
-		"startingIdentifier" : "fortizpenaloza 6/20/2017 16:49",
 		"setUpRequirements" : "JulianMaestri 7/2/2017 17:53",
-		"setUp" : "fortizpenaloza 6/6/2017 02:02",
+		"setUp" : "fortizpenaloza 10/8/2017 14:26",
 		"setUpFixedTimeSource" : "JulianMaestri 7/2/2017 16:13",
 		"buildAndStartUpSystem" : "fortizpenaloza 6/6/2017 02:04",
-		"setUpFixedNumberIdentifierProvider" : "fortizpenaloza 6/20/2017 16:49",
-		"requireTimeSystem" : "JulianMaestri 7/2/2017 16:26",
-		"systemDateTime" : "JulianMaestri 7/2/2017 15:44"
+		"systemDateTime" : "JulianMaestri 7/2/2017 15:44",
+		"requireTimeSystem" : "JulianMaestri 7/2/2017 16:26"
 	},
 	"class" : { }
 }
