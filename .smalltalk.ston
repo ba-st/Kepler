@@ -9,10 +9,10 @@ SmalltalkCISpec {
   ], 
   #testing : {
     #coverage : {
-      #packages : [ 'Kepler.*' ]
+      #packages : [ 'Kepler*' ]
     },
     #include : {  
-      #packages : [ 'Kepler.*' ]
+      #packages : [ 'Kepler-Tests*' ]
     }    
   }
 }
