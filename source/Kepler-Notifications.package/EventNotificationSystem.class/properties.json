@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "System",
-	"category" : "Kepler-Notifications-SystemModel",
+	"category" : "Kepler-Notifications",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
