@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Kepler-Notifications-Model",
+	"category" : "Kepler-Notifications",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

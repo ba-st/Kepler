@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "NotifiableEvent",
-	"category" : "Kepler-Notifications-Tests-SystemModel",
+	"category" : "Kepler-Notifications-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
