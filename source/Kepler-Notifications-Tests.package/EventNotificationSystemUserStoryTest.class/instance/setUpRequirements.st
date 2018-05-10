@@ -1,5 +1,0 @@
-running
-setUpRequirements
-
-	super setUpRequirements.
-	self requireEventNotificationSystem

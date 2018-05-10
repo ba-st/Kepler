@@ -1,4 +1,0 @@
-accessing
-parent
-
-	^ parentHolder content

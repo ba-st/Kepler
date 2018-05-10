@@ -1,5 +1,0 @@
-accessing
-dateTime
-	
-	self subclassResponsibility  
-	

@@ -1,4 +1,0 @@
-providing
-next
-
-	^ self subclassResponsibility 

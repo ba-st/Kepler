@@ -1,4 +1,0 @@
-requirements
-new
-
-	^ self empty
