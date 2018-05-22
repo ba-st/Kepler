@@ -13,12 +13,6 @@ SystemInterfaceRegistry class >> empty [
 	^ super new initializeEmpty
 ]
 
-{ #category : #requirements }
-SystemInterfaceRegistry class >> new [
-
-	^ self empty
-]
-
 { #category : #lookup }
 SystemInterfaceRegistry >> >> aKey [
 
