@@ -58,8 +58,8 @@ BaselineOfKepler >> registerEventNotificationSystemInterface [
 BaselineOfKepler >> registerInterfaceAs: aKey named: aName declaring: aSelectorSet [
 
 	SystemInterface
-		bind: (Interface named: aName declaring: aSelectorSet)
-		to: aKey
+		bind: aKey
+		to: (Interface named: aName declaring: aSelectorSet)
 ]
 
 { #category : #actions }
