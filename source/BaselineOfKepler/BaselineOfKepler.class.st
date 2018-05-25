@@ -39,8 +39,8 @@ BaselineOfKepler >> baseline: spec [
 { #category : #actions }
 BaselineOfKepler >> preload: aLoader package: aPackageSpec [
 
-	Smalltalk at: #Interfaces put: nil.
-	Smalltalk at: #SystemInterfaceRegistry put: nil.
+	Smalltalk at: #SystemInterface put: nil.
+
 
 ]
 
@@ -50,20 +50,22 @@ BaselineOfKepler >> registerEventNotificationSystemInterface [
 	self
 		registerInterfaceAs: #EventNotificationSystemInterface
 		named: 'Event Notification System Interface'
-		offering:
+		declaring:
 			#(#subscribe:to:toBeNotifiedSending: #revokeSubscriptionTo:of: #notifySubscribersTo:)
 ]
 
 { #category : #actions }
-BaselineOfKepler >> registerInterfaceAs: aKey named: aName offering: messagesSet [
+BaselineOfKepler >> registerInterfaceAs: aKey named: aName declaring: aSelectorSet [
 
-	Interfaces registerNamed: aName offering: messagesSet as: aKey 
+	SystemInterface
+		bind: (Interface named: aName declaring: aSelectorSet)
+		to: aKey
 ]
 
 { #category : #actions }
 BaselineOfKepler >> registerSystemInterfaces [
 
-	Interfaces := SystemInterfaceRegistry empty.
+	SystemInterface := Namespace new.
 	
 	self
 		registerTimeSystemInterface;
@@ -76,7 +78,7 @@ BaselineOfKepler >> registerTestInterface [
 	self
 		registerInterfaceAs: #TestInterface
 		named: 'Test Interface'
-		offering: #(#currentDateTime)
+		declaring: #(#currentDateTime)
 ]
 
 { #category : #actions }
@@ -85,7 +87,7 @@ BaselineOfKepler >> registerTimeSystemInterface [
 	self
 		registerInterfaceAs: #TimeSystemInterface
 		named: 'Time System Interface'
-		offering: #(#dateTime #timeOfDay)
+		declaring: #(#dateTime #timeOfDay)
 ]
 
 { #category : #baselines }

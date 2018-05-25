@@ -54,5 +54,5 @@ System >> startUp [
 { #category : #'dependency resolution' }
 System >> unresolvedSystemDependencyTo: aSystemInterface [
 
-	^ UnresolvedSystemDependency to: Interfaces >> aSystemInterface
+	^ UnresolvedSystemDependency to: SystemInterface >> aSystemInterface
 ]
