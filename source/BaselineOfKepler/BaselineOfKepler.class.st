@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfKepler,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfKepler'
+	#category : #BaselineOfKepler
 }
 
 { #category : #baselines }
@@ -94,7 +94,7 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Buoy'
 		with: [ spec
-				repository: 'github://ba-st/Buoy:v2.2.0/source';
+				repository: 'github://ba-st/Buoy:v4.1.0/source';
 				loads: #('Deployment') ].
 	spec
 		baseline: 'Chalten'
