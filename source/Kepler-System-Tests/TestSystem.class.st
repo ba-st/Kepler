@@ -14,7 +14,7 @@ Class {
 { #category : #'system specification' }
 TestSystem class >> implementedInterface [
 
-	^ Interfaces >> #TestInterface
+	^ SystemInterface >> #TestInterface
 ]
 
 { #category : #'dependency resolution' }
