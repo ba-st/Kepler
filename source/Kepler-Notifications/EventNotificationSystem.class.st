@@ -10,7 +10,7 @@ Class {
 { #category : #'system specification' }
 EventNotificationSystem class >> implementedInterface [
 
-	^ Interfaces >> #EventNotificationSystemInterface
+	^ SystemInterface >> #EventNotificationSystemInterface
 ]
 
 { #category : #'private-subscribing' }

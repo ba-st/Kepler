@@ -43,11 +43,18 @@ CompositeSystem >> startUp [
 { #category : #'system lookup' }
 CompositeSystem >> systemImplementing: anInterfaceName [
 
-	^ self systemImplementing: anInterfaceName ifNone: [ Error signal: ('System implementing ''<1s>'' not found' expandMacrosWith: (Interfaces >> anInterfaceName) name) ]
+	^ self
+		systemImplementing: anInterfaceName
+		ifNone: [ Error
+				signal:
+					('System implementing ''<1s>'' not found'
+						expandMacrosWith: (SystemInterface >> anInterfaceName) name) ]
 ]
 
 { #category : #'system lookup' }
 CompositeSystem >> systemImplementing: anInterfaceName ifNone: aNoneBlock [
 
-	^ systems detect: [ :subsystem | subsystem implements: Interfaces >> anInterfaceName ] ifNone: aNoneBlock
+	^ systems
+		detect: [ :subsystem | subsystem implements: SystemInterface >> anInterfaceName ]
+		ifNone: aNoneBlock
 ]

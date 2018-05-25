@@ -20,7 +20,7 @@ Class {
 { #category : #'system specification' }
 TimeSystem class >> implementedInterface [
 
-	^ Interfaces >> #TimeSystemInterface
+	^ SystemInterface >> #TimeSystemInterface
 ]
 
 { #category : #'instance creation' }
