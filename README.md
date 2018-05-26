@@ -8,6 +8,6 @@ Open a Playground and evaluate:
 ``` smalltalk
 Metacello new
   baseline: 'Kepler';
-  repository: 'github://iot-uca/Kepler:master/source';
+  repository: 'github://ba-st/Kepler:master/source';
   load
 ```
