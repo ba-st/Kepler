@@ -20,7 +20,7 @@ EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventTyp
 		detect: [ :subscription | 
 			subscription subscriber = aSubscriber
 				and: [ subscription eventType = anEventType ] ]
-		ifFound: [ ObjectAlreadyInSystem
+		ifFound: [ ConflictingObjectFound
 				signal: 'Object already subscribed to this event type.' ]
 ]
 
@@ -56,7 +56,7 @@ EventNotificationSystem >> revokeSubscriptionTo: anEventType of: aSubscriber [
 			subscription subscriber = aSubscriber
 				and: [ subscription eventType = anEventType ] ]
 		ifFound: [ :subscription | subscriptions remove: subscription ]
-		ifNone: [ ObjectNotFoundInSystem signal: 'No subscription was found to this event type.' ]
+		ifNone: [ ObjectNotFound signal: 'No subscription was found to this event type.' ]
 ]
 
 { #category : #subscribing }
