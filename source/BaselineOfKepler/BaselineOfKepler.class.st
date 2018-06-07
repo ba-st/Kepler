@@ -101,6 +101,6 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Chalten'
 		with: [ spec
-				repository: 'github://ba-st/chalten:v6.0.0/repository';
+				repository: 'github://ba-st/chalten:v6.1.0/repository';
 				loads: #('Core') ]
 ]
