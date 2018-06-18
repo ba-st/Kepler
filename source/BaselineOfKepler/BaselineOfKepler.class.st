@@ -96,11 +96,11 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Buoy'
 		with: [ spec
-				repository: 'github://ba-st/Buoy:v4.1.0/source';
+				repository: 'github://ba-st/Buoy:v4/source';
 				loads: #('Deployment') ].
 	spec
 		baseline: 'Chalten'
 		with: [ spec
-				repository: 'github://ba-st/chalten:v6.0.0/repository';
-				loads: #('Core') ]
+				repository: 'github://ba-st/chalten:development/repository';
+				loads: #('Deployment') ]
 ]
