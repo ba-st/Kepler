@@ -51,7 +51,7 @@ SystemBasedUserStoryTest >> setUpRequirements [
 { #category : #accessing }
 SystemBasedUserStoryTest >> systemDateTime [
 
-	^ (September sixth , 2015) atNoon
+	^ (October first , 2014) atNoon
 ]
 
 { #category : #'accessing-system' }
