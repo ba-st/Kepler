@@ -6,18 +6,16 @@
     <a href="docs/"><strong>Explore the docs »</strong></a>
     <br>
     <br>
-    <a href="https://github.com/ba-st/Cannon/issues/new?labels=Type%3A+Defect">Report a defect</a>
+    <a href="https://github.com/ba-st/Kepler/issues/new?labels=Type%3A+Defect">Report a defect</a>
     |
-    <a href="https://github.com/ba-st/Cannon/issues/new?labels=Type%3A+Feature">Request feature</a>
+    <a href="https://github.com/ba-st/Kepler/issues/new?labels=Type%3A+Feature">Request feature</a>
   </p>
 </p>
 
 [![Build Status](https://travis-ci.org/ba-st/Kepler.svg?branch=master)](https://travis-ci.org/iot-uca/Kepler)
 [![Coverage Status](https://coveralls.io/repos/github/ba-st/Kepler/badge.svg?branch=master)](https://coveralls.io/github/iot-uca/Kepler?branch=master)
 
-> *Name origin*: Astronomer [Annie Jump Cannon](https://en.wikipedia.org/wiki/Annie_Jump_Cannon). A cool surname from a celebrity in astronomy, since Cannon works best when combined with other BA-ST architecture projects, like [Stardust](https://github.com/ba-st/Stardust) and [Kepler](https://github.com/ba-st/Kepler).
-
-With Cannon, we aim to provide a much needed state machine implementation, which is required for any complex workflow architecture.
+> *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler) is best known for his laws of planetary motion that describes how planets move around the Sun.
 
 ## License
 - The code is licensed under [MIT](LICENSE).
@@ -26,7 +24,7 @@ With Cannon, we aim to provide a much needed state machine implementation, which
 ## Quick Start
 
 - Download the latest [Pharo 32](https://get.pharo.org/) or [64 bits VM](https://get.pharo.org/64/).
-- Download a ready to use image from the [release page](https://github.com/ba-st/Cannon/releases/latest)
+- Download a ready to use image from the [release page](https://github.com/ba-st/Kepler/releases/latest)
 - Explore the [documentation](docs/)
 
 ## Installation
