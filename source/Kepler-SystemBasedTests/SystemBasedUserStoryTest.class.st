@@ -19,6 +19,18 @@ SystemBasedUserStoryTest >> buildAndStartUpSystem [
 	rootSystem startUp
 ]
 
+{ #category : #'private - systems' }
+SystemBasedUserStoryTest >> eventNotificationSystem [
+
+	^ rootSystem systemImplementing: #EventNotificationSystemInterface 
+]
+
+{ #category : #configuring }
+SystemBasedUserStoryTest >> requireEventNotificationSystem [
+
+	systemBuilder add: EventNotificationSystem new
+]
+
 { #category : #configuring }
 SystemBasedUserStoryTest >> requireTimeSystem [
 
@@ -54,7 +66,7 @@ SystemBasedUserStoryTest >> systemDateTime [
 	^ (October first , 2014) atNoon
 ]
 
-{ #category : #'accessing-system' }
+{ #category : #'private - systems' }
 SystemBasedUserStoryTest >> timeSystem [
 
 	^ rootSystem systemImplementing: #TimeSystemInterface
