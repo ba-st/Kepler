@@ -36,6 +36,12 @@ BaselineOfKepler >> baseline: spec [
 ]
 
 { #category : #actions }
+BaselineOfKepler >> initializeSysteInterfaceNamespace [
+
+	SystemInterface ifNil: [ SystemInterface := Namespace new ]
+]
+
+{ #category : #actions }
 BaselineOfKepler >> preload: aLoader package: aPackageSpec [
 
 	Smalltalk at: #SystemInterface ifAbsentPut: nil.
@@ -64,9 +70,8 @@ BaselineOfKepler >> registerInterfaceAs: aKey named: aName declaring: aSelectorS
 { #category : #actions }
 BaselineOfKepler >> registerSystemInterfaces [
 
-	SystemInterface ifNil: [ SystemInterface := Namespace new ].
-	
 	self
+		initializeSysteInterfaceNamespace;
 		registerTimeSystemInterface;
 		registerEventNotificationSystemInterface
 ]
