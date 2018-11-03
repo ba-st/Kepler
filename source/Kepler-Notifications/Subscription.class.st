@@ -21,7 +21,7 @@ Subscription >> eventType [
 	^ eventType
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 Subscription >> initializeOf: aSubscriber to: anEventType toBeNotifiedSending: aMessage [ 
 	
 	subscriber := aSubscriber.

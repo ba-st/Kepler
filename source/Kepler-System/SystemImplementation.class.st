@@ -10,13 +10,13 @@ SystemImplementation >> implements: aSystemInterface [
 	^ self class implementedInterface = aSystemInterface 
 ]
 
-{ #category : #'starting-stopping' }
+{ #category : #'starting - stopping' }
 SystemImplementation >> shutDown [
 	
 	self subclassResponsibility 
 ]
 
-{ #category : #'starting-stopping' }
+{ #category : #'starting - stopping' }
 SystemImplementation >> startUp [
 	
 	self subclassResponsibility 

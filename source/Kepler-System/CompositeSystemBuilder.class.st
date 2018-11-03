@@ -19,9 +19,9 @@ CompositeSystemBuilder >> build [
 	^ CompositeSystem of: systems
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 CompositeSystemBuilder >> initialize [
 
 	super initialize.
-	systems := Dictionary new.
+	systems := Dictionary new
 ]

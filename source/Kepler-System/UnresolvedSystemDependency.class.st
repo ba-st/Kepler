@@ -19,7 +19,7 @@ UnresolvedSystemDependency >> doesNotUnderstand: aMessage [
 	Error signal: ('Unresolved system dependency to <1s>' expandMacrosWith: interface name)
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 UnresolvedSystemDependency >> initializeTo: aSystemInterface [
 
 	interface := aSystemInterface 
