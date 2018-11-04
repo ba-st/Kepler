@@ -13,7 +13,7 @@ EventNotificationSystem class >> implementedInterface [
 	^ SystemInterface >> #EventNotificationSystemInterface
 ]
 
-{ #category : #'private-subscribing' }
+{ #category : #'private - subscribing' }
 EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventType [
 
 	subscriptions
@@ -24,7 +24,7 @@ EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventTyp
 				signal: 'Object already subscribed to this event type.' ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 EventNotificationSystem >> initialize [
 
 	super initialize.

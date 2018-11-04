@@ -16,10 +16,10 @@ UnresolvedSystemDependency class >> to: aSystemInterface [
 { #category : #metaprogramming }
 UnresolvedSystemDependency >> doesNotUnderstand: aMessage [
 
-	Error signal: ('Unresolved system dependency to <1s>' expandMacrosWith: interface name)
+	Error signal: ('Unresolved system dependency to <1p>' expandMacrosWith: interface)
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 UnresolvedSystemDependency >> initializeTo: aSystemInterface [
 
 	interface := aSystemInterface 

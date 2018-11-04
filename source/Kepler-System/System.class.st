@@ -13,7 +13,7 @@ System class >> implementedInterface [
 	self subclassResponsibility 
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 System >> initialize [
 
 	super initialize.
@@ -45,7 +45,7 @@ System >> resolveSystemDependencyTo: aSystemInterface [
 	^ self parent systemImplementing: aSystemInterface
 ]
 
-{ #category : #'starting-stopping' }
+{ #category : #'starting - stopping' }
 System >> startUp [
 	
 	self resolveDependecies.

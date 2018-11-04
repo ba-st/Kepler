@@ -13,28 +13,28 @@ CompositeSystem class >> of: aSystemsCollection [
 	^self new initializeOf: aSystemsCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 CompositeSystem >> initializeOf: aSystemsCollection [
 
-	super initialize.
+	self initialize.
 	systems := aSystemsCollection.
 	
 	self registerAsSystemsParent
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 CompositeSystem >> registerAsSystemsParent [
 
 	systems do: [ :system | system parent: self ]
 ]
 
-{ #category : #'starting-stopping' }
+{ #category : #'starting - stopping' }
 CompositeSystem >> shutDown [
 
 	systems do: [ :system | system shutDown ]
 ]
 
-{ #category : #'starting-stopping' }
+{ #category : #'starting - stopping' }
 CompositeSystem >> startUp [
 
 	systems do: [ :system | system startUp ]
@@ -47,8 +47,8 @@ CompositeSystem >> systemImplementing: anInterfaceName [
 		systemImplementing: anInterfaceName
 		ifNone: [ Error
 				signal:
-					('System implementing ''<1s>'' not found'
-						expandMacrosWith: (SystemInterface >> anInterfaceName) name) ]
+					('System implementing ''<1p>'' not found'
+						expandMacrosWith: SystemInterface >> anInterfaceName) ]
 ]
 
 { #category : #'system lookup' }
