@@ -47,8 +47,8 @@ CompositeSystem >> systemImplementing: anInterfaceName [
 		systemImplementing: anInterfaceName
 		ifNone: [ Error
 				signal:
-					('System implementing ''<1s>'' not found'
-						expandMacrosWith: (SystemInterface >> anInterfaceName) name) ]
+					('System implementing ''<1p>'' not found'
+						expandMacrosWith: SystemInterface >> anInterfaceName) ]
 ]
 
 { #category : #'system lookup' }
