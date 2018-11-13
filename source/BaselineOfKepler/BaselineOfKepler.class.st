@@ -13,19 +13,26 @@ BaselineOfKepler >> baseline: spec [
 		do: [ self setUpDependencies: spec.
 			spec
 				package: 'Kepler-System' with: [ spec requires: #('Buoy') ];
-				package: 'Kepler-Time' with: [ spec requires: #('Kepler-System' 'Chalten') ];
-				package: 'Kepler-Notifications' with: [ spec requires: #('Kepler-System') ].
+				group: 'Core' with: #('Kepler-System').
 
 			spec
-				package: 'Kepler-SystemBasedTests' with: [ spec requires: #('Kepler-System' 'Kepler-Time') ];
-				package: 'Kepler-System-Tests' with: [ spec requires: #('Kepler-SystemBasedTests') ];
-				package: 'Kepler-Time-Tests' with: [ spec requires: #('Kepler-Time') ];
-				package: 'Kepler-Notifications-Tests' with: [ spec requires: #('Kepler-Notifications' 'Kepler-SystemBasedTests') ].
+				package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten') ];
+				package: 'Kepler-Notifications' with: [ spec requires: #('Core') ];
+				group: 'Extended' with: #('Kepler-Time' 'Kepler-Notifications').
+
 			spec
-				group: 'Deployment' with: #('Kepler-System' 'Kepler-Time' 'Kepler-Notifications');
+				package: 'Kepler-SystemBasedTests' with: [ spec requires: #('Core') ];
+				group: 'SUnit' with: #('Kepler-SystemBasedTests').
+
+			spec
+				package: 'Kepler-System-Tests' with: [ spec requires: #('Core') ];
+				package: 'Kepler-Time-Tests' with: [ spec requires: #('Kepler-Time') ];
+				package: 'Kepler-Notifications-Tests' with: [ spec requires: #('Kepler-Notifications' 'SUnit') ].
+
+			spec
+				group: 'Deployment' with: #('Core' 'Extended');
 				group: 'Tests' with: #('Kepler-System-Tests' 'Kepler-Time-Tests' 'Kepler-Notifications-Tests');
-				group: 'SystemBasedTests' with: #('Kepler-SystemBasedTests');
-				group: 'Development' with: #('Deployment' 'Tests' 'SystemBasedTests');
+				group: 'Development' with: #('Deployment' 'Tests');
 				group: 'default' with: #('Deployment') ]
 ]
 
