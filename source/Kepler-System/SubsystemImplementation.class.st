@@ -20,6 +20,14 @@ SubsystemImplementation >> >> anInterfaceKey [
 	^ dependencies at: anInterfaceKey ifAbsent: [ SystemControlError signal: ('Unresolved <1p>' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
 ]
 
+{ #category : #installing }
+SubsystemImplementation >> aboutToReinstall [
+
+	"Subclasses can reimplement me to perform some actions before a reinstall is going to be executed"
+
+	
+]
+
 { #category : #'private - asserting' }
 SubsystemImplementation >> assertIsOrphan [
 

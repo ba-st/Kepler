@@ -14,11 +14,15 @@ Class {
 Kepler class >> initialize [
 
 	<ignoreForCoverage>
-	SystemInterfaces := Namespace new
+	SystemInterfaces := Namespace new.
+	self
+		register: (Interface named: 'Installed Module Registration' declaring: #(#registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do: #installedModuleRegisteringSystemImplementing:))
+		as: #InstalledModuleRegistrationSystem
 ]
 
 { #category : #configuring }
 Kepler class >> register: anInterface as: anInterfaceKey [
 
+	<ignoreForCoverage>
 	SystemInterfaces bind: anInterfaceKey to: anInterface
 ]
