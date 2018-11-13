@@ -24,6 +24,26 @@ CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
 ]
 
 { #category : #tests }
+CompositeSystemTest >> testDependencies [
+
+	| system |
+
+	system := CompositeSystem new.
+	system
+		register: SampleProjectSystem new;
+		register: SampleCustomerSystem new;
+		startUp.
+
+	system >> #CustomerManagementSystem addCustomer: 'Tesla'.
+
+	system >> #ProjectManagementSystem addProjectNamed: 'Landing Page' for: 'Tesla'.
+
+	self
+		assert: (system >> #ProjectManagementSystem projectsFor: 'Tesla') size equals: 1;
+		assert: (system >> #ProjectManagementSystem) name equals: 'Project Management'
+]
+
+{ #category : #tests }
 CompositeSystemTest >> testDependenciesAreResolvedOnSystemStartUp [
 
 	| system |
