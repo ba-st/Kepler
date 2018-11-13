@@ -8,10 +8,17 @@ Class {
 	#name : #SubsystemImplementation,
 	#superclass : #SystemImplementation,
 	#instVars : [
-		'parentBinding'
+		'parentBinding',
+		'dependencies'
 	],
 	#category : #'Kepler-System'
 }
+
+{ #category : #'subsystem lookup' }
+SubsystemImplementation >> >> anInterfaceKey [
+
+	^ dependencies at: anInterfaceKey ifAbsent: [ SystemControlError signal: ('Unresolved <1p>' expandMacrosWith: SystemInterface >> anInterfaceKey) ]
+]
 
 { #category : #'private - asserting' }
 SubsystemImplementation >> assertIsOrphan [
@@ -35,7 +42,7 @@ SubsystemImplementation >> beOrphan [
 { #category : #installing }
 SubsystemImplementation >> dependencies [
 
-	"Return a collection of the system interfaces wich this system depends upon"
+	"Return a collection of the system interface keys wich this system depends upon"
 	self subclassResponsibility
 ]
 
@@ -62,7 +69,8 @@ SubsystemImplementation >> implements: aSystemInterface [
 SubsystemImplementation >> initialize [
 
 	super initialize.
-	self beOrphan
+	self beOrphan.
+	dependencies := Namespace new
 ]
 
 { #category : #'private - accessing' }
@@ -74,9 +82,7 @@ SubsystemImplementation >> parent [
 { #category : #installing }
 SubsystemImplementation >> resolveDependencies [
 
-	"This method will be called at the proper time, so a subsystem can resolve it's dependencies against other system implementations"
-
-	self subclassResponsibility
+	self dependencies do: [ :interfaceKey | dependencies bind: interfaceKey to: self parent >> interfaceKey ]
 ]
 
 { #category : #'private - controlling' }

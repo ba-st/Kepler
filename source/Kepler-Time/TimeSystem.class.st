@@ -65,12 +65,6 @@ TimeSystem >> name [
 	^ 'Time System'
 ]
 
-{ #category : #installing }
-TimeSystem >> resolveDependencies [
-
-	"do nothing"
-]
-
 { #category : #accessing }
 TimeSystem >> timeOfDay [
 

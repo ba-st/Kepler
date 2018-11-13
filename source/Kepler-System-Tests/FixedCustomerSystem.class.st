@@ -52,9 +52,3 @@ FixedCustomerSystem >> name [
 
 	^ 'CMS'
 ]
-
-{ #category : #installing }
-FixedCustomerSystem >> resolveDependencies [
-
-	
-]

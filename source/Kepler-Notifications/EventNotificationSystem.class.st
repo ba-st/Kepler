@@ -54,12 +54,6 @@ EventNotificationSystem >> notifySubscribersTo: anEvent [
 				cull: anEvent ]
 ]
 
-{ #category : #'dependency resolution' }
-EventNotificationSystem >> resolveDependencies [
-
-	"do nothing"
-]
-
 { #category : #subscribing }
 EventNotificationSystem >> revokeSubscriptionTo: anEventType of: aSubscriber [
 

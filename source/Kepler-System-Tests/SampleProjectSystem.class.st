@@ -5,8 +5,7 @@ Class {
 	#name : #SampleProjectSystem,
 	#superclass : #SubsystemImplementation,
 	#instVars : [
-		'projectsByCustomer',
-		'cmsBinding'
+		'projectsByCustomer'
 	],
 	#category : #'Kepler-System-Tests'
 }
@@ -36,13 +35,13 @@ SampleProjectSystem >> assertCustomerExists: aCustomer [
 { #category : #private }
 SampleProjectSystem >> cms [
 
-	^ cmsBinding content
+	^ self >> #CustomerManagementSystem
 ]
 
 { #category : #installing }
 SampleProjectSystem >> dependencies [
 
-	^ { SystemInterface >> #CustomerManagementSystem }
+	^ #(#CustomerManagementSystem)
 ]
 
 { #category : #installing }
@@ -56,7 +55,6 @@ SampleProjectSystem >> initialize [
 
 	super initialize.
 	projectsByCustomer := Dictionary new.
-	cmsBinding := Binding undefinedExplainedBy: 'Unresolved Customer Management System'
 ]
 
 { #category : #accessing }
@@ -69,10 +67,4 @@ SampleProjectSystem >> name [
 SampleProjectSystem >> projectsFor: aCustomer [
 
 	^ projectsByCustomer at: aCustomer ifAbsent: [ #() ]
-]
-
-{ #category : #installing }
-SampleProjectSystem >> resolveDependencies [
-
-	cmsBinding := Binding to: self parent >> #CustomerManagementSystem
 ]

@@ -13,7 +13,7 @@ Class {
 { #category : #'class initialization' }
 SampleCustomerSystem class >> initialize [
 
-	SystemInterface bind: #CustomerManagementSystem to: (Interface named: #CustomerManagementSystem declaring: #(customers addCustomer:))
+	SystemInterface bind: #CustomerManagementSystem to: (Interface named: 'Customer Management System' declaring: #(customers addCustomer:))
 ]
 
 { #category : #API }
@@ -52,10 +52,4 @@ SampleCustomerSystem >> initialize [
 SampleCustomerSystem >> name [
 
 	^ 'CMS'
-]
-
-{ #category : #installing }
-SampleCustomerSystem >> resolveDependencies [
-
-	
 ]
