@@ -77,8 +77,9 @@ SubsystemImplementation >> implements: aSystemInterface [
 SubsystemImplementation >> initialize [
 
 	super initialize.
-	self beOrphan.
-	dependencies := Namespace new
+	self
+		beOrphan;
+		resetDependencies
 ]
 
 { #category : #'private - accessing' }
@@ -87,10 +88,23 @@ SubsystemImplementation >> parent [
 	^ parentBinding content
 ]
 
+{ #category : #initialization }
+SubsystemImplementation >> resetDependencies [
+
+	dependencies := Namespace new
+]
+
 { #category : #installing }
 SubsystemImplementation >> resolveDependencies [
 
 	self dependencies do: [ :interfaceKey | dependencies bind: interfaceKey to: self parent >> interfaceKey ]
+]
+
+{ #category : #'private - controlling' }
+SubsystemImplementation >> shutDownWhenStarted [
+
+	self resetDependencies.
+	super shutDownWhenStarted
 ]
 
 { #category : #'private - controlling' }

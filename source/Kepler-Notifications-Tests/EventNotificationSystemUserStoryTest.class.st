@@ -39,6 +39,12 @@ EventNotificationSystemUserStoryTest >> setUpRequirements [
 ]
 
 { #category : #tests }
+EventNotificationSystemUserStoryTest >> testAccessing [
+
+	self assert: self eventNotificationSystem name equals: 'Event Notification'
+]
+
+{ #category : #tests }
 EventNotificationSystemUserStoryTest >> testNotifyingEventSendingKeyworkMessage [
 
 	self eventNotificationSystem subscribe: self to: TestEvent toBeNotifiedSending: #setHasBeenNotifiedUsing:.

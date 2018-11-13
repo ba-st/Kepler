@@ -23,6 +23,12 @@ SampleCustomerModule >> initializeToInstallOn: aCompositeSystem [
 ]
 
 { #category : #private }
+SampleCustomerModule >> name [
+
+	^ 'Customer'
+]
+
+{ #category : #private }
 SampleCustomerModule >> registerCustomerManagementSystemForInstallationIn: systems [
 
 	^ self register: [ SampleCustomerSystem new ] in: systems

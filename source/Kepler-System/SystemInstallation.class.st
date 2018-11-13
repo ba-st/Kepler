@@ -27,6 +27,12 @@ SystemInstallation >> modulesToInstall [
 	self subclassResponsibility
 ]
 
+{ #category : #accessing }
+SystemInstallation >> name [
+
+	self subclassResponsibility
+]
+
 { #category : #private }
 SystemInstallation >> registerModuleRegistrationSystemOn: aRootSystem [
 

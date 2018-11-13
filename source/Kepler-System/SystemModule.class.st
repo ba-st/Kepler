@@ -65,7 +65,7 @@ SystemModule >> postInstall [
 { #category : #printing }
 SystemModule >> printOn: aStream [
 
-	aStream print: self name
+	aStream nextPutAll: self name
 ]
 
 { #category : #private }

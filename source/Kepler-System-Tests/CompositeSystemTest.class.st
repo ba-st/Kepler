@@ -8,6 +8,22 @@ Class {
 }
 
 { #category : #tests }
+CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
+
+	| composite |
+
+	composite := CompositeSystem new
+		register: SampleCustomerSystem new;
+		startUp.
+
+	self
+		assert: (composite >> #CustomerManagementSystem) isStarted;
+		should: [ CompositeSystem new register: composite >> #CustomerManagementSystem ]
+			raise: SystemControlError
+			withExceptionDo: [ :error | self assert: error messageText equals: 'Cannot register a subsystem not stopped (CMS)' ]
+]
+
+{ #category : #tests }
 CompositeSystemTest >> testDependenciesAreResolvedOnSystemStartUp [
 
 	| system |

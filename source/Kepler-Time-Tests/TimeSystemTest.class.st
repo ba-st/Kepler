@@ -17,6 +17,15 @@ TimeSystemTest >> setUp [
 ]
 
 { #category : #'tests-accessing' }
+TimeSystemTest >> testAccessing [
+
+	| timeSystem |
+
+	timeSystem := TimeSystem using: timeSource.
+	self assert: timeSystem name equals: 'Time System'
+]
+
+{ #category : #'tests-accessing' }
 TimeSystemTest >> testDate [
 
 	| timeSystem |
@@ -34,6 +43,20 @@ TimeSystemTest >> testDateTime [
 	timeSystem := TimeSystem using: timeSource.
 	timeSystem startUp.
 	self assert: timeSystem dateTime equals: timeSource dateTime
+]
+
+{ #category : #'tests-accessing' }
+TimeSystemTest >> testImplements [
+
+	| timeSystem rootSystem |
+
+	timeSystem := TimeSystem using: timeSource.
+	rootSystem := CompositeSystem new.
+	rootSystem
+		register: timeSystem;
+		startUp.
+
+	self assert: rootSystem >> #TimeSystemInterface equals: timeSystem
 ]
 
 { #category : #'tests-accessing' }

@@ -31,3 +31,9 @@ SampleSystemInstallation >> modulesToInstall [
 
 	^ modules
 ]
+
+{ #category : #accessing }
+SampleSystemInstallation >> name [
+
+	^ 'Sample'
+]

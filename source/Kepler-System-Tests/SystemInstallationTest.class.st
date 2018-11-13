@@ -18,7 +18,9 @@ SystemInstallationTest >> testCreatedSystem [
 	self
 		assert: (rootSystem >> #InstalledModuleRegistrationSystem) installedModules size equals: 2;
 		assert: (rootSystem >> #CustomerManagementSystem) customers isEmpty;
-		assert: ((rootSystem >> #InstalledModuleRegistrationSystem installedModuleRegisteringSystemImplementing: #CustomerManagementSystem) isA: SampleCustomerModule)
+		assert: ((rootSystem >> #InstalledModuleRegistrationSystem installedModuleRegisteringSystemImplementing: #CustomerManagementSystem) isA: SampleCustomerModule);
+		assert: (rootSystem >> #InstalledModuleRegistrationSystem) name equals: 'Installed Module Registration';
+		assert: rootSystem name equals: 'Sample'
 ]
 
 { #category : #tests }
@@ -40,4 +42,15 @@ SystemInstallationTest >> testReinstall [
 	rootSystem startUp.
 
 	self shouldnt: [ rootSystem reinstall ] raise: SystemControlError
+]
+
+{ #category : #tests }
+SystemInstallationTest >> testRestart [
+
+	| rootSystem |
+
+	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) value: '1.0'. 
+	rootSystem startUp.
+
+	self shouldnt: [ rootSystem restart ] raise: SystemControlError
 ]
