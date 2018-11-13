@@ -7,12 +7,6 @@ Class {
 	#category : #'Kepler-Notifications'
 }
 
-{ #category : #'system specification' }
-EventNotificationSystem class >> implementedInterface [
-
-	^ SystemInterface >> #EventNotificationSystemInterface
-]
-
 { #category : #'private - subscribing' }
 EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventType [
 
@@ -24,12 +18,30 @@ EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventTyp
 				signal: 'Object already subscribed to this event type.' ]
 ]
 
+{ #category : #installing }
+EventNotificationSystem >> dependencies [
+
+	^ #()
+]
+
+{ #category : #installing }
+EventNotificationSystem >> implementedInterfacesDo: aBlock [
+
+	aBlock value: SystemInterface >> #EventNotificationSystemInterface
+]
+
 { #category : #initialization }
 EventNotificationSystem >> initialize [
 
 	super initialize.
 	subscriptions := OrderedCollection new
 	
+]
+
+{ #category : #accessing }
+EventNotificationSystem >> name [
+
+	^ 'Event Notification'
 ]
 
 { #category : #notifying }
@@ -43,7 +55,7 @@ EventNotificationSystem >> notifySubscribersTo: anEvent [
 ]
 
 { #category : #'dependency resolution' }
-EventNotificationSystem >> resolveDependecies [
+EventNotificationSystem >> resolveDependencies [
 
 	"do nothing"
 ]

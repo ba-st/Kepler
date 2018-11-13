@@ -22,6 +22,7 @@ TimeSystemTest >> testDate [
 	| timeSystem |
 
 	timeSystem := TimeSystem using: timeSource.
+	timeSystem startUp.
 	self assert: timeSystem date equals: timeSource dateTime date
 ]
 
@@ -31,6 +32,7 @@ TimeSystemTest >> testDateTime [
 	| timeSystem |
 
 	timeSystem := TimeSystem using: timeSource.
+	timeSystem startUp.
 	self assert: timeSystem dateTime equals: timeSource dateTime
 ]
 
@@ -40,5 +42,6 @@ TimeSystemTest >> testTimeOfDay [
 	| timeSystem |
 
 	timeSystem := TimeSystem using: timeSource.
+	timeSystem startUp.
 	self assert: timeSystem timeOfDay equals: timeSource dateTime timeOfDay
 ]

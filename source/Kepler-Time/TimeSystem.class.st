@@ -17,12 +17,6 @@ Class {
 	#category : #'Kepler-Time'
 }
 
-{ #category : #'system specification' }
-TimeSystem class >> implementedInterface [
-
-	^ SystemInterface >> #TimeSystemInterface
-]
-
 { #category : #'class initialization' }
 TimeSystem class >> initialize [
 
@@ -47,25 +41,34 @@ TimeSystem >> dateTime [
 	^ timeSource dateTime
 ]
 
+{ #category : #installing }
+TimeSystem >> dependencies [
+
+	^ #()
+]
+
+{ #category : #installing }
+TimeSystem >> implementedInterfacesDo: aBlock [
+
+	aBlock value: SystemInterface >> #TimeSystemInterface
+]
+
 { #category : #'initialize-release' }
-TimeSystem >> initializeUsing: aTimeSource [ 
+TimeSystem >> initializeUsing: aTimeSource [
 
-	super initialize.
-	timeSource := aTimeSource 
+	timeSource := aTimeSource
 ]
 
-{ #category : #'dependency resolution' }
-TimeSystem >> resolveDependecies [
+{ #category : #accessing }
+TimeSystem >> name [
 
-	"do nothing"
+	^ 'Time System'
 ]
 
-{ #category : #'starting-stopping' }
-TimeSystem >> shutDown [
+{ #category : #installing }
+TimeSystem >> resolveDependencies [
 
 	"do nothing"
-
-	
 ]
 
 { #category : #accessing }
