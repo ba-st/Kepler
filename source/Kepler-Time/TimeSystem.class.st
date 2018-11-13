@@ -10,17 +10,23 @@ timeSource
 "
 Class {
 	#name : #TimeSystem,
-	#superclass : #System,
+	#superclass : #SubsystemImplementation,
 	#instVars : [
 		'timeSource'
 	],
-	#category : 'Kepler-Time'
+	#category : #'Kepler-Time'
 }
 
 { #category : #'system specification' }
 TimeSystem class >> implementedInterface [
 
 	^ SystemInterface >> #TimeSystemInterface
+]
+
+{ #category : #'class initialization' }
+TimeSystem class >> initialize [
+
+	SystemInterface bind: #TimeSystemInterface to: (Interface named: 'Time System Interface' declaring: #(#dateTime #timeOfDay))
 ]
 
 { #category : #'instance creation' }

@@ -1,10 +1,10 @@
 Class {
 	#name : #EventNotificationSystem,
-	#superclass : #System,
+	#superclass : #SubsystemImplementation,
 	#instVars : [
 		'subscriptions'
 	],
-	#category : 'Kepler-Notifications'
+	#category : #'Kepler-Notifications'
 }
 
 { #category : #'system specification' }

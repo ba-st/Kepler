@@ -1,0 +1,78 @@
+"
+I am a System used for tests, to test dependency resolution
+"
+Class {
+	#name : #SampleProjectSystem,
+	#superclass : #SubsystemImplementation,
+	#instVars : [
+		'projectsByCustomer',
+		'cmsBinding'
+	],
+	#category : #'Kepler-System-Tests'
+}
+
+{ #category : #'class initialization' }
+SampleProjectSystem class >> initialize [
+
+	SystemInterface bind: #ProjectManagementSystem to: (Interface named: 'Project Management System' declaring: #(addProjectNamed:for: projectsFor:))
+]
+
+{ #category : #API }
+SampleProjectSystem >> addProjectNamed: aName for: aCustomer [
+
+	| projects |
+
+	self assertCustomerExists: aCustomer.
+	projects := projectsByCustomer at: aCustomer ifAbsentPut: [ OrderedCollection new ].
+	projects add: aName
+]
+
+{ #category : #private }
+SampleProjectSystem >> assertCustomerExists: aCustomer [
+
+	AssertionChecker enforce: [ self cms customers includes: aCustomer ] because: 'Invalid customer'
+]
+
+{ #category : #private }
+SampleProjectSystem >> cms [
+
+	^ cmsBinding content
+]
+
+{ #category : #installing }
+SampleProjectSystem >> dependencies [
+
+	^ { SystemInterface >> #CustomerManagementSystem }
+]
+
+{ #category : #installing }
+SampleProjectSystem >> implementedInterfacesDo: aBlock [
+
+	aBlock value: SystemInterface >> #ProjectManagementSystem
+]
+
+{ #category : #'initialize-release' }
+SampleProjectSystem >> initialize [
+
+	super initialize.
+	projectsByCustomer := Dictionary new.
+	cmsBinding := Binding undefinedExplainedBy: 'Unresolved Customer Management System'
+]
+
+{ #category : #accessing }
+SampleProjectSystem >> name [
+
+	^ 'Project Management'
+]
+
+{ #category : #API }
+SampleProjectSystem >> projectsFor: aCustomer [
+
+	^ projectsByCustomer at: aCustomer ifAbsent: [ #() ]
+]
+
+{ #category : #installing }
+SampleProjectSystem >> resolveDependencies [
+
+	cmsBinding := Binding to: self parent >> #CustomerManagementSystem
+]

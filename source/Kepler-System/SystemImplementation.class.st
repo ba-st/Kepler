@@ -1,23 +1,74 @@
+"
+I'm an abstract system implementation. 
+I provide the common code al systems must implement: startUp and shutDown primitives.
+"
 Class {
 	#name : #SystemImplementation,
 	#superclass : #Object,
-	#category : 'Kepler-System'
+	#instVars : [
+		'state'
+	],
+	#pools : [
+		'KeplerNamespace'
+	],
+	#category : #'Kepler-System'
 }
 
-{ #category : #testing }
-SystemImplementation >> implements: aSystemInterface [
+{ #category : #initialization }
+SystemImplementation >> initialize [
 
-	^ self class implementedInterface = aSystemInterface 
+	super initialize.
+	state := SystemStopped for: self
 ]
 
-{ #category : #'starting - stopping' }
+{ #category : #testing }
+SystemImplementation >> isStarted [
+
+	^ state isStarted
+]
+
+{ #category : #testing }
+SystemImplementation >> isStopped [
+
+	^ state isStopped
+]
+
+{ #category : #accessing }
+SystemImplementation >> name [
+
+	^ self subclassResponsibility
+]
+
+{ #category : #printing }
+SystemImplementation >> printOn: aStream [
+
+	aStream nextPutAll: self name
+]
+
+{ #category : #controlling }
 SystemImplementation >> shutDown [
 	
-	self subclassResponsibility 
+	state shutDown.
+	state := SystemStopped for: self
 ]
 
-{ #category : #'starting - stopping' }
+{ #category : #'private - controlling' }
+SystemImplementation >> shutDownWhenStarted [
+
+	"I'm a template method. I will be invoked when the system is shutting down.
+	Systems requiring some specific actions on shutDown must reimplement me. "
+]
+
+{ #category : #controlling }
 SystemImplementation >> startUp [
 	
-	self subclassResponsibility 
+	state startUp.
+	state := SystemStarted for: self
+]
+
+{ #category : #'private - controlling' }
+SystemImplementation >> startUpWhenStopped [
+
+	"I'm a template method. I will be invoked when the system is starting up.
+	Systems requiring some specific actions on start up must reimplement me. "
 ]
