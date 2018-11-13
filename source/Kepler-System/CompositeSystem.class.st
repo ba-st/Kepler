@@ -26,7 +26,7 @@ CompositeSystem >> >> anInterfaceKey [
 { #category : #'private - accessing' }
 CompositeSystem >> asInterface: anInterfaceKey [
 
-	^ SystemInterface >> anInterfaceKey
+	^ SystemInterfaces >> anInterfaceKey
 ]
 
 { #category : #initialization }

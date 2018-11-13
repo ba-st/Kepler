@@ -10,12 +10,6 @@ Class {
 	#category : #'Kepler-System-Tests'
 }
 
-{ #category : #'class initialization' }
-SampleCustomerSystem class >> initialize [
-
-	SystemInterface bind: #CustomerManagementSystem to: (Interface named: 'Customer Management System' declaring: #(customers addCustomer:))
-]
-
 { #category : #API }
 SampleCustomerSystem >> addCustomer: aCustomer [
 
@@ -38,7 +32,9 @@ SampleCustomerSystem >> dependencies [
 { #category : #installing }
 SampleCustomerSystem >> implementedInterfacesDo: aBlock [
 
-	aBlock value: SystemInterface >> #CustomerManagementSystem
+	aBlock
+		value: #CustomerQueryingSystem;
+		value: #CustomerManagementSystem
 ]
 
 { #category : #installing }

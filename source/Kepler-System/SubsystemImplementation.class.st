@@ -17,7 +17,7 @@ Class {
 { #category : #'subsystem lookup' }
 SubsystemImplementation >> >> anInterfaceKey [
 
-	^ dependencies at: anInterfaceKey ifAbsent: [ SystemControlError signal: ('Unresolved <1p>' expandMacrosWith: SystemInterface >> anInterfaceKey) ]
+	^ dependencies at: anInterfaceKey ifAbsent: [ SystemControlError signal: ('Unresolved <1p>' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
 ]
 
 { #category : #'private - asserting' }
@@ -59,8 +59,8 @@ SubsystemImplementation >> implementedInterfacesDo: aMonadycBlock [
 SubsystemImplementation >> implements: aSystemInterface [
 
 	self
-		implementedInterfacesDo: [ :implementedInterface | 
-			aSystemInterface = implementedInterface
+		implementedInterfacesDo: [ :interfaceKey | 
+			aSystemInterface = (SystemInterfaces >> interfaceKey)
 				ifTrue: [ ^ true ] ].
 	^ false
 ]

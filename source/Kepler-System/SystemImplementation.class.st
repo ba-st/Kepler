@@ -9,7 +9,7 @@ Class {
 		'state'
 	],
 	#pools : [
-		'KeplerNamespace'
+		'Kepler'
 	],
 	#category : #'Kepler-System'
 }

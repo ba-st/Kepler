@@ -22,7 +22,7 @@ SystemHotSwapperTest >> testSwapping [
 
 	self deny: cms = newCMS.
 
-	self assert: composite >> #CustomerManagementSystem equals: cms.
-	(SystemHotSwapper swapSystemImplementing: #CustomerManagementSystem with: newCMS) applyTo: composite.
-	self assert: composite >> #CustomerManagementSystem equals: newCMS
+	self assert: composite >> #CustomerQueryingSystem equals: cms.
+	(SystemHotSwapper swapSystemImplementing: #CustomerQueryingSystem with: newCMS) applyTo: composite.
+	self assert: composite >> #CustomerQueryingSystem equals: newCMS
 ]

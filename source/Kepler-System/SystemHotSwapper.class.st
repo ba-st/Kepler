@@ -9,7 +9,7 @@ Class {
 		'interfaceKey'
 	],
 	#pools : [
-		'KeplerNamespace'
+		'Kepler'
 	],
 	#category : #'Kepler-System'
 }
@@ -17,8 +17,8 @@ Class {
 { #category : #'private - preconditions' }
 SystemHotSwapper class >> assert: aSubsystem implements: anInterfaceKey [
 
-	(SystemInterface >> anInterfaceKey isImplementedBy: aSubsystem)
-		ifFalse: [ SystemControlError signal: ('<1p> is not implementing <2p>' expandMacrosWith: aSubsystem with: SystemInterface >> anInterfaceKey) ] 
+	(SystemInterfaces >> anInterfaceKey isImplementedBy: aSubsystem)
+		ifFalse: [ SystemControlError signal: ('<1p> is not implementing <2p>' expandMacrosWith: aSubsystem with: SystemInterfaces >> anInterfaceKey) ] 
 ]
 
 { #category : #'instance creation' }
@@ -33,7 +33,7 @@ SystemHotSwapper >> applyTo: aCompositeSystem [
 
 	| subsystemToSwap |
 
-	subsystemToSwap := aCompositeSystem systemImplementing: interfaceKey.
+	subsystemToSwap := aCompositeSystem >> interfaceKey.
 	subsystemToSwap shutDown.
 	aCompositeSystem unregister: subsystemToSwap.
 	(SystemHotInstaller installing: subsystem) applyTo: aCompositeSystem

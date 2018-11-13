@@ -29,23 +29,6 @@ BaselineOfKepler >> baseline: spec [
 				group: 'default' with: #('Deployment') ]
 ]
 
-{ #category : #actions }
-BaselineOfKepler >> registerInterfaceAs: aKey named: aName declaring: aSelectorSet [
-
-	SystemInterface
-		bind: aKey
-		to: (Interface named: aName declaring: aSelectorSet)
-]
-
-{ #category : #actions }
-BaselineOfKepler >> registerTestInterface [
-
-	self
-		registerInterfaceAs: #TestInterface
-		named: 'Test Interface'
-		declaring: #(#currentDateTime)
-]
-
 { #category : #baselines }
 BaselineOfKepler >> setUpDependencies: spec [
 

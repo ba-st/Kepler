@@ -17,12 +17,6 @@ Class {
 	#category : #'Kepler-Time'
 }
 
-{ #category : #'class initialization' }
-TimeSystem class >> initialize [
-
-	SystemInterface bind: #TimeSystemInterface to: (Interface named: 'Time System Interface' declaring: #(#dateTime #timeOfDay))
-]
-
 { #category : #'instance creation' }
 TimeSystem class >> using: aTimeSource [ 
 
@@ -50,7 +44,7 @@ TimeSystem >> dependencies [
 { #category : #installing }
 TimeSystem >> implementedInterfacesDo: aBlock [
 
-	aBlock value: SystemInterface >> #TimeSystemInterface
+	aBlock value: #TimeSystemInterface
 ]
 
 { #category : #'initialize-release' }

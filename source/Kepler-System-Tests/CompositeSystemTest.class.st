@@ -137,7 +137,7 @@ CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependency
 	self
 		should: [ system >> #ProjectManagementSystem addProjectNamed: 'Fail' for: 'Pedro' ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved Customer Management System' ]
+		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved Customer Querying' ]
 ]
 
 { #category : #tests }
@@ -174,7 +174,7 @@ CompositeSystemTest >> testSystemMissingDependenciesWillNotStart [
 	self
 		should: [ composite startUp ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Management System" not found.' ]
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
 ]
 
 { #category : #tests }

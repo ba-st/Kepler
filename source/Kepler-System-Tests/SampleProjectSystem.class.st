@@ -10,12 +10,6 @@ Class {
 	#category : #'Kepler-System-Tests'
 }
 
-{ #category : #'class initialization' }
-SampleProjectSystem class >> initialize [
-
-	SystemInterface bind: #ProjectManagementSystem to: (Interface named: 'Project Management System' declaring: #(addProjectNamed:for: projectsFor:))
-]
-
 { #category : #API }
 SampleProjectSystem >> addProjectNamed: aName for: aCustomer [
 
@@ -35,19 +29,19 @@ SampleProjectSystem >> assertCustomerExists: aCustomer [
 { #category : #private }
 SampleProjectSystem >> cms [
 
-	^ self >> #CustomerManagementSystem
+	^ self >> #CustomerQueryingSystem
 ]
 
 { #category : #installing }
 SampleProjectSystem >> dependencies [
 
-	^ #(#CustomerManagementSystem)
+	^ #(#CustomerQueryingSystem)
 ]
 
 { #category : #installing }
 SampleProjectSystem >> implementedInterfacesDo: aBlock [
 
-	aBlock value: SystemInterface >> #ProjectManagementSystem
+	aBlock value: #ProjectManagementSystem
 ]
 
 { #category : #'initialize-release' }
