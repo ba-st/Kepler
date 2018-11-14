@@ -1,60 +1,133 @@
+"
+I'm a composite system, a system containing another systems (called subsystems). I'm the one responsible of coordinating the startUp and shutDown of a whole subsystems combination.
+"
 Class {
 	#name : #CompositeSystem,
 	#superclass : #SystemImplementation,
 	#instVars : [
-		'systems'
+		'subsystems',
+		'installationOptional'
 	],
-	#category : 'Kepler-System'
+	#category : #'Kepler-System'
 }
 
 { #category : #'instance creation' }
-CompositeSystem class >> of: aSystemsCollection [
+CompositeSystem class >> installedBy: anInstallation [
 
-	^self new initializeOf: aSystemsCollection
+	^self new initializeInstalledBy: anInstallation
+]
+
+{ #category : #'subsystem lookup' }
+CompositeSystem >> >> anInterfaceKey [
+
+	^ self systemImplementing: anInterfaceKey
 ]
 
 { #category : #initialization }
-CompositeSystem >> initializeOf: aSystemsCollection [
+CompositeSystem >> initialize [
 
-	self initialize.
-	systems := aSystemsCollection.
-	
-	self registerAsSystemsParent
+	super initialize.
+	subsystems := OrderedCollection new.
+	installationOptional := Optional unused.
 ]
 
 { #category : #initialization }
-CompositeSystem >> registerAsSystemsParent [
+CompositeSystem >> initializeInstalledBy: anInstallation [
 
-	systems do: [ :system | system parent: self ]
+	installationOptional := Optional containing: anInstallation
 ]
 
-{ #category : #'starting - stopping' }
-CompositeSystem >> shutDown [
+{ #category : #'private - accessing' }
+CompositeSystem >> interfaceAt: anInterfaceKey [
 
-	systems do: [ :system | system shutDown ]
+	^ SystemInterfaces >> anInterfaceKey
 ]
 
-{ #category : #'starting - stopping' }
-CompositeSystem >> startUp [
+{ #category : #accessing }
+CompositeSystem >> name [
 
-	systems do: [ :system | system startUp ]
+	^ installationOptional withContentDo: [ :installation | installation name ] ifUnused: [ '' ]
 ]
 
-{ #category : #'system lookup' }
-CompositeSystem >> systemImplementing: anInterfaceName [
+{ #category : #'subsystem management' }
+CompositeSystem >> register: aSubsystem [
 
-	^ self
-		systemImplementing: anInterfaceName
-		ifNone: [ Error
-				signal:
-					('System implementing ''<1p>'' not found'
-						expandMacrosWith: SystemInterface >> anInterfaceName) ]
+	AssertionChecker enforce: [ aSubsystem isStopped ] because: [ 'Cannot register a subsystem not stopped (<1s>)' expandMacrosWith: aSubsystem name ] raising: SystemControlError.
+	subsystems add: aSubsystem.
+	aSubsystem beChildOf: self.
+	^ aSubsystem
 ]
 
-{ #category : #'system lookup' }
-CompositeSystem >> systemImplementing: anInterfaceName ifNone: aNoneBlock [
+{ #category : #installing }
+CompositeSystem >> reinstall [
 
-	^ systems
-		detect: [ :subsystem | subsystem implements: SystemInterface >> anInterfaceName ]
-		ifNone: aNoneBlock
+	subsystems do: [ :subsystem | subsystem aboutToReinstall ].
+	self withInstallationDo: [ :installation | installation reinstallOn: self ]
+]
+
+{ #category : #installing }
+CompositeSystem >> resolveSubsystemDependencies [
+
+	subsystems do: [ :subsystem | subsystem resolveDependencies ]
+]
+
+{ #category : #controlling }
+CompositeSystem >> restart [
+
+	self
+		shutDown;
+		startUp
+]
+
+{ #category : #'private - controlling' }
+CompositeSystem >> shutDownWhenStarted [
+
+	super shutDownWhenStarted.
+	subsystems do: [ :subsystem | subsystem shutDown ].
+	self withInstallationDo: [ :installation | installation beAwareOfShutDownOf: self ]
+]
+
+{ #category : #'private - controlling' }
+CompositeSystem >> startUpWhenStopped [
+
+	super startUpWhenStopped.
+	subsystems do: [ :subsystem | subsystem startUp ]
+]
+
+{ #category : #'subsystem lookup' }
+CompositeSystem >> systemImplementing: anInterfaceKey [
+
+	^ self systemImplementing: anInterfaceKey ifNone: [ SystemControlError signal: ('System implementing "<1p>" not found.' expandMacrosWith: (self interfaceAt: anInterfaceKey)) ]
+]
+
+{ #category : #'subsystem lookup' }
+CompositeSystem >> systemImplementing: anInterfaceKey ifFound: aOneArgBlock ifNone: anExceptionalBlock [
+
+	^ subsystems detect: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ] ifFound: aOneArgBlock ifNone: anExceptionalBlock
+]
+
+{ #category : #'subsystem lookup' }
+CompositeSystem >> systemImplementing: anInterfaceKey ifNone: aNoneBlock [
+
+	^ subsystems detect: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ] ifNone: aNoneBlock
+]
+
+{ #category : #'subsystem lookup' }
+CompositeSystem >> systemsImplementing: anInterfaceKey [
+
+	^ subsystems select: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ]
+]
+
+{ #category : #'subsystem management' }
+CompositeSystem >> unregister: aSubsystem [
+
+	aSubsystem beOrphan.
+	subsystems remove: aSubsystem.
+	^aSubsystem
+]
+
+{ #category : #accessing }
+CompositeSystem >> withInstallationDo: aBlock [
+
+	installationOptional withContentDo: aBlock
 ]

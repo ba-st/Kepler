@@ -7,6 +7,12 @@ Class {
 	#category : 'Kepler-Notifications-Tests'
 }
 
+{ #category : #tests }
+EventNotificationSystemUserStoryTest >> eventNotificationSystem [
+
+	^ rootSystem >> #EventNotificationSystemInterface
+]
+
 { #category : #'tests support' }
 EventNotificationSystemUserStoryTest >> setHasBeenNotifiedToTrue [
 
@@ -29,8 +35,13 @@ EventNotificationSystemUserStoryTest >> setUp [
 { #category : #running }
 EventNotificationSystemUserStoryTest >> setUpRequirements [
 
-	super setUpRequirements.
-	self requireEventNotificationSystem
+	self registerSubsystem: EventNotificationSystem new
+]
+
+{ #category : #tests }
+EventNotificationSystemUserStoryTest >> testAccessing [
+
+	self assert: self eventNotificationSystem name equals: 'Event Notification'
 ]
 
 { #category : #tests }

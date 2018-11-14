@@ -1,17 +1,11 @@
 Class {
 	#name : #EventNotificationSystem,
-	#superclass : #System,
+	#superclass : #SubsystemImplementation,
 	#instVars : [
 		'subscriptions'
 	],
-	#category : 'Kepler-Notifications'
+	#category : #'Kepler-Notifications'
 }
-
-{ #category : #'system specification' }
-EventNotificationSystem class >> implementedInterface [
-
-	^ SystemInterface >> #EventNotificationSystemInterface
-]
 
 { #category : #'private - subscribing' }
 EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventType [
@@ -24,12 +18,30 @@ EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventTyp
 				signal: 'Object already subscribed to this event type.' ]
 ]
 
+{ #category : #installing }
+EventNotificationSystem >> dependencies [
+
+	^ #()
+]
+
+{ #category : #installing }
+EventNotificationSystem >> implementedInterfaces [
+
+	^ #(#EventNotificationSystemInterface)
+]
+
 { #category : #initialization }
 EventNotificationSystem >> initialize [
 
 	super initialize.
 	subscriptions := OrderedCollection new
 	
+]
+
+{ #category : #accessing }
+EventNotificationSystem >> name [
+
+	^ 'Event Notification'
 ]
 
 { #category : #notifying }
@@ -40,12 +52,6 @@ EventNotificationSystem >> notifySubscribersTo: anEvent [
 		thenDo: [ :subscription | 
 			(MessageSend receiver: subscription subscriber selector: subscription message)
 				cull: anEvent ]
-]
-
-{ #category : #'dependency resolution' }
-EventNotificationSystem >> resolveDependecies [
-
-	"do nothing"
 ]
 
 { #category : #subscribing }

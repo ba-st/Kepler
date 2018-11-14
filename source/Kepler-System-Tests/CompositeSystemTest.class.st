@@ -1,49 +1,172 @@
+"
+Test Case
+"
 Class {
 	#name : #CompositeSystemTest,
 	#superclass : #TestCase,
-	#category : 'Kepler-System-Tests'
+	#category : #'Kepler-System-Tests'
 }
+
+{ #category : #tests }
+CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
+
+	| composite |
+
+	composite := CompositeSystem new
+		register: SampleCustomerSystem new;
+		startUp.
+
+	self
+		assert: (composite >> #CustomerManagementSystem) isStarted;
+		should: [ CompositeSystem new register: composite >> #CustomerManagementSystem ]
+			raise: SystemControlError
+			withExceptionDo: [ :error | self assert: error messageText equals: 'Cannot register a subsystem not stopped (CMS)' ]
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testDependencies [
+
+	| system |
+
+	system := CompositeSystem new.
+	system
+		register: SampleProjectSystem new;
+		register: SampleCustomerSystem new;
+		startUp.
+
+	system >> #CustomerManagementSystem addCustomer: 'Tesla'.
+
+	system >> #ProjectManagementSystem addProjectNamed: 'Landing Page' for: 'Tesla'.
+
+	self
+		assert: (system >> #ProjectManagementSystem projectsFor: 'Tesla') size equals: 1;
+		assert: (system >> #ProjectManagementSystem) name equals: 'Project Management'
+]
 
 { #category : #tests }
 CompositeSystemTest >> testDependenciesAreResolvedOnSystemStartUp [
 
 	| system |
 
-	system := CompositeSystem of: (Array with: TestSystem new with: self timeSystem).
+	system := CompositeSystem new.
+	system
+		register: SampleProjectSystem new;
+		register: SampleCustomerSystem new;
+		startUp.
+
+	self should: [ (system systemImplementing: #ProjectManagementSystem) addProjectNamed: 'Landing Page' for: 'Tesla' ] raise: AssertionFailed
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testEmptySystem [
+
+	| system |
+
+	system := CompositeSystem new.
 
 	self
-		should: [ (system systemImplementing: #TestInterface) currentDateTime ]
-		raise: Error
-		whoseDescriptionIncludes: 'Unresolved system dependency to Time System Interface'
-		description: 'Expected: Unresolved system dependency to Time System Interface'.
+		assert: system printString isEmpty;
+		assert: system isStopped;
+		deny: system isStarted.
 
 	system startUp.
-	self shouldnt: [ (system systemImplementing: #TestInterface) currentDateTime ] raise: Error
+
+	self
+		assert: system isStarted;
+		deny: system isStopped.
+
+	system shutDown.
+
+	self assert: system isStopped
 ]
 
 { #category : #tests }
 CompositeSystemTest >> testGettingSystemImplementingInterface [
 
-	| system timeSystem |
+	| system cms |
 
-	timeSystem := self timeSystem.
+	cms := SampleCustomerSystem new.
 
-	system := CompositeSystem of: (Array with: timeSystem).
+	system := CompositeSystem new.
+	system
+		register: cms;
+		startUp.
 
-	self assert: (system systemImplementing: #TimeSystemInterface) equals: timeSystem
+	self assert: system >> #CustomerManagementSystem equals: cms.
+
+	self
+		should: [ system >> #ProjectManagementSystem ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Project Management" not found.' ]
 ]
 
 { #category : #tests }
-CompositeSystemTest >> testGettingSystemImplementingInterfaceFailsDueToImplementationNotFound [
+CompositeSystemTest >> testInvalidControlSequences [
 
 	| system |
 
-	system := CompositeSystem of: #().
+	system := CompositeSystem new.
 
 	self
-		should: [ system systemImplementing: #TimeSystemInterface ]
-		raise: Error
-		withExceptionDo: [ :signal | self assert: signal messageText equals: 'System implementing ''Time System Interface'' not found' ]
+		should: [ system shutDown ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: (error messageText endsWith: ' is already stopped.') ].
+
+	system startUp.
+
+	self
+		should: [ system startUp ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: (error messageText endsWith: ' is already started.') ]
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testNotEmptySystem [
+
+	| system cms pms |
+
+	system := CompositeSystem new.
+	cms := SampleCustomerSystem new.
+	pms := SampleProjectSystem new.
+	system
+		register: cms;
+		register: pms.
+
+
+	self
+		assert: system isStopped;
+		assert: cms isStopped;
+		assert: pms isStopped.
+
+	system startUp.
+
+	self
+		assert: system isStarted;
+		assert: cms isStarted;
+		assert: pms isStarted.
+
+	system shutDown.
+
+	self
+		assert: system isStopped;
+		assert: cms isStopped;
+		assert: pms isStopped
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testRestart [
+
+	| system |
+
+	system := CompositeSystem new.
+
+	system startUp.
+
+	self assert: system isStarted.
+
+	system restart.
+
+	self assert: system isStarted
 ]
 
 { #category : #tests }
@@ -51,28 +174,72 @@ CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependency
 
 	| system |
 
-	system := CompositeSystem of: (Array with: TestSystem new).
+	system := CompositeSystem new.
+	system
+		register: SampleCustomerSystem new;
+		register: SampleProjectSystem new.
 
 	self
-		should: [ (system systemImplementing: #TestInterface) currentDateTime ]
-		raise: Error
-		whoseDescriptionIncludes: 'Unresolved system dependency to Time System Interface'
-		description: 'Expected: Unresolved system dependency to Time System Interface'
+		should: [ system >> #ProjectManagementSystem addProjectNamed: 'Fail' for: 'Pedro' ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved system dependency to "Customer Querying"' ]
 ]
 
 { #category : #tests }
-CompositeSystemTest >> testStartUpAndShutDown [
+CompositeSystemTest >> testSystemImplementingIfFoundIfNone [
 
-	| system testSystem |
+	| system cms |
 
-	testSystem := TestSystem new.
+	cms := SampleCustomerSystem new.
 
-	system := CompositeSystem of: (Array with: testSystem with: self timeSystem).
-	self deny: testSystem isStarted.
-	system startUp.
-	self assert: testSystem isStarted.
-	system shutDown.
-	self deny: testSystem isStarted
+	system := CompositeSystem new.
+	system
+		register: cms;
+		startUp.
+
+	self
+		assert:
+			(system
+				systemImplementing: #CustomerManagementSystem
+				ifFound: [ :subsystem | 
+					self assert: subsystem equals: cms.
+					true ]
+				ifNone: [ self fail ]);
+		assert: (system systemImplementing: #ProjectManagementSystem ifFound: [ :subsystem | self fail ] ifNone: [ true ])
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testSystemMissingDependenciesWillNotStart [
+
+	| composite |
+
+	composite := CompositeSystem new.
+	composite register: SampleProjectSystem new.
+
+	self
+		should: [ composite startUp ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
+]
+
+{ #category : #tests }
+CompositeSystemTest >> testSystemsImplementing [
+
+	| system cms |
+
+	cms := SampleCustomerSystem new.
+
+	system := CompositeSystem new.
+	system
+		register: cms;
+		startUp.
+
+	self
+		assert: system >> #CustomerManagementSystem equals: cms;
+		assert: (system systemsImplementing: #CustomerManagementSystem) size equals: 1;
+		assert: (system systemsImplementing: #CustomerManagementSystem) first equals: cms.
+
+	self assert: (system systemsImplementing: #ProjectManagementSystem) isEmpty
 ]
 
 { #category : #tests }
@@ -80,14 +247,11 @@ CompositeSystemTest >> testWontStartWhenRequiredSystemNotFound [
 
 	| system |
 
-	system := CompositeSystem of: (Array with: TestSystem new).
+	system := CompositeSystem new.
+	system register: SampleProjectSystem new.
 
-	self should: [ system startUp ] raise: Error withExceptionDo: [ :signal | self assert: signal messageText equals: 'System implementing ''Time System Interface'' not found' ]
-]
-
-{ #category : #accessing }
-CompositeSystemTest >> timeSystem [
-
-	^ TimeSystem
-		using: (FixedTimeSource on: September tenth , 2015 at: TimeOfDay noon)
+	self
+		should: [ system startUp ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
 ]

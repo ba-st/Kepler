@@ -10,18 +10,12 @@ timeSource
 "
 Class {
 	#name : #TimeSystem,
-	#superclass : #System,
+	#superclass : #SubsystemImplementation,
 	#instVars : [
 		'timeSource'
 	],
-	#category : 'Kepler-Time'
+	#category : #'Kepler-Time'
 }
-
-{ #category : #'system specification' }
-TimeSystem class >> implementedInterface [
-
-	^ SystemInterface >> #TimeSystemInterface
-]
 
 { #category : #'instance creation' }
 TimeSystem class >> using: aTimeSource [ 
@@ -41,25 +35,28 @@ TimeSystem >> dateTime [
 	^ timeSource dateTime
 ]
 
+{ #category : #installing }
+TimeSystem >> dependencies [
+
+	^ #()
+]
+
+{ #category : #installing }
+TimeSystem >> implementedInterfaces [
+
+	^ #(#TimeSystemInterface)
+]
+
 { #category : #'initialize-release' }
-TimeSystem >> initializeUsing: aTimeSource [ 
+TimeSystem >> initializeUsing: aTimeSource [
 
-	super initialize.
-	timeSource := aTimeSource 
+	timeSource := aTimeSource
 ]
 
-{ #category : #'dependency resolution' }
-TimeSystem >> resolveDependecies [
+{ #category : #accessing }
+TimeSystem >> name [
 
-	"do nothing"
-]
-
-{ #category : #'starting-stopping' }
-TimeSystem >> shutDown [
-
-	"do nothing"
-
-	
+	^ 'Time System'
 ]
 
 { #category : #accessing }

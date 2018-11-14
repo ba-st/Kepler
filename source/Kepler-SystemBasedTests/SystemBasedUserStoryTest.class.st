@@ -1,74 +1,48 @@
+"
+I'm a TestCase extension supporting System level tests.
+My subclasses need to implement setUpRequirements and install here the required modules or subsystems needed for the specific case.
+"
 Class {
 	#name : #SystemBasedUserStoryTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'timeSource',
-		'rootSystem',
-		'systemBuilder'
+		'rootSystem'
 	],
-	#category : 'Kepler-SystemBasedTests'
+	#category : #'Kepler-SystemBasedTests'
 }
 
-{ #category : #running }
-SystemBasedUserStoryTest >> buildAndStartUpSystem [
+{ #category : #testing }
+SystemBasedUserStoryTest class >> isAbstract [
 
-	systemBuilder := CompositeSystemBuilder new.
-	self setUpRequirements.
-	rootSystem := systemBuilder build.
-
-	rootSystem startUp
+	^self name = #SystemBasedUserStoryTest
 ]
 
-{ #category : #'private - systems' }
-SystemBasedUserStoryTest >> eventNotificationSystem [
+{ #category : #'private - running' }
+SystemBasedUserStoryTest >> registerSubsystem: aSubsystem [
 
-	^ rootSystem systemImplementing: #EventNotificationSystemInterface 
-]
-
-{ #category : #configuring }
-SystemBasedUserStoryTest >> requireEventNotificationSystem [
-
-	systemBuilder add: EventNotificationSystem new
-]
-
-{ #category : #configuring }
-SystemBasedUserStoryTest >> requireTimeSystem [
-
-	systemBuilder add: (TimeSystem using: timeSource)
-
+	rootSystem register: aSubsystem
 ]
 
 { #category : #running }
 SystemBasedUserStoryTest >> setUp [
 
-	self setUpFixedTimeSource.
-	self buildAndStartUpSystem.
-
+	super setUp.
+	rootSystem := CompositeSystem new.
+	self setUpRequirements.
+	rootSystem startUp
 ]
 
-{ #category : #running }
-SystemBasedUserStoryTest >> setUpFixedTimeSource [
-
-	timeSource := FixedTimeSource on: self systemDateTime
-]
-
-{ #category : #running }
+{ #category : #'private - running' }
 SystemBasedUserStoryTest >> setUpRequirements [
 
-	"Default method. Subclasses should override with the required systems for the user story test"
+	"The subsystems or module requirements must be made explicit in this method."
 
-	
+	self subclassResponsibility
 ]
 
-{ #category : #accessing }
-SystemBasedUserStoryTest >> systemDateTime [
+{ #category : #running }
+SystemBasedUserStoryTest >> tearDown [
 
-	^ (October first , 2014) atNoon
-]
-
-{ #category : #'private - systems' }
-SystemBasedUserStoryTest >> timeSystem [
-
-	^ rootSystem systemImplementing: #TimeSystemInterface
-
+	rootSystem ifNotNil: [ rootSystem shutDown ].
+	super tearDown
 ]
