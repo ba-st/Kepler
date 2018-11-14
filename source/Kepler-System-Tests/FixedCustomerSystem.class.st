@@ -20,9 +20,9 @@ FixedCustomerSystem >> dependencies [
 ]
 
 { #category : #installing }
-FixedCustomerSystem >> implementedInterfacesDo: aBlock [
+FixedCustomerSystem >> implementedInterfaces [
 
-	aBlock value: #CustomerQueryingSystem
+	^ #(#CustomerQueryingSystem)
 ]
 
 { #category : #installing }

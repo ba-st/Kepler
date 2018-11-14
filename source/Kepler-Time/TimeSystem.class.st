@@ -42,9 +42,9 @@ TimeSystem >> dependencies [
 ]
 
 { #category : #installing }
-TimeSystem >> implementedInterfacesDo: aBlock [
+TimeSystem >> implementedInterfaces [
 
-	aBlock value: #TimeSystemInterface
+	^ #(#TimeSystemInterface)
 ]
 
 { #category : #'initialize-release' }

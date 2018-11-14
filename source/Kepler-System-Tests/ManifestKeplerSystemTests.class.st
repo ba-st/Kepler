@@ -12,8 +12,7 @@ ManifestKeplerSystemTests class >> initialize [
 
 	<ignoreForCoverage>
 	Kepler
-		register: (Interface named: 'Customer Querying' declaring: #(customers)) as: #CustomerQueryingSystem;
-		register: (Interface named: 'Customer Management' declaring: #(addCustomer:)) as: #CustomerManagementSystem;
-		register: (Interface named: 'Project Management' declaring: #(#addProjectNamed:for: projectsFor:))
-			as: #ProjectManagementSystem
+		registerInterfaceAt: #CustomerQueryingSystem named: 'Customer Querying' declaring: #(#customers);
+		registerInterfaceAt: #CustomerManagementSystem named: 'Customer Management' declaring: #(#addCustomer:);
+		registerInterfaceAt: #ProjectManagementSystem named: 'Project Management' declaring: #(#addProjectNamed:for: #projectsFor:)
 ]

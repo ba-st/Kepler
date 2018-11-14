@@ -19,10 +19,21 @@ SystemInstallation >> beAwareOfShutDownOf: aCompositeSystem [
 	self subclassResponsibility
 ]
 
+{ #category : #installing }
+SystemInstallation >> install: aVersioName [
+
+	| rootSystem |
+	
+	rootSystem := CompositeSystem installedBy: self.
+	self registerModuleRegistrationSystemOn: rootSystem.
+	self modulesToInstall do: [ :module | (module toInstallOn: rootSystem) install ].
+	^rootSystem
+]
+
 { #category : #accessing }
 SystemInstallation >> modulesToInstall [
 
-	"Subclasses need to provide a set of module factories to be installed, it will be instantiated against the rootSystem"
+	"Subclasses need to provide a set of module factories to be installed, they will be instantiated against the rootSystem"
 
 	self subclassResponsibility
 ]
@@ -43,15 +54,4 @@ SystemInstallation >> registerModuleRegistrationSystemOn: aRootSystem [
 SystemInstallation >> reinstallOn: aCompositeSystem [
 
 	(aCompositeSystem >> #InstalledModuleRegistrationSystem) installedModules do: [ :module | module reinstall ]
-]
-
-{ #category : #installing }
-SystemInstallation >> value: aVersioName [
-
-	| rootSystem |
-	
-	rootSystem := CompositeSystem installedBy: self.
-	self registerModuleRegistrationSystemOn: rootSystem.
-	self modulesToInstall do: [ :module | (module toInstallOn: rootSystem) install ].
-	^rootSystem
 ]

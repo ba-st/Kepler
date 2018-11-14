@@ -14,13 +14,13 @@ SystemHotInstallerTest >> testInstalling [
 
 	composite := CompositeSystem new.
 	composite startUp.
-	self should: [ composite systemImplementing: #CustomerManagementSystem ] raise: SystemControlError.
+	self should: [ composite >> #CustomerManagementSystem ] raise: SystemControlError.
 
 	cms := SampleCustomerSystem new.
 	(SystemHotInstaller installing: cms) applyTo: composite.
 
-	self shouldnt: [ composite systemImplementing: #CustomerManagementSystem ] raise: SystemControlError.
+	self shouldnt: [ composite >> #CustomerManagementSystem ] raise: SystemControlError.
 
-	self assert: (composite systemImplementing: #CustomerManagementSystem) equals: cms.
+	self assert: (composite >> #CustomerManagementSystem) equals: cms.
 	self assert: cms isStarted
 ]

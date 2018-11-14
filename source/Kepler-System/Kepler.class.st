@@ -16,13 +16,14 @@ Kepler class >> initialize [
 	<ignoreForCoverage>
 	SystemInterfaces := Namespace new.
 	self
-		register: (Interface named: 'Installed Module Registration' declaring: #(#registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do: #installedModuleRegisteringSystemImplementing:))
-		as: #InstalledModuleRegistrationSystem
+		registerInterfaceAt: #InstalledModuleRegistrationSystem
+		named: 'Installed Module Registration'
+		declaring: #(#registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do: #installedModuleRegisteringSystemImplementing:)
 ]
 
 { #category : #configuring }
-Kepler class >> register: anInterface as: anInterfaceKey [
+Kepler class >> registerInterfaceAt: aKey named: aName declaring: selectors [
 
 	<ignoreForCoverage>
-	SystemInterfaces bind: anInterfaceKey to: anInterface
+	SystemInterfaces bind: aKey to: (Interface named: aName declaring: selectors)
 ]

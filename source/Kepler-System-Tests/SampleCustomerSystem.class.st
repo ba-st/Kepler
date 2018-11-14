@@ -30,11 +30,9 @@ SampleCustomerSystem >> dependencies [
 ]
 
 { #category : #installing }
-SampleCustomerSystem >> implementedInterfacesDo: aBlock [
+SampleCustomerSystem >> implementedInterfaces [
 
-	aBlock
-		value: #CustomerQueryingSystem;
-		value: #CustomerManagementSystem
+	^ #(#CustomerQueryingSystem #CustomerManagementSystem)
 ]
 
 { #category : #installing }

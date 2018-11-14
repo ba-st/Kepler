@@ -12,9 +12,7 @@ ManifestKeplerNotifications class >> initialize [
 
 	<ignoreForCoverage>
 	Kepler
-		register:
-			(Interface
-				named: 'Event Notification System Interface'
-				declaring: #(#subscribe:to:toBeNotifiedSending: #revokeSubscriptionTo:of: #notifySubscribersTo:))
-		as: #EventNotificationSystemInterface
+		registerInterfaceAt: #EventNotificationSystemInterface
+		named: 'Event Notification System Interface'
+		declaring: #(#subscribe:to:toBeNotifiedSending: #revokeSubscriptionTo:of: #notifySubscribersTo:)
 ]

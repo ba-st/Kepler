@@ -94,7 +94,10 @@ CompositeSystemTest >> testGettingSystemImplementingInterface [
 
 	self assert: system >> #CustomerManagementSystem equals: cms.
 
-	self should: [ system >> #ProjectManagementSystem ] raise: SystemControlError
+	self
+		should: [ system >> #ProjectManagementSystem ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Project Management" not found.' ]
 ]
 
 { #category : #tests }
@@ -104,11 +107,17 @@ CompositeSystemTest >> testInvalidControlSequences [
 
 	system := CompositeSystem new.
 
-	self should: [ system shutDown ] raise: SystemControlError.
+	self
+		should: [ system shutDown ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: (error messageText endsWith: ' is already stopped.') ].
 
 	system startUp.
 
-	self should: [ system startUp ] raise: SystemControlError
+	self
+		should: [ system startUp ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: (error messageText endsWith: ' is already started.') ]
 ]
 
 { #category : #tests }
@@ -173,7 +182,7 @@ CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependency
 	self
 		should: [ system >> #ProjectManagementSystem addProjectNamed: 'Fail' for: 'Pedro' ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved Customer Querying' ]
+		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved system dependency to "Customer Querying"' ]
 ]
 
 { #category : #tests }
@@ -241,5 +250,8 @@ CompositeSystemTest >> testWontStartWhenRequiredSystemNotFound [
 	system := CompositeSystem new.
 	system register: SampleProjectSystem new.
 
-	self should: [ system startUp ] raise: SystemControlError
+	self
+		should: [ system startUp ]
+		raise: SystemControlError
+		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
 ]

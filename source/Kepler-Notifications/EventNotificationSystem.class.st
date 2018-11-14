@@ -25,9 +25,9 @@ EventNotificationSystem >> dependencies [
 ]
 
 { #category : #installing }
-EventNotificationSystem >> implementedInterfacesDo: aBlock [
+EventNotificationSystem >> implementedInterfaces [
 
-	aBlock value: #EventNotificationSystemInterface
+	^ #(#EventNotificationSystemInterface)
 ]
 
 { #category : #initialization }

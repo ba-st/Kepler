@@ -23,9 +23,9 @@ InstalledModuleRegistrationSystem >> ifNotRegisteredAsInstalled: aSystemModule d
 ]
 
 { #category : #installing }
-InstalledModuleRegistrationSystem >> implementedInterfacesDo: aBlock [
+InstalledModuleRegistrationSystem >> implementedInterfaces [
 
-	aBlock value: #InstalledModuleRegistrationSystem
+	^ #(#InstalledModuleRegistrationSystem)
 ]
 
 { #category : #initialization }

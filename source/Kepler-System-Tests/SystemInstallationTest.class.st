@@ -12,7 +12,7 @@ SystemInstallationTest >> testCreatedSystem [
 
 	| rootSystem |
 
-	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) value: '1.0'.
+	rootSystem := (SampleSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'.
 	rootSystem startUp.
 
 	self
@@ -28,9 +28,10 @@ SystemInstallationTest >> testInstallRepeatedModules [
 
 	| rootSystem |
 
-	rootSystem := (SampleSystemInstallation installing: {SampleCustomerModule. SampleCustomerModule}) value: '1.0'. 
+	rootSystem := (SampleSystemInstallation installing: {SampleCustomerModule. SampleCustomerModule}) install: '1.0'.
 	rootSystem startUp.
- 
+
+	self assert: (rootSystem systemsImplementing: #CustomerManagementSystem) size equals: 1
 ]
 
 { #category : #tests }
@@ -38,7 +39,7 @@ SystemInstallationTest >> testReinstall [
 
 	| rootSystem |
 
-	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) value: '1.0'. 
+	rootSystem := (SampleSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
 	rootSystem startUp.
 
 	self shouldnt: [ rootSystem reinstall ] raise: SystemControlError
@@ -49,7 +50,7 @@ SystemInstallationTest >> testRestart [
 
 	| rootSystem |
 
-	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) value: '1.0'. 
+	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
 	rootSystem startUp.
 
 	self shouldnt: [ rootSystem restart ] raise: SystemControlError

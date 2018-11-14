@@ -28,20 +28,7 @@ SystemModule >> install [
 { #category : #private }
 SystemModule >> installSystems [
 
-	"The modules can provide reflectively the sytemts ton isntall by implementing messages matching: register*SystemForInstallationIn:
-	Returning the system instance (not started)"
-
-	| subsystemsToInstall |
-
-	subsystemsToInstall := OrderedCollection new.
-
-	(KeywordMessageSendingCollector
-		sendingAllMessagesBeginningWith: 'register'
-		andEndingWith: 'SystemForInstallationIn:'
-		to: self
-		with: subsystemsToInstall) value.
-
-	subsystemsToInstall do: [ :aSubsystem | self rootSystem register: aSubsystem ]
+	self withSystemsToInstallDo: [ :aSubsystem | self rootSystem register: aSubsystem ]
 ]
 
 { #category : #testing }
@@ -88,4 +75,23 @@ SystemModule >> rootSystem [
 SystemModule >> systemInterfacesToInstall [
 
 	self subclassResponsibility
+]
+
+{ #category : #private }
+SystemModule >> withSystemsToInstallDo: aBlock [
+
+	"Modules can reflectively provide the systems to install by implementing messages matching: register*SystemForInstallationIn:
+	Returning the system instance (not started)"
+
+	| subsystemsToInstall |
+
+	subsystemsToInstall := OrderedCollection new.
+
+	(KeywordMessageSendingCollector
+		sendingAllMessagesBeginningWith: 'register'
+		andEndingWith: 'SystemForInstallationIn:'
+		to: self
+		with: subsystemsToInstall) value.
+
+	subsystemsToInstall do: aBlock
 ]

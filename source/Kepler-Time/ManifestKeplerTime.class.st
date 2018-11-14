@@ -11,7 +11,5 @@ Class {
 ManifestKeplerTime class >> initialize [
 
 	<ignoreForCoverage>
-	Kepler
-		register: (Interface named: 'Time System Interface' declaring: #(#dateTime #timeOfDay))
-		as: #TimeSystemInterface
+	Kepler registerInterfaceAt: #TimeSystemInterface named: 'Time System Interface' declaring: #(#dateTime #timeOfDay)
 ]

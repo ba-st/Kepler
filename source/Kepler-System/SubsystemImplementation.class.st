@@ -17,7 +17,9 @@ Class {
 { #category : #'subsystem lookup' }
 SubsystemImplementation >> >> anInterfaceKey [
 
-	^ dependencies at: anInterfaceKey ifAbsent: [ SystemControlError signal: ('Unresolved <1p>' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
+	^ dependencies
+		at: anInterfaceKey
+		ifAbsent: [ SystemControlError signal: ('Unresolved system dependency to "<1p>"' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
 ]
 
 { #category : #installing }
@@ -55,22 +57,16 @@ SubsystemImplementation >> dependencies [
 ]
 
 { #category : #installing }
-SubsystemImplementation >> implementedInterfacesDo: aMonadycBlock [
+SubsystemImplementation >> implementedInterfaces [
 
-	"Evaluate the block for each system interface implemented by me.
-	A subsystem is free implement several interfaces."
-
-	self subclassResponsibility
+	^ self subclassResponsibility
 ]
 
 { #category : #installing }
 SubsystemImplementation >> implements: aSystemInterface [
 
-	self
-		implementedInterfacesDo: [ :interfaceKey | 
-			aSystemInterface = (SystemInterfaces >> interfaceKey)
-				ifTrue: [ ^ true ] ].
-	^ false
+	^ self implementedInterfaces
+		anySatisfy: [ :interfaceKey | aSystemInterface = (SystemInterfaces >> interfaceKey) ]
 ]
 
 { #category : #initialization }

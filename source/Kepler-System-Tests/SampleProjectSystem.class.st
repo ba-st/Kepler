@@ -39,9 +39,9 @@ SampleProjectSystem >> dependencies [
 ]
 
 { #category : #installing }
-SampleProjectSystem >> implementedInterfacesDo: aBlock [
+SampleProjectSystem >> implementedInterfaces [
 
-	aBlock value: #ProjectManagementSystem
+	^ #(#ProjectManagementSystem)
 ]
 
 { #category : #'initialize-release' }

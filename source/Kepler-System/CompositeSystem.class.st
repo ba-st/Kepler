@@ -23,12 +23,6 @@ CompositeSystem >> >> anInterfaceKey [
 	^ self systemImplementing: anInterfaceKey
 ]
 
-{ #category : #'private - accessing' }
-CompositeSystem >> asInterface: anInterfaceKey [
-
-	^ SystemInterfaces >> anInterfaceKey
-]
-
 { #category : #initialization }
 CompositeSystem >> initialize [
 
@@ -41,6 +35,12 @@ CompositeSystem >> initialize [
 CompositeSystem >> initializeInstalledBy: anInstallation [
 
 	installationOptional := Optional containing: anInstallation
+]
+
+{ #category : #'private - accessing' }
+CompositeSystem >> interfaceAt: anInterfaceKey [
+
+	^ SystemInterfaces >> anInterfaceKey
 ]
 
 { #category : #accessing }
@@ -97,25 +97,25 @@ CompositeSystem >> startUpWhenStopped [
 { #category : #'subsystem lookup' }
 CompositeSystem >> systemImplementing: anInterfaceKey [
 
-	^ self systemImplementing: anInterfaceKey ifNone: [ SystemControlError signal: ('System implementing "<1p>" not found.' expandMacrosWith: (self asInterface: anInterfaceKey)) ]
+	^ self systemImplementing: anInterfaceKey ifNone: [ SystemControlError signal: ('System implementing "<1p>" not found.' expandMacrosWith: (self interfaceAt: anInterfaceKey)) ]
 ]
 
 { #category : #'subsystem lookup' }
 CompositeSystem >> systemImplementing: anInterfaceKey ifFound: aOneArgBlock ifNone: anExceptionalBlock [
 
-	^ subsystems detect: [ :subsystem | subsystem implements: (self asInterface: anInterfaceKey) ] ifFound: aOneArgBlock ifNone: anExceptionalBlock
+	^ subsystems detect: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ] ifFound: aOneArgBlock ifNone: anExceptionalBlock
 ]
 
 { #category : #'subsystem lookup' }
 CompositeSystem >> systemImplementing: anInterfaceKey ifNone: aNoneBlock [
 
-	^ subsystems detect: [ :subsystem | subsystem implements: (self asInterface: anInterfaceKey) ] ifNone: aNoneBlock
+	^ subsystems detect: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ] ifNone: aNoneBlock
 ]
 
 { #category : #'subsystem lookup' }
 CompositeSystem >> systemsImplementing: anInterfaceKey [
 
-	^ subsystems select: [ :subsystem | subsystem implements: (self asInterface: anInterfaceKey) ]
+	^ subsystems select: [ :subsystem | subsystem implements: (self interfaceAt: anInterfaceKey) ]
 ]
 
 { #category : #'subsystem management' }
