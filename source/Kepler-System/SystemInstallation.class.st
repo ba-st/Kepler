@@ -20,7 +20,7 @@ SystemInstallation >> beAwareOfShutDownOf: aCompositeSystem [
 ]
 
 { #category : #installing }
-SystemInstallation >> install: aVersioName [
+SystemInstallation >> install: aVersionName [
 
 	| rootSystem |
 	
