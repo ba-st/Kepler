@@ -19,6 +19,10 @@ BaselineOfKepler >> baseline: spec [
 				package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten') ];
 				package: 'Kepler-Notifications' with: [ spec requires: #('Core') ];
 				group: 'Extended' with: #('Kepler-Time' 'Kepler-Notifications').
+			
+			spec 
+				package: 'Kepler-Persistence' with: [ spec requires: #('Kepler-System') ];
+				group: 'Persistence' with: 'Kepler-Persistence'.
 
 			spec
 				package: 'Kepler-SystemBasedTests' with: [ spec requires: #('Core') ];
@@ -27,11 +31,12 @@ BaselineOfKepler >> baseline: spec [
 			spec
 				package: 'Kepler-System-Tests' with: [ spec requires: #('Core') ];
 				package: 'Kepler-Time-Tests' with: [ spec requires: #('Kepler-Time') ];
-				package: 'Kepler-Notifications-Tests' with: [ spec requires: #('Kepler-Notifications' 'SUnit') ].
+				package: 'Kepler-Notifications-Tests' with: [ spec requires: #('Kepler-Notifications' 'SUnit') ];
+				package: 'Kepler-Persistence-Tests' with: [spec requires: #( 'Persistence')].
 
 			spec
 				group: 'Deployment' with: #('Core' 'Extended');
-				group: 'Tests' with: #('Kepler-System-Tests' 'Kepler-Time-Tests' 'Kepler-Notifications-Tests');
+				group: 'Tests' with: #('Kepler-System-Tests' 'Kepler-Time-Tests' 'Kepler-Notifications-Tests' 'Kepler-Persistence-Tests' );
 				group: 'Development' with: #('Deployment' 'Tests');
 				group: 'default' with: #('Deployment') ]
 ]
