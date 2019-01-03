@@ -33,7 +33,7 @@ BaselineOfKepler >> baseline: spec [
 				group: 'Deployment' with: #('Core' 'Extended');
 				group: 'Tests' with: #('Kepler-System-Tests' 'Kepler-Time-Tests' 'Kepler-Notifications-Tests');
 				group: 'Development' with: #('Deployment' 'Tests');
-				group: 'default' with: #('Deployment') ]
+				group: 'default' with: #('Development') ]
 ]
 
 { #category : #baselines }
@@ -47,6 +47,6 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Chalten'
 		with: [ spec
-				repository: 'github://ba-st/chalten:development/repository';
-				loads: #('Deployment') ]
+				repository: 'github://ba-st/Chalten:v7/repository';
+				loads: #('Chalten-Gregorian-Calendar') ]
 ]
