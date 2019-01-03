@@ -47,6 +47,6 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Chalten'
 		with: [ spec
-				repository: 'github://ba-st/chalten:development/repository';
-				loads: #('Deployment') ]
+				repository: 'github://ba-st/Chalten:v7/repository';
+				loads: #('Chalten-Gregorian-Calendar') ]
 ]
