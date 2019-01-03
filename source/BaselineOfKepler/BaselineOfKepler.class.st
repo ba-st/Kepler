@@ -33,7 +33,7 @@ BaselineOfKepler >> baseline: spec [
 				group: 'Deployment' with: #('Core' 'Extended');
 				group: 'Tests' with: #('Kepler-System-Tests' 'Kepler-Time-Tests' 'Kepler-Notifications-Tests');
 				group: 'Development' with: #('Deployment' 'Tests');
-				group: 'default' with: #('Deployment') ]
+				group: 'default' with: #('Development') ]
 ]
 
 { #category : #baselines }
