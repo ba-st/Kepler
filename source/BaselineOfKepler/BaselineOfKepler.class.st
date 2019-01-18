@@ -17,7 +17,7 @@ BaselineOfKepler >> baseline: spec [
 					spec postLoadDoIt: #registerSystemInterfaces ];
 				package: 'Kepler-Time' with: [ spec requires: #('Kepler-System' 'Chalten') ];
 				package: 'Kepler-Notifications' with: [ spec requires: #('Kepler-System') ].
-			
+
 			spec
 				package: 'Kepler-SystemBasedTests' with: [ spec requires: #('Kepler-System' 'Kepler-Time') ];
 				package: 'Kepler-System-Tests'
@@ -105,6 +105,6 @@ BaselineOfKepler >> setUpDependencies: spec [
 	spec
 		baseline: 'Chalten'
 		with: [ spec
-				repository: 'github://ba-st/chalten:development/repository';
-				loads: #('Deployment') ]
+				repository: 'github://ba-st/chalten:v6.0.0/repository';
+				loads: #('Core') ]
 ]
