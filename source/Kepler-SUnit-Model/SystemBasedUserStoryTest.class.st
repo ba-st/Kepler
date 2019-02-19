@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'rootSystem'
 	],
-	#category : #'Kepler-SystemBasedTests'
+	#category : #'Kepler-SUnit-Model'
 }
 
 { #category : #testing }
