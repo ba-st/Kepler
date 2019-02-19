@@ -12,8 +12,9 @@
   </p>
 </p>
 
-[![Build Status](https://travis-ci.org/ba-st/Kepler.svg?branch=master)](https://travis-ci.org/iot-uca/Kepler)
-[![Coverage Status](https://coveralls.io/repos/github/ba-st/Kepler/badge.svg?branch=master)](https://coveralls.io/github/iot-uca/Kepler?branch=master)
+[![GitHub release](https://img.shields.io/github/release/ba-st/Kepler.svg)](https://github.com/ba-st/Kepler/releases/latest)
+[![Build Status](https://travis-ci.org/ba-st/Kepler.svg?branch=release-candidate)](https://travis-ci.org/ba-st/Kepler)
+[![Coverage Status](https://coveralls.io/repos/github/ba-st/Kepler/badge.svg?branch=release-candidate)](https://coveralls.io/github/ba-st/Kepler?branch=release-candidate)
 
 > *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler) is best known for his laws of planetary motion that describes how planets move around the Sun.
 

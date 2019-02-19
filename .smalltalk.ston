@@ -3,16 +3,13 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'Kepler',
       #directory : 'source',
-      #load : [ 'Development' ],
-      #platforms : [ #pharo ]
-    } 
-  ], 
+      #load : [ 'CI' ],
+      #platforms : [  #pharo ]
+    }
+  ],
   #testing : {
     #coverage : {
-      #packages : [ 'Kepler*' ]
-    },
-    #include : {  
-      #packages : [ 'Kepler-Tests*' ]
-    }    
+       #packages : [ 'Kepler*' ]
+    }
   }
 }
