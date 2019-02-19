@@ -60,6 +60,6 @@ BaselineOfKepler >> setUpDependencies: spec [
 		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
 
 	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8/repository' ];
+		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8/source' ];
 		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
 ]
