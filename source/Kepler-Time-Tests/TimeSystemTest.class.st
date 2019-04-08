@@ -59,6 +59,25 @@ TimeSystemTest >> testImplements [
 	self assert: rootSystem >> #TimeSystemInterface equals: timeSystem
 ]
 
+{ #category : #tests }
+TimeSystemTest >> testInstalling [
+
+	| rootSystem |
+
+	rootSystem := (UserStoryTestSystemInstallation
+		installing: {TimeModule}) install: '1.0'.
+
+	self
+		assert:
+			(rootSystem >> #InstalledModuleRegistrationSystem) installedModules
+				size
+			equals: 1;
+		assert:
+			((rootSystem >> #InstalledModuleRegistrationSystem
+				installedModuleRegisteringSystemImplementing: #TimeSystemInterface)
+				isA: TimeModule)
+]
+
 { #category : #'tests-accessing' }
 TimeSystemTest >> testTimeOfDay [
 

@@ -23,6 +23,12 @@ SampleProjectModule >> initializeToInstallOn: aCompositeSystem [
 ]
 
 { #category : #private }
+SampleProjectModule >> name [
+
+	^ 'Project'
+]
+
+{ #category : #private }
 SampleProjectModule >> registerProjectManagementSystemForInstallationIn: systems [
 
 	^ self register: [ SampleProjectSystem new ] in: systems

@@ -13,6 +13,24 @@ EventNotificationSystemUserStoryTest >> eventNotificationSystem [
 	^ rootSystem >> #EventNotificationSystemInterface
 ]
 
+{ #category : #'as yet unclassified' }
+EventNotificationSystemUserStoryTest >> installerFor: aModule [
+
+	^ ModuleInstaller installing: aModule in: rootSystem
+]
+
+{ #category : #'as yet unclassified' }
+EventNotificationSystemUserStoryTest >> requireEventNotificationModule [
+
+	self requireInstallationOf: EventNotificationModule
+]
+
+{ #category : #'as yet unclassified' }
+EventNotificationSystemUserStoryTest >> requireInstallationOf: aModule [
+
+	(self installerFor: aModule) install
+]
+
 { #category : #'tests support' }
 EventNotificationSystemUserStoryTest >> setHasBeenNotifiedToTrue [
 
@@ -35,7 +53,7 @@ EventNotificationSystemUserStoryTest >> setUp [
 { #category : #running }
 EventNotificationSystemUserStoryTest >> setUpRequirements [
 
-	self registerSubsystem: EventNotificationSystem new
+	self requireEventNotificationModule
 ]
 
 { #category : #tests }
