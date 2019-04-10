@@ -12,7 +12,7 @@ SystemInstallationTest >> testCreatedSystem [
 
 	| rootSystem |
 
-	rootSystem := (UserStoryTestSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'.
+	rootSystem := (SampleSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'.
 	rootSystem startUp.
 
 	self
@@ -20,7 +20,7 @@ SystemInstallationTest >> testCreatedSystem [
 		assert: (rootSystem >> #CustomerManagementSystem) customers isEmpty;
 		assert: ((rootSystem >> #InstalledModuleRegistrationSystem installedModuleRegisteringSystemImplementing: #CustomerManagementSystem) isA: SampleCustomerModule);
 		assert: (rootSystem >> #InstalledModuleRegistrationSystem) name equals: 'Installed Module Registration';
-		assert: rootSystem name equals: 'User story'
+		assert: rootSystem name equals: 'Sample'
 ]
 
 { #category : #tests }
@@ -28,7 +28,7 @@ SystemInstallationTest >> testInstallRepeatedModules [
 
 	| rootSystem |
 
-	rootSystem := (UserStoryTestSystemInstallation installing: {SampleCustomerModule. SampleCustomerModule}) install: '1.0'.
+	rootSystem := (SampleSystemInstallation installing: {SampleCustomerModule. SampleCustomerModule}) install: '1.0'.
 	rootSystem startUp.
 
 	self assert: (rootSystem systemsImplementing: #CustomerManagementSystem) size equals: 1
@@ -39,7 +39,7 @@ SystemInstallationTest >> testReinstall [
 
 	| rootSystem |
 
-	rootSystem := (UserStoryTestSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
+	rootSystem := (SampleSystemInstallation installing: {SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
 	rootSystem startUp.
 
 	self shouldnt: [ rootSystem reinstall ] raise: SystemControlError
@@ -50,7 +50,7 @@ SystemInstallationTest >> testRestart [
 
 	| rootSystem |
 
-	rootSystem := (UserStoryTestSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
+	rootSystem := (SampleSystemInstallation installing:{SampleProjectModule. SampleCustomerModule}) install: '1.0'. 
 	rootSystem startUp.
 
 	self shouldnt: [ rootSystem restart ] raise: SystemControlError

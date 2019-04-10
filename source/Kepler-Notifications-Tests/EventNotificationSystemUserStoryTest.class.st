@@ -7,28 +7,10 @@ Class {
 	#category : 'Kepler-Notifications-Tests'
 }
 
-{ #category : #tests }
+{ #category : #accessing }
 EventNotificationSystemUserStoryTest >> eventNotificationSystem [
 
 	^ rootSystem >> #EventNotificationSystemInterface
-]
-
-{ #category : #'as yet unclassified' }
-EventNotificationSystemUserStoryTest >> installerFor: aModule [
-
-	^ ModuleInstaller installing: aModule in: rootSystem
-]
-
-{ #category : #'as yet unclassified' }
-EventNotificationSystemUserStoryTest >> requireEventNotificationModule [
-
-	self requireInstallationOf: EventNotificationModule
-]
-
-{ #category : #'as yet unclassified' }
-EventNotificationSystemUserStoryTest >> requireInstallationOf: aModule [
-
-	(self installerFor: aModule) install
 ]
 
 { #category : #'tests support' }
@@ -53,7 +35,7 @@ EventNotificationSystemUserStoryTest >> setUp [
 { #category : #running }
 EventNotificationSystemUserStoryTest >> setUpRequirements [
 
-	self requireEventNotificationModule
+	self registerSubsystem: EventNotificationSystem new
 ]
 
 { #category : #tests }

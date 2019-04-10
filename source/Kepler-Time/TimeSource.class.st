@@ -1,7 +1,12 @@
+"
+I'm a TimeSource. 
+
+I provide a date and time.
+"
 Class {
 	#name : #TimeSource,
 	#superclass : #Object,
-	#category : 'Kepler-Time'
+	#category : #'Kepler-Time'
 }
 
 { #category : #accessing }

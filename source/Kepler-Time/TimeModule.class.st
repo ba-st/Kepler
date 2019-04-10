@@ -1,3 +1,8 @@
+"
+I'm SytemModule.
+
+I'm a system module installing the time system.
+"
 Class {
 	#name : #TimeModule,
 	#superclass : #SystemModule,

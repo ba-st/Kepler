@@ -1,3 +1,8 @@
+"
+I'm a Subscription.
+
+I know what message to send to a subscriber each time the event notification system receives an event.
+"
 Class {
 	#name : #Subscription,
 	#superclass : #Object,
@@ -6,7 +11,7 @@ Class {
 		'subscriber',
 		'message'
 	],
-	#category : 'Kepler-Notifications'
+	#category : #'Kepler-Notifications'
 }
 
 { #category : #'instance creation' }

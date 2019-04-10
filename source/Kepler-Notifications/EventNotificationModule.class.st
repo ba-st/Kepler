@@ -1,3 +1,6 @@
+"
+I'm system module installing the event notification system
+"
 Class {
 	#name : #EventNotificationModule,
 	#superclass : #SystemModule,
@@ -22,7 +25,7 @@ EventNotificationModule >> initializeToInstallOn: aCompositeSystem [
 { #category : #private }
 EventNotificationModule >> name [
 
-	^'Event notification'
+	^ 'Event notification'
 ]
 
 { #category : #private }

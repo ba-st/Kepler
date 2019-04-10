@@ -1,5 +1,6 @@
 "
-I'm a TestCase extension supporting System level tests.
+I'm a TestCase extension supporting system level tests.
+
 My subclasses need to implement setUpRequirements and install here the required modules or subsystems needed for the specific case.
 "
 Class {
@@ -17,10 +18,25 @@ SystemBasedUserStoryTest class >> isAbstract [
 	^self name = #SystemBasedUserStoryTest
 ]
 
-{ #category : #'private - running' }
+{ #category : #'private - configuring' }
+SystemBasedUserStoryTest >> registerInstalledModuleRegistrationSystem [
+
+	rootSystem
+		systemImplementing: #InstalledModuleRegistrationSystem
+		ifNone: [ self registerSubsystem: InstalledModuleRegistrationSystem new ]
+]
+
+{ #category : #'private - configuring' }
 SystemBasedUserStoryTest >> registerSubsystem: aSubsystem [
 
 	rootSystem register: aSubsystem
+]
+
+{ #category : #'private - configuring' }
+SystemBasedUserStoryTest >> requireInstallationOf: aModuleFactory [
+
+	self registerInstalledModuleRegistrationSystem.
+	(aModuleFactory toInstallOn: rootSystem) install
 ]
 
 { #category : #running }

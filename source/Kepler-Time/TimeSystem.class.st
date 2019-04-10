@@ -1,12 +1,7 @@
 "
-A TimeSystem is a system that provides time.
+I'm a SubsystemImplementation.
 
-Instance Variables
-	timeSource:		<Object>
-
-timeSource
-	- xxxxx
-
+I'm a system that provides the date, the time of day or both.
 "
 Class {
 	#name : #TimeSystem,
