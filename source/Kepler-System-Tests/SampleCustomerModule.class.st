@@ -13,7 +13,7 @@ Class {
 { #category : #'instance creation' }
 SampleCustomerModule class >> toInstallOn: aCompositeSystem [ 
 
-	^self new initializeToInstallOn: aCompositeSystem 
+	^ self new initializeToInstallOn: aCompositeSystem 
 ]
 
 { #category : #initialization }

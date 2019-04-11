@@ -1,3 +1,8 @@
+"
+I'm SubsystemImplementation.
+
+I'm an event notification system and I manage subscriptions allowing to create or revoke them. Also, I receive events and notify their subscribers. 
+"
 Class {
 	#name : #EventNotificationSystem,
 	#superclass : #SubsystemImplementation,

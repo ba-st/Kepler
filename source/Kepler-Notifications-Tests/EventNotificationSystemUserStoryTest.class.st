@@ -7,7 +7,7 @@ Class {
 	#category : 'Kepler-Notifications-Tests'
 }
 
-{ #category : #tests }
+{ #category : #accessing }
 EventNotificationSystemUserStoryTest >> eventNotificationSystem [
 
 	^ rootSystem >> #EventNotificationSystemInterface

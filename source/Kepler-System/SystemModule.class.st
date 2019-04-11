@@ -58,7 +58,7 @@ SystemModule >> printOn: aStream [
 { #category : #private }
 SystemModule >> register: aSystemCreationBlock in: systems [
 
-	^systems add: aSystemCreationBlock value
+	^ systems add: aSystemCreationBlock value
 ]
 
 { #category : #actions }

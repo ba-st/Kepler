@@ -27,7 +27,7 @@ SystemInstallation >> install: aVersionName [
 	rootSystem := CompositeSystem installedBy: self.
 	self registerModuleRegistrationSystemOn: rootSystem.
 	self modulesToInstall do: [ :module | (module toInstallOn: rootSystem) install ].
-	^rootSystem
+	^ rootSystem
 ]
 
 { #category : #accessing }
