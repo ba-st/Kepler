@@ -35,7 +35,7 @@ BaselineOfKepler >> baselineKepler: spec [
 		group: 'Dependent-SUnit-Extensions' with: 'Kepler-SUnit-Model'.
 
 	spec
-		package: 'Kepler-System-Tests' with: [ spec requires: 'Core' ];
+		package: 'Kepler-System-Tests' with: [ spec requires: #('Core' 'Buoy-SUnit') ];
 		group: 'Tests' with: 'Kepler-System-Tests';
 		package: 'Kepler-Time-Tests' with: [ spec requires: 'Kepler-Time' ];
 		group: 'Tests' with: 'Kepler-Time-Tests';

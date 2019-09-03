@@ -93,7 +93,9 @@ SubsystemImplementation >> resetDependencies [
 { #category : #installing }
 SubsystemImplementation >> resolveDependencies [
 
-	self dependencies do: [ :interfaceKey | dependencies bind: interfaceKey to: self parent >> interfaceKey ]
+	self resetDependencies.
+	self dependencies
+		do: [ :interfaceKey | dependencies bind: interfaceKey to: self parent >> interfaceKey ]
 ]
 
 { #category : #'private - controlling' }

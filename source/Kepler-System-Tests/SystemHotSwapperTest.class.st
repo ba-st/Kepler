@@ -23,7 +23,7 @@ SystemHotSwapperTest >> testCantSwapWhenTheInterfaceIsNotImplemented [
 	self
 		should: [ (SystemHotSwapper swapSystemImplementing: #CustomerManagementSystem with: newCMS) applyTo: composite ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'CMS is not implementing Customer Management' ]
+		withMessageText: 'CMS is not implementing Customer Management'
 ]
 
 { #category : #tests }
@@ -52,4 +52,33 @@ SystemHotSwapperTest >> testSwapping [
 	self
 		assert: composite >> #CustomerQueryingSystem equals: newCMS;
 		assert: (composite >> #CustomerQueryingSystem) customers size equals: 2
+]
+
+{ #category : #tests }
+SystemHotSwapperTest >> testSwappingSystemWithDependents [
+
+	| composite cms newCMS pms |
+
+	cms := SampleCustomerSystem new.
+	pms := SampleProjectSystem new.
+	composite := CompositeSystem new
+		register: cms;
+		register: pms;
+		yourself.
+	composite startUp.
+
+	newCMS := FixedCustomerSystem new.
+
+	self deny: cms = newCMS.
+
+	self
+		assert: composite >> #CustomerQueryingSystem equals: cms;
+		assert: pms >> #CustomerQueryingSystem equals: cms.
+
+	( SystemHotSwapper swapSystemImplementing: #CustomerQueryingSystem with: newCMS )
+		applyTo: composite.
+
+	self
+		assert: composite >> #CustomerQueryingSystem equals: newCMS;
+		assert: pms >> #CustomerQueryingSystem equals: newCMS
 ]
