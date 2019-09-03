@@ -17,10 +17,10 @@ CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
 		startUp.
 
 	self
-		assert: (composite >> #CustomerManagementSystem) isStarted;
+		assert: ( composite >> #CustomerManagementSystem ) isStarted;
 		should: [ CompositeSystem new register: composite >> #CustomerManagementSystem ]
 			raise: SystemControlError
-			withExceptionDo: [ :error | self assert: error messageText equals: 'Cannot register a subsystem not stopped (CMS)' ]
+			withMessageText: 'Cannot register a subsystem not stopped (CMS)'
 ]
 
 { #category : #tests }
@@ -97,7 +97,7 @@ CompositeSystemTest >> testGettingSystemImplementingInterface [
 	self
 		should: [ system >> #ProjectManagementSystem ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Project Management" not found.' ]
+		withMessageText: 'System implementing "Project Management" not found.'
 ]
 
 { #category : #tests }
@@ -182,7 +182,7 @@ CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependency
 	self
 		should: [ system >> #ProjectManagementSystem addProjectNamed: 'Fail' for: 'Pedro' ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'Unresolved system dependency to "Customer Querying"' ]
+		withMessageText: 'Unresolved system dependency to "Customer Querying"'
 ]
 
 { #category : #tests }
@@ -219,7 +219,7 @@ CompositeSystemTest >> testSystemMissingDependenciesWillNotStart [
 	self
 		should: [ composite startUp ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
+		withMessageText: 'System implementing "Customer Querying" not found.'
 ]
 
 { #category : #tests }
@@ -253,5 +253,5 @@ CompositeSystemTest >> testWontStartWhenRequiredSystemNotFound [
 	self
 		should: [ system startUp ]
 		raise: SystemControlError
-		withExceptionDo: [ :error | self assert: error messageText equals: 'System implementing "Customer Querying" not found.' ]
+		withMessageText: 'System implementing "Customer Querying" not found.'
 ]
