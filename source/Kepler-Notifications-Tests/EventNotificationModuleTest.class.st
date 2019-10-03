@@ -3,26 +3,26 @@ An EventNotificationModuleTest is a test class for testing the behavior of Event
 "
 Class {
 	#name : #EventNotificationModuleTest,
-	#superclass : #SystemBasedUserStoryTest,
+	#superclass : #TestCase,
+	#instVars : [
+		'userStory'
+	],
 	#category : #'Kepler-Notifications-Tests'
 }
 
 { #category : #'private - accessing' }
 EventNotificationModuleTest >> installedModuleRegistrationSystem [
 
-	^ rootSystem >> #InstalledModuleRegistrationSystem
+	^ userStory rootSystem >> #InstalledModuleRegistrationSystem
 ]
 
-{ #category : #'private - configuring' }
-EventNotificationModuleTest >> requireEventNotificationModule [
+{ #category : #running }
+EventNotificationModuleTest >> setUp [
 
-	self requireInstallationOf: EventNotificationModule
-]
-
-{ #category : #'private - running' }
-EventNotificationModuleTest >> setUpRequirements [
-
-	self requireEventNotificationModule
+	super setUp.
+	userStory := PluggableUserStoryTest
+		requiring: [ :test | test requireInstallationOf: EventNotificationModule ].
+	userStory setUp
 ]
 
 { #category : #tests }
