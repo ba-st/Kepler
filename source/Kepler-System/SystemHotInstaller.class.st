@@ -5,7 +5,7 @@ Class {
 	#name : #SystemHotInstaller,
 	#superclass : #Object,
 	#instVars : [
-		'subsystem'
+		'subsystems'
 	],
 	#category : #'Kepler-System'
 }
@@ -13,19 +13,28 @@ Class {
 { #category : #'instance creation' }
 SystemHotInstaller class >> installing: aSubsystem [
 
-	^self new initializeInstalling: aSubsystem
+	^ self installingAll: {aSubsystem}
+]
+
+{ #category : #'instance creation' }
+SystemHotInstaller class >> installingAll: aSubsystemCollection [
+
+	^self new initializeInstallingAll: aSubsystemCollection
 ]
 
 { #category : #applying }
 SystemHotInstaller >> applyTo: aCompositeSystem [
 
-	aCompositeSystem register: subsystem.
-	subsystem startUp.
+	subsystems
+		do: [ :subsystem | 
+			aCompositeSystem register: subsystem.
+			subsystem startUp
+			].
 	aCompositeSystem resolveSubsystemDependencies
 ]
 
 { #category : #initialization }
-SystemHotInstaller >> initializeInstalling: aSubsystem [
+SystemHotInstaller >> initializeInstallingAll: aSubsystemCollection [
 
-	subsystem := aSubsystem
+	subsystems := aSubsystemCollection
 ]
