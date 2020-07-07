@@ -12,7 +12,7 @@ BaselineOfKepler >> baseline: spec [
 		for: #pharo
 		do: [ self
 				setUpDependencies: spec;
-				baselineKepler: spec.
+				setUpPackages: spec.
 			spec
 				group: 'Deployment' with: #('Core' 'Extended');
 				group: 'CI' with: 'Tests';
@@ -21,8 +21,28 @@ BaselineOfKepler >> baseline: spec [
 			]
 ]
 
+{ #category : #accessing }
+BaselineOfKepler >> projectClass [
+
+	^ MetacelloCypressBaselineProject
+]
+
 { #category : #baselines }
-BaselineOfKepler >> baselineKepler: spec [
+BaselineOfKepler >> setUpDependencies: spec [
+
+	spec
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v6/source' ];
+		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
+		project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
+		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
+
+	spec
+		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8/source' ];
+		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
+]
+
+{ #category : #baselines }
+BaselineOfKepler >> setUpPackages: spec [
 
 	spec
 		package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
@@ -42,24 +62,4 @@ BaselineOfKepler >> baselineKepler: spec [
 		package: 'Kepler-Notifications-Tests'
 			with: [ spec requires: #('Kepler-Notifications' 'Kepler-SUnit-Model') ];
 		group: 'Tests' with: 'Kepler-Notifications-Tests'
-]
-
-{ #category : #accessing }
-BaselineOfKepler >> projectClass [
-
-	^ MetacelloCypressBaselineProject
-]
-
-{ #category : #baselines }
-BaselineOfKepler >> setUpDependencies: spec [
-
-	spec
-		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v5/source' ];
-		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
-		project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
-		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
-
-	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8/source' ];
-		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
 ]

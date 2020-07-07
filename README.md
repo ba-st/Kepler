@@ -13,20 +13,16 @@
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Kepler.svg)](https://github.com/ba-st/Kepler/releases/latest)
-[![Build Status](https://travis-ci.org/ba-st/Kepler.svg?branch=release-candidate)](https://travis-ci.org/ba-st/Kepler)
-[![Coverage Status](https://coveralls.io/repos/github/ba-st/Kepler/badge.svg?branch=release-candidate)](https://coveralls.io/github/ba-st/Kepler?branch=release-candidate)
+[![Build Status](https://github.com/ba-st/Kepler/workflows/Build/badge.svg?branch=release-candidate)](https://github.com/ba-st/Kepler/actions?query=workflow%3ABuild)
+[![Coverage Status](https://codecov.io/github/ba-st/Kepler/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Kepler/branch/release-candidate)
+[![Pharo 7.0](https://img.shields.io/badge/Pharo-7.0-informational)](https://pharo.org)
+[![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
 
 > *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler) is best known for his laws of planetary motion that describes how planets move around the Sun.
 
 ## License
 - The code is licensed under [MIT](LICENSE).
 - The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
-
-## Quick Start
-
-- Download the latest [Pharo 32](https://get.pharo.org/) or [64 bits VM](https://get.pharo.org/64/).
-- Download a ready to use image from the [release page](https://github.com/ba-st/Kepler/releases/latest)
-- Explore the [documentation](docs/)
 
 ## Installation
 
