@@ -25,7 +25,7 @@ SubsystemImplementation >> >> anInterfaceKey [
 { #category : #installing }
 SubsystemImplementation >> aboutToReinstall [
 
-	"Subclasses can reimplement me to perform some actions before a reinstall is going to be executed"
+	"Subclasses can implement me to perform some actions before a reinstall is going to be executed"
 
 	
 ]
@@ -52,7 +52,7 @@ SubsystemImplementation >> beOrphan [
 { #category : #installing }
 SubsystemImplementation >> dependencies [
 
-	"Return a collection of the system interface keys wich this system depends upon"
+	"Return a collection of the system interface keys which this system depends upon"
 	self subclassResponsibility
 ]
 

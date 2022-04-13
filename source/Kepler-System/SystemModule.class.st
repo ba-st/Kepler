@@ -1,6 +1,6 @@
 "
 I'm a system module.
-I will install one or more subsystems, and perform all the neccessary post installation setup to make it work.
+I will install one or more subsystems, and perform all the necessary post installation setup to make it work.
 "
 Class {
 	#name : #SystemModule,

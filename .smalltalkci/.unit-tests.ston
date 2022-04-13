@@ -2,14 +2,15 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Kepler',
-      #directory : 'source',
+      #directory : '../source',
       #load : [ 'CI' ],
       #platforms : [  #pharo ]
     }
   ],
   #testing : {
     #coverage : {
-       #packages : [ 'Kepler*' ]
+      #packages : [ 'Kepler*' ],
+      #format: #lcov
     }
   }
 }
