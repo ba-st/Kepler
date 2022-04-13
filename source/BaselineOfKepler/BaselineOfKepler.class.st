@@ -18,7 +18,8 @@ BaselineOfKepler >> baseline: spec [
 				group: 'CI' with: 'Tests';
 				group: 'Tools' with: 'Buoy-Tools';
 				group: 'Development' with: #('Tests' 'Tools')
-			]
+			].
+	spec for: #'pharo10.x' do: [ self setUpPharo10Packages: spec ]
 ]
 
 { #category : #accessing }
@@ -62,4 +63,12 @@ BaselineOfKepler >> setUpPackages: spec [
 		package: 'Kepler-Notifications-Tests'
 			with: [ spec requires: #('Kepler-Notifications' 'Kepler-SUnit-Model') ];
 		group: 'Tests' with: 'Kepler-Notifications-Tests'
+]
+
+{ #category : #initialization }
+BaselineOfKepler >> setUpPharo10Packages: spec [
+
+	spec
+		package: 'Kepler-Development-Tools' with: [ spec requires: 'Kepler-System' ];
+		group: 'Tools' with: 'Kepler-Development-Tools'
 ]
