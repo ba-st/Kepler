@@ -15,6 +15,7 @@ well-defined responsibility.
 [![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
+[![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
 
 > *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler)
 > is best known for his laws of planetary motion that describes how planets move
@@ -33,7 +34,7 @@ well-defined responsibility.
 
 ## Installation
 
-To load the project in a Pharo image follow this [instructions](docs/how-to/how-to-load-in-pharo.md).
+To load the project in a Pharo image follow these [instructions](docs/how-to/how-to-load-in-pharo.md).
 
 ## Contributing
 
