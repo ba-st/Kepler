@@ -8,18 +8,19 @@ Subclasses will need to provide a set of modules to install.
 
 "
 Class {
-	#name : #SystemInstallation,
-	#superclass : #Object,
-	#category : #'Kepler-System'
+	#name : 'SystemInstallation',
+	#superclass : 'Object',
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #installing }
+{ #category : 'installing' }
 SystemInstallation >> beAwareOfShutDownOf: aCompositeSystem [ 
 
 	self subclassResponsibility
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SystemInstallation >> install: aVersionName [
 
 	| rootSystem |
@@ -30,7 +31,7 @@ SystemInstallation >> install: aVersionName [
 	^ rootSystem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SystemInstallation >> modulesToInstall [
 
 	"Subclasses need to provide a set of module factories to be installed, they will be instantiated against the rootSystem"
@@ -38,19 +39,19 @@ SystemInstallation >> modulesToInstall [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SystemInstallation >> name [
 
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemInstallation >> registerModuleRegistrationSystemOn: aRootSystem [
 
 	aRootSystem register: InstalledModuleRegistrationSystem new
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SystemInstallation >> reinstallOn: aCompositeSystem [
 
 	(aCompositeSystem >> #InstalledModuleRegistrationSystem) installedModules do: [ :module | module reinstall ]

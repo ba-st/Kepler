@@ -4,12 +4,13 @@ I'm a TimeSource.
 I provide a date and time.
 "
 Class {
-	#name : #TimeSource,
-	#superclass : #Object,
-	#category : #'Kepler-Time'
+	#name : 'TimeSource',
+	#superclass : 'Object',
+	#category : 'Kepler-Time',
+	#package : 'Kepler-Time'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TimeSource >> dateTime [
 	
 	self subclassResponsibility  

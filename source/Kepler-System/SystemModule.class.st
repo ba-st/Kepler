@@ -3,18 +3,19 @@ I'm a system module.
 I will install one or more subsystems, and perform all the necessary post installation setup to make it work.
 "
 Class {
-	#name : #SystemModule,
-	#superclass : #Object,
-	#category : #'Kepler-System'
+	#name : 'SystemModule',
+	#superclass : 'Object',
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> >> anInterfaceKey [
 
 	^ self rootSystem >> anInterfaceKey
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SystemModule >> install [
 
 	self >> #InstalledModuleRegistrationSystem
@@ -25,59 +26,59 @@ SystemModule >> install [
 				postInstall ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> installSystems [
 
 	self withSystemsToInstallDo: [ :aSubsystem | self rootSystem register: aSubsystem ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SystemModule >> isEquivalentTo: anotherModule [
 
 	^anotherModule isA: self class
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> name [
 
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> postInstall [
 
 	self >> #InstalledModuleRegistrationSystem registerAsInstalled: self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SystemModule >> printOn: aStream [
 
 	aStream nextPutAll: self name
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> register: aSystemCreationBlock in: systems [
 
 	^ systems add: aSystemCreationBlock value
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SystemModule >> reinstall [
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> rootSystem [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> systemInterfacesToInstall [
 
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemModule >> withSystemsToInstallDo: aBlock [
 
 	"Modules can reflectively provide the systems to install by implementing messages matching: register*SystemForInstallationIn:

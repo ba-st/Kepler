@@ -2,45 +2,46 @@
 I'm system module installing the event notification system
 "
 Class {
-	#name : #EventNotificationModule,
-	#superclass : #SystemModule,
+	#name : 'EventNotificationModule',
+	#superclass : 'SystemModule',
 	#instVars : [
 		'rootSystem'
 	],
-	#category : #'Kepler-Notifications'
+	#category : 'Kepler-Notifications',
+	#package : 'Kepler-Notifications'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 EventNotificationModule class >> toInstallOn: aCompositeSystem [
 
 	^ self new initializeToInstallOn: aCompositeSystem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 EventNotificationModule >> initializeToInstallOn: aCompositeSystem [
 
 	rootSystem := aCompositeSystem
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 EventNotificationModule >> name [
 
 	^ 'Event notification'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 EventNotificationModule >> registerEventNotificationSystemForInstallationIn: systems [
 
 	^ self register: [ EventNotificationSystem new ] in: systems
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 EventNotificationModule >> rootSystem [
 
 	^ rootSystem 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 EventNotificationModule >> systemInterfacesToInstall [
 
 	^ #(#EventNotificationSystemInterface)

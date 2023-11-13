@@ -1,1 +1,1 @@
-Package { #name : #'Kepler-Time' }
+Package { #name : 'Kepler-Time' }

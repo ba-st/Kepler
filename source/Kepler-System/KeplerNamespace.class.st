@@ -2,16 +2,17 @@
 I'm a Shared Pool providing access to the Kepler namespace
 "
 Class {
-	#name : #Kepler,
-	#superclass : #SharedPool,
+	#name : 'KeplerNamespace',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'SystemInterfaces'
 	],
-	#category : #'Kepler-System'
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #'class initialization' }
-Kepler class >> initialize [
+{ #category : 'class initialization' }
+KeplerNamespace class >> initialize [
 
 	<ignoreForCoverage>
 	SystemInterfaces := Namespace new.
@@ -21,8 +22,8 @@ Kepler class >> initialize [
 		declaring: #(#registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do: #installedModuleRegisteringSystemImplementing:)
 ]
 
-{ #category : #configuring }
-Kepler class >> registerInterfaceAt: aKey named: aName declaring: selectors [
+{ #category : 'configuring' }
+KeplerNamespace class >> registerInterfaceAt: aKey named: aName declaring: selectors [
 
 	<ignoreForCoverage>
 	SystemInterfaces bind: aKey to: (Interface named: aName declaring: selectors)

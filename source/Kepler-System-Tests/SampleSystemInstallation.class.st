@@ -2,37 +2,38 @@
 I'm a sample installation used for testing purposes
 "
 Class {
-	#name : #SampleSystemInstallation,
-	#superclass : #SystemInstallation,
+	#name : 'SampleSystemInstallation',
+	#superclass : 'SystemInstallation',
 	#instVars : [
 		'modules'
 	],
-	#category : #'Kepler-System-Tests'
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SampleSystemInstallation class >> installing: aModuleCollection [
 
 	^self new initializeInstalling: aModuleCollection
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleSystemInstallation >> beAwareOfShutDownOf: aCompositeSystem [
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SampleSystemInstallation >> initializeInstalling: aModuleCollection [
 
 	modules := aModuleCollection 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SampleSystemInstallation >> modulesToInstall [
 
 	^ modules
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SampleSystemInstallation >> name [
 
 	^ 'Sample'

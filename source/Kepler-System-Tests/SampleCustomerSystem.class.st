@@ -2,47 +2,48 @@
 I'm a system used for testing. I don't have dependencies on another subsystems.
 "
 Class {
-	#name : #SampleCustomerSystem,
-	#superclass : #SubsystemImplementation,
+	#name : 'SampleCustomerSystem',
+	#superclass : 'SubsystemImplementation',
 	#instVars : [
 		'customers'
 	],
-	#category : #'Kepler-System-Tests'
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #API }
+{ #category : 'API' }
 SampleCustomerSystem >> addCustomer: aCustomer [
 
 	customers add: aCustomer.
 	^ aCustomer
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 SampleCustomerSystem >> customers [
 
 	^ customers copy
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleCustomerSystem >> dependencies [
 
 	^ #()
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleCustomerSystem >> implementedInterfaces [
 
 	^ #(#CustomerQueryingSystem #CustomerManagementSystem)
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleCustomerSystem >> initialize [
 
 	super initialize.
 	customers := OrderedCollection new
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleCustomerSystem >> name [
 
 	^ 'CMS'

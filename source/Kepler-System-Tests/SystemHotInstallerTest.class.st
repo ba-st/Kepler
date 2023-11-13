@@ -2,12 +2,13 @@
 I'm a Test Case for SystemHotInstaller
 "
 Class {
-	#name : #SystemHotInstallerTest,
-	#superclass : #TestCase,
-	#category : #'Kepler-System-Tests'
+	#name : 'SystemHotInstallerTest',
+	#superclass : 'TestCase',
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotInstallerTest >> testInstalling [
 
 	| composite cms |

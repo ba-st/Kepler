@@ -2,15 +2,16 @@
 I am a System used for tests, to test dependency resolution
 "
 Class {
-	#name : #SampleProjectSystem,
-	#superclass : #SubsystemImplementation,
+	#name : 'SampleProjectSystem',
+	#superclass : 'SubsystemImplementation',
 	#instVars : [
 		'projectsByCustomer'
 	],
-	#category : #'Kepler-System-Tests'
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #API }
+{ #category : 'API' }
 SampleProjectSystem >> addProjectNamed: aName for: aCustomer [
 
 	| projects |
@@ -20,44 +21,44 @@ SampleProjectSystem >> addProjectNamed: aName for: aCustomer [
 	projects add: aName
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectSystem >> assertCustomerExists: aCustomer [
 
 	AssertionChecker enforce: [ self cms customers includes: aCustomer ] because: 'Invalid customer'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectSystem >> cms [
 
 	^ self >> #CustomerQueryingSystem
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleProjectSystem >> dependencies [
 
 	^ #(#CustomerQueryingSystem)
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SampleProjectSystem >> implementedInterfaces [
 
 	^ #(#ProjectManagementSystem)
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SampleProjectSystem >> initialize [
 
 	super initialize.
 	projectsByCustomer := Dictionary new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SampleProjectSystem >> name [
 
 	^ 'Project Management'
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 SampleProjectSystem >> projectsFor: aCustomer [
 
 	^ projectsByCustomer at: aCustomer ifAbsent: [ #() ]
