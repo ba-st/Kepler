@@ -14,20 +14,15 @@ Class {
 { #category : 'registering' }
 SampleCustomerSystem class >> registerInterfaces [
 
-	[
 	self
-		registerInterfaceAt: #CustomerManagementSystem
+		safelyRegisterInterfaceAt: #CustomerManagementSystem
 		named: 'Customer Management'
-		declaring: #( #addCustomer: ) ]
-		on: ConflictingObjectFound
-		do: [ :ex | ex return ].
-	[
+		declaring: #( #addCustomer: ).
+
 	self
-		registerInterfaceAt: #CustomerQueryingSystem
+		safelyRegisterInterfaceAt: #CustomerQueryingSystem
 		named: 'Customer Querying'
-		declaring: #( #customers ) ]
-		on: ConflictingObjectFound
-		do: [ :ex | ex return ]
+		declaring: #( #customers )
 ]
 
 { #category : 'API' }

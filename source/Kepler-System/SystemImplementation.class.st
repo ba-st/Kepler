@@ -19,6 +19,14 @@ SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: 
 	SystemInterfaces bind: aKey to: (Interface named: aName declaring: selectors)
 ]
 
+{ #category : 'registering' }
+SystemImplementation class >> safelyRegisterInterfaceAt: aKey named: aName declaring: selectors [
+
+	[ self registerInterfaceAt: aKey named: aName declaring: selectors ]
+		on: ConflictingObjectFound
+		do: [ :ex | ex return ]
+]
+
 { #category : 'initialization' }
 SystemImplementation >> initialize [
 

@@ -11,13 +11,10 @@ Class {
 { #category : 'registering' }
 FixedCustomerManagementSystem class >> registerInterfaces [
 
-	[
 	self
-		registerInterfaceAt: #CustomerManagementSystem
+		safelyRegisterInterfaceAt: #CustomerManagementSystem
 		named: 'Customer Management'
-		declaring: #( #addCustomer: ) ]
-		on: ConflictingObjectFound
-		do: [ :ex | ex return ]
+		declaring: #( #addCustomer: )
 ]
 
 { #category : 'API' }
