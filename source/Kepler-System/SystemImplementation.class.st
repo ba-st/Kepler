@@ -8,12 +8,16 @@ Class {
 	#instVars : [
 		'state'
 	],
-	#pools : [
-		'KeplerNamespace'
-	],
 	#category : 'Kepler-System',
 	#package : 'Kepler-System'
 }
+
+{ #category : 'accessing' }
+SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: selectors [
+
+	<ignoreForCoverage>
+	SystemInterfaces bind: aKey to: (Interface named: aName declaring: selectors)
+]
 
 { #category : 'initialization' }
 SystemImplementation >> initialize [

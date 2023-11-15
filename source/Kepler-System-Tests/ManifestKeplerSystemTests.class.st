@@ -12,7 +12,7 @@ Class {
 ManifestKeplerSystemTests class >> initialize [
 
 	<ignoreForCoverage>
-	KeplerNamespace
+	SystemImplementation
 		registerInterfaceAt: #CustomerQueryingSystem named: 'Customer Querying' declaring: #(#customers);
 		registerInterfaceAt: #CustomerManagementSystem named: 'Customer Management' declaring: #(#addCustomer:);
 		registerInterfaceAt: #ProjectManagementSystem named: 'Project Management' declaring: #(#addProjectNamed:for: #projectsFor:)

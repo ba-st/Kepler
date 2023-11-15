@@ -8,9 +8,6 @@ Class {
 		'interfaceKey',
 		'subsystems'
 	],
-	#pools : [
-		'KeplerNamespace'
-	],
 	#category : 'Kepler-System',
 	#package : 'Kepler-System'
 }

@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfKepler,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfKepler
+	#name : 'BaselineOfKepler',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfKepler',
+	#package : 'BaselineOfKepler'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> baseline: spec [
 
 	<baseline>
@@ -17,18 +18,31 @@ BaselineOfKepler >> baseline: spec [
 				group: 'Deployment' with: #('Core' 'Extended');
 				group: 'CI' with: 'Tests';
 				group: 'Tools' with: 'Buoy-Tools';
-				group: 'Development' with: #('Tests' 'Tools')
+				group: 'Development' with: #('Tests' 'Tools').
+			spec postLoadDoIt: #postLoadInitialization
 			].
 	spec for: #'pharo10.x' do: [ self setUpPharo10Packages: spec ]
 ]
 
-{ #category : #accessing }
+{ #category : 'post load' }
+BaselineOfKepler >> postLoadInitialization [
+
+	Smalltalk at: #SystemInterfaces put: Namespace new.
+	SystemImplementation
+		registerInterfaceAt: #InstalledModuleRegistrationSystem
+		named: 'Installed Module Registration'
+		declaring:
+			#( #registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do:
+			   #installedModuleRegisteringSystemImplementing: )
+]
+
+{ #category : 'accessing' }
 BaselineOfKepler >> projectClass [
 
 	^ MetacelloCypressBaselineProject
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> setUpDependencies: spec [
 
 	spec
@@ -42,7 +56,7 @@ BaselineOfKepler >> setUpDependencies: spec [
 		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> setUpPackages: spec [
 
 	spec
@@ -65,7 +79,7 @@ BaselineOfKepler >> setUpPackages: spec [
 		group: 'Tests' with: 'Kepler-Notifications-Tests'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BaselineOfKepler >> setUpPharo10Packages: spec [
 
 	spec
