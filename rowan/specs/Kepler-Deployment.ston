@@ -1,0 +1,9 @@
+RwLoadSpecificationV2 {
+  #specName: 'Kepler-Deployment',
+  #projectName : 'Kepler',
+  #diskUrl : 'Kepler',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+      'Deployment'
+  ]
+}

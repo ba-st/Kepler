@@ -1,0 +1,25 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Tests',
+  #condition : 'tests',
+  #componentNames : [
+    'Deployment'
+  ],
+  #packageNames : [
+    'Kepler-Notifications-Tests',
+    'Kepler-SUnit-Model',
+    'Kepler-System-Tests',
+    'Kepler-Time-Tests'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Kepler-Notifications-Tests' : { 'symbolDictName' : 'KeplerCore' },
+          'Kepler-SUnit-Model' : { 'symbolDictName' : 'KeplerCore' },
+          'Kepler-System-Tests' : { 'symbolDictName' : 'KeplerCore' },
+          'Kepler-Time-Tests' : { 'symbolDictName' : 'KeplerCore' }
+        }
+      }
+    }
+  }
+}

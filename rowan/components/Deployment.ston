@@ -1,0 +1,23 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Deployment',
+  #preloadDoitName : 'scripts/preLoad',
+  #postloadDoitName : 'scripts/postLoad',
+  #projectNames : [ 'Chalten' ],
+  #componentNames : [	],
+  #packageNames : [
+    'Kepler-Notifications',
+    'Kepler-System',
+    'Kepler-Time'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Kepler-Notifications' : { 'symbolDictName' : 'KeplerCore' },
+          'Kepler-System' : { 'symbolDictName' : 'KeplerCore' },
+          'Kepler-Time' : { 'symbolDictName' : 'KeplerCore' }
+        }
+      }
+    }
+  }
+}
