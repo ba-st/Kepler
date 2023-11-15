@@ -11,6 +11,25 @@ Class {
 	#package : 'Kepler-System-Tests'
 }
 
+{ #category : 'registering' }
+SampleCustomerSystem class >> registerInterfaces [
+
+	[
+	self
+		registerInterfaceAt: #CustomerManagementSystem
+		named: 'Customer Management'
+		declaring: #( #addCustomer: ) ]
+		on: ConflictingObjectFound
+		do: [ :ex | ex return ].
+	[
+	self
+		registerInterfaceAt: #CustomerQueryingSystem
+		named: 'Customer Querying'
+		declaring: #( #customers ) ]
+		on: ConflictingObjectFound
+		do: [ :ex | ex return ]
+]
+
 { #category : 'API' }
 SampleCustomerSystem >> addCustomer: aCustomer [
 

@@ -11,6 +11,17 @@ Class {
 	#package : 'Kepler-System'
 }
 
+{ #category : 'registering' }
+InstalledModuleRegistrationSystem class >> registerInterfaces [
+
+	self
+		registerInterfaceAt: #InstalledModuleRegistrationSystem
+		named: 'Installed Module Registration'
+		declaring:
+			#( #registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do:
+			   #installedModuleRegisteringSystemImplementing: )
+]
+
 { #category : 'installing' }
 InstalledModuleRegistrationSystem >> dependencies [
 

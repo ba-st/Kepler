@@ -11,6 +11,15 @@ Class {
 	#package : 'Kepler-System-Tests'
 }
 
+{ #category : 'registering' }
+SampleProjectSystem class >> registerInterfaces [
+
+	self
+		registerInterfaceAt: #ProjectManagementSystem
+		named: 'Project Management'
+		declaring: #( #addProjectNamed:for: #projectsFor: )
+]
+
 { #category : 'API' }
 SampleProjectSystem >> addProjectNamed: aName for: aCustomer [
 

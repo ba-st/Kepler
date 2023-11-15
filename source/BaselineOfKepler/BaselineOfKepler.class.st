@@ -28,74 +28,13 @@ BaselineOfKepler >> baseline: spec [
 BaselineOfKepler >> postLoadInitialization [
 
 	Smalltalk at: #SystemInterfaces put: Namespace new.
-	self registerInstalledModuleRegistrationSystemInterface.
-	self registerEventNotificationSystemInterface.
-	self registerTimeSystemInterface.
-	self registerKeplerSystemTestsInterfaces
+	SubsystemImplementation allSubclassesDo: [ :each | each registerInterfaces ]
 ]
 
 { #category : 'accessing' }
 BaselineOfKepler >> projectClass [
 
 	^ MetacelloCypressBaselineProject
-]
-
-{ #category : 'post load' }
-BaselineOfKepler >> registerEventNotificationSystemInterface [
-
-	self
-		registerInterfaceAt: #EventNotificationSystemInterface
-		named: 'Event Notification System Interface'
-		declaring: #( #subscribe:to:toBeNotifiedSending:
-			   #revokeSubscriptionTo:of: #notifySubscribersTo: )
-]
-
-{ #category : 'post load' }
-BaselineOfKepler >> registerInstalledModuleRegistrationSystemInterface [
-
-	self
-		registerInterfaceAt: #InstalledModuleRegistrationSystem
-		named: 'Installed Module Registration'
-		declaring:
-			#( #registerAsInstalled: #installedModules #ifNotRegisteredAsInstalled:do:
-			   #installedModuleRegisteringSystemImplementing: )
-]
-
-{ #category : 'post load' }
-BaselineOfKepler >> registerInterfaceAt: aKey named: aName declaring: selectors [
-
-	Smalltalk
-		at: aKey
-		ifPresent: [ :systemClass |
-			SystemImplementation
-				registerInterfaceAt: aKey
-				named: aName
-				declaring: selectors ]
-		ifAbsent: [ "do nothing because package must not be loaded" ]
-]
-
-{ #category : 'post load' }
-BaselineOfKepler >> registerKeplerSystemTestsInterfaces [
-
-	self
-		registerInterfaceAt: #CustomerQueryingSystem
-		named: 'Customer Querying'
-		declaring: #( #customers );
-		registerInterfaceAt: #CustomerManagementSystem
-		named: 'Customer Management'
-		declaring: #( #addCustomer: );
-		registerInterfaceAt: #ProjectManagementSystem
-		named: 'Project Management'
-		declaring: #( #addProjectNamed:for: #projectsFor: )
-]
-
-{ #category : 'post load' }
-BaselineOfKepler >> registerTimeSystemInterface [
-
-	self
-		registerInterfaceAt: #TimeSystemInterface
-		named: 'Time System Interface'
-		declaring: #( #dateTime #timeOfDay )
 ]
 
 { #category : 'baselines' }

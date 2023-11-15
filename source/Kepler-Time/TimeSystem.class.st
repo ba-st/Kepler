@@ -13,6 +13,15 @@ Class {
 	#package : 'Kepler-Time'
 }
 
+{ #category : 'registering' }
+TimeSystem class >> registerInterfaces [
+
+	self
+		registerInterfaceAt: #TimeSystemInterface
+		named: 'Time System Interface'
+		declaring: #( #dateTime #timeOfDay )
+]
+
 { #category : 'instance creation' }
 TimeSystem class >> using: aTimeSource [ 
 

@@ -13,6 +13,16 @@ Class {
 	#package : 'Kepler-Notifications'
 }
 
+{ #category : 'registering' }
+EventNotificationSystem class >> registerInterfaces [
+
+	self
+		registerInterfaceAt: #EventNotificationSystemInterface
+		named: 'Event Notification System Interface'
+		declaring: #( #subscribe:to:toBeNotifiedSending:
+			   #revokeSubscriptionTo:of: #notifySubscribersTo: )
+]
+
 { #category : 'private - subscribing' }
 EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventType [
 

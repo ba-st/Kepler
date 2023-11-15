@@ -8,6 +8,18 @@ Class {
 	#package : 'Kepler-System-Tests'
 }
 
+{ #category : 'registering' }
+FixedCustomerManagementSystem class >> registerInterfaces [
+
+	[
+	self
+		registerInterfaceAt: #CustomerManagementSystem
+		named: 'Customer Management'
+		declaring: #( #addCustomer: ) ]
+		on: ConflictingObjectFound
+		do: [ :ex | ex return ]
+]
+
 { #category : 'API' }
 FixedCustomerManagementSystem >> addCustomer: aCustomer [
 

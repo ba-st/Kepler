@@ -12,7 +12,7 @@ Class {
 	#package : 'Kepler-System'
 }
 
-{ #category : 'accessing' }
+{ #category : 'registering' }
 SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: selectors [
 
 	<ignoreForCoverage>
