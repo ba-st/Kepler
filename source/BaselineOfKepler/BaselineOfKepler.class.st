@@ -41,13 +41,13 @@ BaselineOfKepler >> projectClass [
 BaselineOfKepler >> setUpDependencies: spec [
 
 	spec
-		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v6' ];
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v7' ];
 		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
 		project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
 		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
 
 	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8' ];
+		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v9' ];
 		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
 ]
 
