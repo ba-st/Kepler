@@ -8,4 +8,4 @@ symbolDictionary := Rowan image
 symbolDictionary at: #SystemInterfaces put: Namespace new.
 
 "Register Kepler's built-in system interfaces"
-SystemImplementation allSubclassesDo: [:each | each registerInterfaces].
+SubsystemImplementation allSubclassesDo: [:each | each registerInterfaces].
