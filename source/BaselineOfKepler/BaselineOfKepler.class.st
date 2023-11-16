@@ -48,7 +48,7 @@ BaselineOfKepler >> setUpDependencies: spec [
 
 	spec
 		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v9' ];
-		project: 'Chalten-Core' copyFrom: 'Chalten' with: [ spec loads: #('Chalten-Core' 'Chalten-Core-Aconcagua-Extensions' 'Chalten-Core-Base-Extensions' 'Chalten-Core-Pharo-Extensions' 'Chalten-Gregorian-Calendar') ].
+		project: 'Chalten-Deployment-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Deployment-Gregorian' ].
 ]
 
 { #category : 'baselines' }
@@ -57,7 +57,7 @@ BaselineOfKepler >> setUpPackages: spec [
 	spec
 		package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
 		group: 'Core' with: 'Kepler-System';
-		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Gregorian') ];
+		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Deployment-Gregorian') ];
 		group: 'Extended' with: 'Kepler-Time';
 		package: 'Kepler-Notifications' with: [ spec requires: 'Core' ];
 		group: 'Extended' with: 'Kepler-Notifications';
