@@ -41,6 +41,15 @@ Subscription >> message [
 	^ message 
 ]
 
+{ #category : 'notifying' }
+Subscription >> notifyAbout: anEvent [
+
+	message argumentCount = 0
+		ifTrue: [ subscriber perform: message ]
+		ifFalse: [
+		subscriber perform: message withArguments: (Array with: anEvent) ]
+]
+
 { #category : 'accessing' }
 Subscription >> subscriber [
 
