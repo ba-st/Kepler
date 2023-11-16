@@ -14,5 +14,5 @@ Class {
 { #category : 'accessing' }
 SystemTimeSource >> dateTime [
 
-	^ GregorianCalendar currentDateTime 
+	^ (ChaltenEnvironment calendarNamed: #GregorianCalendar) currentDateTime 
 ]

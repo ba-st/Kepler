@@ -23,7 +23,7 @@ FixedTimeSource class >> on: aDateTime [
 { #category : 'instance creation' }
 FixedTimeSource class >> on: aDate at: aTimeOfDay [
 
-	^ self on: (DateTime date: aDate timeOfDay: aTimeOfDay)
+	^ self on: (ChaltenDateTime date: aDate timeOfDay: aTimeOfDay)
 ]
 
 { #category : 'accessing' }
@@ -42,5 +42,5 @@ FixedTimeSource >> initializeOn: aDateTime [
 { #category : 'accessing' }
 FixedTimeSource >> setTimeTo: aTimeOfDay [
 
-	dateTime := DateTime date: dateTime date timeOfDay: aTimeOfDay	
+	dateTime := ChaltenDateTime date: dateTime date timeOfDay: aTimeOfDay	
 ]
