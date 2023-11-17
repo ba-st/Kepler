@@ -9,19 +9,19 @@ Class {
 BaselineOfKepler >> baseline: spec [
 
 	<baseline>
+	spec for: #pharo do: [
+		self
+			setUpDependencies: spec;
+			setUpPackages: spec.
+		spec
+			group: 'Deployment' with: #( 'Core' 'Extended' );
+			group: 'CI' with: 'Tests';
+			group: 'Tools' with: #( 'Buoy-Tools' 'Deployment' );
+			group: 'Development' with: #( 'Tests' 'Tools' ).
+		spec postLoadDoIt: #postLoadInitialization ].
 	spec
-		for: #pharo
-		do: [ self
-				setUpDependencies: spec;
-				setUpPackages: spec.
-			spec
-				group: 'Deployment' with: #('Core' 'Extended');
-				group: 'CI' with: 'Tests';
-				group: 'Tools' with: 'Buoy-Tools';
-				group: 'Development' with: #('Tests' 'Tools').
-			spec postLoadDoIt: #postLoadInitialization
-			].
-	spec for: #'pharo10.x' do: [ self setUpPharo10Packages: spec ]
+		for: #( 'pharo10.x' 'pharo11.x' )
+		do: [ self setUpPharo10Packages: spec ]
 ]
 
 { #category : 'post load' }
