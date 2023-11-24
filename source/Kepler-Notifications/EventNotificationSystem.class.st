@@ -15,7 +15,7 @@ Class {
 
 { #category : 'registering' }
 EventNotificationSystem class >> registerInterfaces [
-
+<ignoreForCoverage>
 	self
 		registerInterfaceAt: #EventNotificationSystemInterface
 		named: 'Event Notification System Interface'

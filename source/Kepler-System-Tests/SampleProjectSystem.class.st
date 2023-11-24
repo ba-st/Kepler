@@ -13,7 +13,7 @@ Class {
 
 { #category : 'registering' }
 SampleProjectSystem class >> registerInterfaces [
-
+<ignoreForCoverage>
 	self
 		registerInterfaceAt: #ProjectManagementSystem
 		named: 'Project Management'

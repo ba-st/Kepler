@@ -15,7 +15,7 @@ Class {
 
 { #category : 'registering' }
 TimeSystem class >> registerInterfaces [
-
+<ignoreForCoverage>
 	self
 		registerInterfaceAt: #TimeSystemInterface
 		named: 'Time System Interface'

@@ -13,7 +13,7 @@ Class {
 
 { #category : 'registering' }
 InstalledModuleRegistrationSystem class >> registerInterfaces [
-
+<ignoreForCoverage>
 	self
 		registerInterfaceAt: #InstalledModuleRegistrationSystem
 		named: 'Installed Module Registration'

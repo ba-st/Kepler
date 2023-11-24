@@ -18,12 +18,9 @@ Class {
 { #category : 'instance creation' }
 Subscription class >> of: aSubjectOfInterest to: anEventType toBeNotifiedSending: aMessage [
 
-	AssertionCheckerBuilder new
-		checking: [ :asserter |
-			asserter
+	AssertionChecker
 				enforce: [ aMessage argumentCount < 2 ]
-				because: 'Selector should have zero or one argument at most' ];
-		buildAndCheck.
+				because: 'Selector should have zero or one argument at most' ]
 
 	^ self new
 		  initializeOf: aSubjectOfInterest

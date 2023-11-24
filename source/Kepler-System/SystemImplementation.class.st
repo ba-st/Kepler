@@ -21,7 +21,7 @@ SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: 
 
 { #category : 'registering' }
 SystemImplementation class >> safelyRegisterInterfaceAt: aKey named: aName declaring: selectors [
-
+<ignoreForCoverage>
 	[ self registerInterfaceAt: aKey named: aName declaring: selectors ]
 		on: ConflictingObjectFound
 		do: [ :ex | ex return ]

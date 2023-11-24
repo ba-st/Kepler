@@ -10,7 +10,7 @@ Class {
 
 { #category : 'registering' }
 FixedCustomerManagementSystem class >> registerInterfaces [
-
+<ignoreForCoverage>
 	self
 		safelyRegisterInterfaceAt: #CustomerManagementSystem
 		named: 'Customer Management'
