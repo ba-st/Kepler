@@ -56,5 +56,5 @@ SubscriptionTest >> testSubscriptionToBeNotifiedSendingMessageWithMoreThanOneArg
 		should: [
 		Subscription of: self to: TestEvent toBeNotifiedSending: #hey:hey: ]
 		raise: AssertionFailed
-		description: 'Selector should have zero or one argument at most'
+		withMessageText: 'Selector should have zero or one argument at most'
 ]

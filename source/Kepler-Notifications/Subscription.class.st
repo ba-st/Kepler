@@ -54,7 +54,7 @@ Subscription >> notifyAbout: anEvent [
 	message argumentCount = 0
 		ifTrue: [ subscriber perform: message ]
 		ifFalse: [
-		subscriber perform: message withArguments: (Array with: anEvent) ]
+		subscriber perform: message with:  anEvent ]
 ]
 
 { #category : 'accessing' }
