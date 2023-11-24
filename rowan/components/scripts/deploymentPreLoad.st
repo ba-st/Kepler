@@ -1,9 +1,9 @@
 | symbolDictionary |
 symbolDictionary := Rowan image 
-	symbolDictNamed: 'KeplerCore'
+	symbolDictNamed: 'Kepler'
 	ifAbsent: [
-			Rowan image symbolList createDictionaryNamed: 'KeplerCore' at: Rowan image symbolList size + 1.
-			Rowan image symbolDictNamed: 'KeplerCore'
+			Rowan image symbolList createDictionaryNamed: 'Kepler' at: Rowan image symbolList size + 1.
+			Rowan image symbolDictNamed: 'Kepler'
 	].
 
 "Preliminar definition of global variables for source code to compile.

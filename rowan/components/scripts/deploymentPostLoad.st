@@ -1,8 +1,8 @@
 | symbolDictionary |
 
 symbolDictionary := Rowan image 
-	symbolDictNamed: 'KeplerCore'
-	ifAbsent: [Error signal: 'KeplerCore symbol dictionary missing' ].
+	symbolDictNamed: 'Kepler'
+	ifAbsent: [Error signal: 'Kepler symbol dictionary missing' ].
 
 "Global variables definition"
 symbolDictionary at: #SystemInterfaces put: Namespace new.
@@ -12,9 +12,5 @@ symbolDictionary at: #SystemInterfaces put: Namespace new.
 	add: #InstalledModuleRegistrationSystem;
 	add: #EventNotificationSystem;
 	add: #TimeSystem;
-	add: #FixedCustomerManagementSystem;
-	add: #FixedCustomerSystem;
-	add: #SampleCustomerSystem;
-	add: #SampleProjectSystem;
 	yourself)
 		do: [:each | (symbolDictionary at: each) registerInterfaces].

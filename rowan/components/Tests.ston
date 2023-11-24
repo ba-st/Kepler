@@ -1,5 +1,7 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Tests',
+  #preloadDoitName : 'scripts/developmentPreLoad',
+  #postloadDoitName : 'scripts/developmentPostLoad',
   #condition : 'tests',
   #componentNames : [
     'Deployment'
@@ -14,10 +16,10 @@ RwSimpleProjectLoadComponentV2 {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
-          'Kepler-Notifications-Tests' : { 'symbolDictName' : 'KeplerCore' },
-          'Kepler-SUnit-Model' : { 'symbolDictName' : 'KeplerCore' },
-          'Kepler-System-Tests' : { 'symbolDictName' : 'KeplerCore' },
-          'Kepler-Time-Tests' : { 'symbolDictName' : 'KeplerCore' }
+          'Kepler-Notifications-Tests' : { 'symbolDictName' : 'Kepler' },
+          'Kepler-SUnit-Model' : { 'symbolDictName' : 'Kepler' },
+          'Kepler-System-Tests' : { 'symbolDictName' : 'Kepler' },
+          'Kepler-Time-Tests' : { 'symbolDictName' : 'Kepler' }
         }
       }
     }
