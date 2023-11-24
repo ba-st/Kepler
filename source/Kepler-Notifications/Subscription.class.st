@@ -20,7 +20,7 @@ Subscription class >> of: aSubjectOfInterest to: anEventType toBeNotifiedSending
 
 	AssertionChecker
 				enforce: [ aMessage argumentCount < 2 ]
-				because: 'Selector should have zero or one argument at most' ]
+				because: 'Selector should have zero or one argument at most'.
 
 	^ self new
 		  initializeOf: aSubjectOfInterest
