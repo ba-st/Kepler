@@ -4,15 +4,26 @@ I'm SubsystemImplementation.
 I'm an event notification system and I manage subscriptions allowing to create or revoke them. Also, I receive events and notify their subscribers. 
 "
 Class {
-	#name : #EventNotificationSystem,
-	#superclass : #SubsystemImplementation,
+	#name : 'EventNotificationSystem',
+	#superclass : 'SubsystemImplementation',
 	#instVars : [
 		'subscriptions'
 	],
-	#category : #'Kepler-Notifications'
+	#category : 'Kepler-Notifications',
+	#package : 'Kepler-Notifications'
 }
 
-{ #category : #'private - subscribing' }
+{ #category : 'registering' }
+EventNotificationSystem class >> registerInterfaces [
+<ignoreForCoverage>
+	self
+		registerInterfaceAt: #EventNotificationSystemInterface
+		named: 'Event Notification System Interface'
+		declaring: #( #subscribe:to:toBeNotifiedSending:
+			   #revokeSubscriptionTo:of: #notifySubscribersTo: )
+]
+
+{ #category : 'private - subscribing' }
 EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventType [
 
 	subscriptions
@@ -23,19 +34,19 @@ EventNotificationSystem >> assertNotExists: aSubscriber subscribedTo: anEventTyp
 				signal: 'Object already subscribed to this event type.' ]
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 EventNotificationSystem >> dependencies [
 
 	^ #()
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 EventNotificationSystem >> implementedInterfaces [
 
 	^ #(#EventNotificationSystemInterface)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 EventNotificationSystem >> initialize [
 
 	super initialize.
@@ -43,23 +54,21 @@ EventNotificationSystem >> initialize [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 EventNotificationSystem >> name [
 
 	^ 'Event Notification'
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 EventNotificationSystem >> notifySubscribersTo: anEvent [
 
 	subscriptions
 		select: [ :subscription | subscription eventType = anEvent class ]
-		thenDo: [ :subscription | 
-			(MessageSend receiver: subscription subscriber selector: subscription message)
-				cull: anEvent ]
+		thenDo: [ :subscription | subscription notifyAbout: anEvent ]
 ]
 
-{ #category : #subscribing }
+{ #category : 'subscribing' }
 EventNotificationSystem >> revokeSubscriptionTo: anEventType of: aSubscriber [
 
 	subscriptions
@@ -70,7 +79,7 @@ EventNotificationSystem >> revokeSubscriptionTo: anEventType of: aSubscriber [
 		ifNone: [ ObjectNotFound signal: 'No subscription was found to this event type.' ]
 ]
 
-{ #category : #subscribing }
+{ #category : 'subscribing' }
 EventNotificationSystem >> subscribe: aSubscriber to: anEventType toBeNotifiedSending: aMessage [
 
 	self assertNotExists: aSubscriber subscribedTo: anEventType. 
@@ -79,7 +88,7 @@ EventNotificationSystem >> subscribe: aSubscriber to: anEventType toBeNotifiedSe
 		add: (Subscription of: aSubscriber to: anEventType toBeNotifiedSending: aMessage)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 EventNotificationSystem >> subscriptions [
 
 	^ subscriptions copy

@@ -2,45 +2,46 @@
 I represent the current state of a system implementation
 "
 Class {
-	#name : #SystemState,
-	#superclass : #Object,
+	#name : 'SystemState',
+	#superclass : 'Object',
 	#instVars : [
 		'system'
 	],
-	#category : #'Kepler-System'
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SystemState class >> for: aSystem [
 
 	^ self new initializeFor: aSystem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SystemState >> initializeFor: aSystem [
 
 	system := aSystem
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SystemState >> isStarted [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SystemState >> isStopped [
 
 	^ false
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 SystemState >> shutDown [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 SystemState >> startUp [
 
 	self subclassResponsibility 

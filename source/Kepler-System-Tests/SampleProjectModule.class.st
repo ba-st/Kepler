@@ -2,45 +2,46 @@
 I'm a sample system module installing a project management system
 "
 Class {
-	#name : #SampleProjectModule,
-	#superclass : #SystemModule,
+	#name : 'SampleProjectModule',
+	#superclass : 'SystemModule',
 	#instVars : [
 		'rootSystem'
 	],
-	#category : #'Kepler-System-Tests'
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SampleProjectModule class >> toInstallOn: aCompositeSystem [ 
 
 	^ self new initializeToInstallOn: aCompositeSystem 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SampleProjectModule >> initializeToInstallOn: aCompositeSystem [ 
 	
 	rootSystem := aCompositeSystem 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectModule >> name [
 
 	^ 'Project'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectModule >> registerProjectManagementSystemForInstallationIn: systems [
 
 	^ self register: [ SampleProjectSystem new ] in: systems
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectModule >> rootSystem [
 
 	^ rootSystem
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SampleProjectModule >> systemInterfacesToInstall [
 
 	^ #(#ProjectManagementSystem)

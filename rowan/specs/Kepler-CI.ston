@@ -1,0 +1,14 @@
+RwLoadSpecificationV2 {
+  #specName: 'Kepler-CI',
+  #projectName : 'Kepler',
+  #diskUrl : 'Kepler',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+      'Tests'
+  ],
+  #customConditionalAttributes : [
+    'sunit',
+    'tests'
+  ],
+  #comment : 'Kepler continuous integration setup'
+}

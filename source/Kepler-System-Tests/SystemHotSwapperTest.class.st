@@ -2,47 +2,48 @@
 SystemHotSwapper test case
 "
 Class {
-	#name : #SystemHotSwapperTest,
-	#superclass : #TestCase,
+	#name : 'SystemHotSwapperTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'composite'
 	],
-	#category : #'Kepler-System-Tests'
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SystemHotSwapperTest >> assert: aSubsystem implements: anInterfaceKey [
 
 	self assert: ( self is: anInterfaceKey implementedBy: aSubsystem )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemHotSwapperTest >> deny: aSubsystem implements: anInterfaceKey [
 
 	self deny: ( self is: anInterfaceKey implementedBy: aSubsystem )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SystemHotSwapperTest >> is: anInterfaceKey implementedBy: aSubsystem [
 
 	^ aSubsystem implements: ( composite interfaceAt: anInterfaceKey )
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SystemHotSwapperTest >> setUp [
 
 	super setUp.
 	composite := CompositeSystem new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SystemHotSwapperTest >> tearDown [
 
 	composite shutDown.
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotSwapperTest >> testCantSwapWhenTheInterfaceIsNotImplemented [
 
 	composite
@@ -55,7 +56,7 @@ SystemHotSwapperTest >> testCantSwapWhenTheInterfaceIsNotImplemented [
 		withMessageText: 'CMS is not implementing Customer Management'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotSwapperTest >> testSwapping [
 
 	| cms newCMS |
@@ -81,7 +82,7 @@ SystemHotSwapperTest >> testSwapping [
 		assert: ( composite >> #CustomerQueryingSystem ) customers size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotSwapperTest >> testSwappingFailedWhenReplacementsAreMissingSomeInterfaces [
 
 	| cms pms swapper |
@@ -107,7 +108,7 @@ SystemHotSwapperTest >> testSwappingFailedWhenReplacementsAreMissingSomeInterfac
 		withMessageText: 'System implementing "Customer Querying" not found.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotSwapperTest >> testSwappingOneImplementationWithTwoOthers [
 
 	"This test checks that a system implementing more than one interface can be replaced
@@ -147,7 +148,7 @@ SystemHotSwapperTest >> testSwappingOneImplementationWithTwoOthers [
 		assert: composite >> #CustomerManagementSystem equals: managementSystem
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemHotSwapperTest >> testSwappingSystemWithDependents [
 
 	| cms newCMS pms |

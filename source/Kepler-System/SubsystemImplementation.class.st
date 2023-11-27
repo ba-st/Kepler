@@ -5,16 +5,17 @@ I'm a part of a whole system controlled by a CompositeSystem instance.
 
 "
 Class {
-	#name : #SubsystemImplementation,
-	#superclass : #SystemImplementation,
+	#name : 'SubsystemImplementation',
+	#superclass : 'SystemImplementation',
 	#instVars : [
 		'parentBinding',
 		'dependencies'
 	],
-	#category : #'Kepler-System'
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #'subsystem lookup' }
+{ #category : 'subsystem lookup' }
 SubsystemImplementation >> >> anInterfaceKey [
 
 	^ dependencies
@@ -22,7 +23,7 @@ SubsystemImplementation >> >> anInterfaceKey [
 		ifAbsent: [ SystemControlError signal: ('Unresolved system dependency to "<1p>"' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SubsystemImplementation >> aboutToReinstall [
 
 	"Subclasses can implement me to perform some actions before a reinstall is going to be executed"
@@ -30,46 +31,46 @@ SubsystemImplementation >> aboutToReinstall [
 	
 ]
 
-{ #category : #'private - asserting' }
+{ #category : 'private - asserting' }
 SubsystemImplementation >> assertIsOrphan [
 
 	AssertionChecker refuse: [ parentBinding isDefined ] because: 'Cannot register a subsystem already managed by other composite.' raising: SystemControlError
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SubsystemImplementation >> beChildOf: aCompositeSystem [
 
 	self assertIsOrphan.
 	parentBinding := Binding to: aCompositeSystem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SubsystemImplementation >> beOrphan [
 
 	parentBinding := Binding undefinedExplainedBy: 'This subsystem is not registered in any composite system' raising: SystemControlError
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SubsystemImplementation >> dependencies [
 
 	"Return a collection of the system interface keys which this system depends upon"
 	self subclassResponsibility
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SubsystemImplementation >> implementedInterfaces [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SubsystemImplementation >> implements: aSystemInterface [
 
 	^ self implementedInterfaces
 		anySatisfy: [ :interfaceKey | aSystemInterface = (SystemInterfaces >> interfaceKey) ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SubsystemImplementation >> initialize [
 
 	super initialize.
@@ -78,19 +79,19 @@ SubsystemImplementation >> initialize [
 		resetDependencies
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 SubsystemImplementation >> parent [
 
 	^ parentBinding content
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SubsystemImplementation >> resetDependencies [
 
 	dependencies := Namespace new
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 SubsystemImplementation >> resolveDependencies [
 
 	self resetDependencies.
@@ -98,14 +99,14 @@ SubsystemImplementation >> resolveDependencies [
 		do: [ :interfaceKey | dependencies bind: interfaceKey to: self parent >> interfaceKey ]
 ]
 
-{ #category : #'private - controlling' }
+{ #category : 'private - controlling' }
 SubsystemImplementation >> shutDownWhenStarted [
 
 	self resetDependencies.
 	super shutDownWhenStarted
 ]
 
-{ #category : #'private - controlling' }
+{ #category : 'private - controlling' }
 SubsystemImplementation >> startUpWhenStopped [
 
 	self resolveDependencies.

@@ -1,54 +1,61 @@
 Class {
-	#name : #BaselineOfKepler,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfKepler
+	#name : 'BaselineOfKepler',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfKepler',
+	#package : 'BaselineOfKepler'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> baseline: spec [
 
 	<baseline>
-	spec
-		for: #pharo
-		do: [ self
-				setUpDependencies: spec;
-				setUpPackages: spec.
-			spec
-				group: 'Deployment' with: #('Core' 'Extended');
-				group: 'CI' with: 'Tests';
-				group: 'Tools' with: 'Buoy-Tools';
-				group: 'Development' with: #('Tests' 'Tools')
-			].
-	spec for: #'pharo10.x' do: [ self setUpPharo10Packages: spec ]
+	spec for: #pharo do: [
+		self
+			setUpDependencies: spec;
+			setUpPackages: spec.
+		spec
+			group: 'Deployment' with: #( 'Core' 'Extended' );
+			group: 'CI' with: 'Tests';
+			group: 'Tools' with: #( 'Buoy-Tools' 'Deployment' );
+			group: 'Development' with: #( 'Tests' 'Tools' ).
+		spec postLoadDoIt: #postLoadInitialization ].
+	spec for: 'pharo10.x' do: [ self setUpPharo10Packages: spec ]
 ]
 
-{ #category : #accessing }
+{ #category : 'post load' }
+BaselineOfKepler >> postLoadInitialization [
+
+	Smalltalk at: #SystemInterfaces put: Namespace new.
+	SubsystemImplementation allSubclassesDo: [ :each | each registerInterfaces ]
+]
+
+{ #category : 'accessing' }
 BaselineOfKepler >> projectClass [
 
 	^ MetacelloCypressBaselineProject
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> setUpDependencies: spec [
 
 	spec
-		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v6' ];
+		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v7' ];
 		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
 		project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
 		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
 
 	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v8' ];
-		project: 'Chalten-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Chalten-Gregorian-Calendar' ]
+		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v9' ];
+		project: 'Chalten-Deployment-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Deployment-Gregorian' ].
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfKepler >> setUpPackages: spec [
 
 	spec
 		package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
 		group: 'Core' with: 'Kepler-System';
-		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Gregorian') ];
+		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Deployment-Gregorian') ];
 		group: 'Extended' with: 'Kepler-Time';
 		package: 'Kepler-Notifications' with: [ spec requires: 'Core' ];
 		group: 'Extended' with: 'Kepler-Notifications';
@@ -65,7 +72,7 @@ BaselineOfKepler >> setUpPackages: spec [
 		group: 'Tests' with: 'Kepler-Notifications-Tests'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BaselineOfKepler >> setUpPharo10Packages: spec [
 
 	spec

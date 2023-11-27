@@ -2,19 +2,17 @@
 I'm a facility to swap a subsystem implementation with another on an already started composite.
 "
 Class {
-	#name : #SystemHotSwapper,
-	#superclass : #Object,
+	#name : 'SystemHotSwapper',
+	#superclass : 'Object',
 	#instVars : [
 		'interfaceKey',
 		'subsystems'
 	],
-	#pools : [
-		'Kepler'
-	],
-	#category : #'Kepler-System'
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #'private - preconditions' }
+{ #category : 'private - preconditions' }
 SystemHotSwapper class >> assert: aSubsystem implementsAnyIn: anInterfaceKeyCollection [
 
 	anInterfaceKeyCollection
@@ -31,13 +29,13 @@ SystemHotSwapper class >> assert: aSubsystem implementsAnyIn: anInterfaceKeyColl
 			]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SystemHotSwapper class >> swapSystemImplementing: anInterfaceKey with: aSubsystem [
 
 	^ self swapSystemImplementingAll: {anInterfaceKey} with: {aSubsystem}
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SystemHotSwapper class >> swapSystemImplementingAll: anInterfaceKeyCollection with: aSubsystemCollection [
 
 	aSubsystemCollection
@@ -48,7 +46,7 @@ SystemHotSwapper class >> swapSystemImplementingAll: anInterfaceKeyCollection wi
 		withAll: aSubsystemCollection
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 SystemHotSwapper >> applyTo: aCompositeSystem [
 
 	| subsystemToSwap |
@@ -59,7 +57,7 @@ SystemHotSwapper >> applyTo: aCompositeSystem [
 	( SystemHotInstaller installingAll: subsystems ) applyTo: aCompositeSystem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SystemHotSwapper >> initializeSwapSystemImplementing: anInterfaceKey withAll: aSubsystemCollection [
 
 	interfaceKey := anInterfaceKey.

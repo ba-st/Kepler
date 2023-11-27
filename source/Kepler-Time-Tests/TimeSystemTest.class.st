@@ -2,21 +2,22 @@
 A TimeSystemTest is a test class for testing the behavior of TimeSystem
 "
 Class {
-	#name : #TimeSystemTest,
-	#superclass : #TestCase,
+	#name : 'TimeSystemTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'timeSource'
 	],
-	#category : 'Kepler-Time-Tests'
+	#category : 'Kepler-Time-Tests',
+	#package : 'Kepler-Time-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 TimeSystemTest >> setUp [
 
 	timeSource := FixedTimeSource on: (January third , 1990) atNoon
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 TimeSystemTest >> testAccessing [
 
 	| timeSystem |
@@ -25,7 +26,7 @@ TimeSystemTest >> testAccessing [
 	self assert: timeSystem name equals: 'Time System'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 TimeSystemTest >> testDate [
 
 	| timeSystem |
@@ -35,7 +36,7 @@ TimeSystemTest >> testDate [
 	self assert: timeSystem date equals: timeSource dateTime date
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 TimeSystemTest >> testDateTime [
 
 	| timeSystem |
@@ -45,7 +46,7 @@ TimeSystemTest >> testDateTime [
 	self assert: timeSystem dateTime equals: timeSource dateTime
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 TimeSystemTest >> testImplements [
 
 	| timeSystem rootSystem |
@@ -59,7 +60,7 @@ TimeSystemTest >> testImplements [
 	self assert: rootSystem >> #TimeSystemInterface equals: timeSystem
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 TimeSystemTest >> testTimeOfDay [
 
 	| timeSystem |

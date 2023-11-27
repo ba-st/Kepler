@@ -1,10 +1,11 @@
 Class {
-	#name : #TestEvent,
-	#superclass : #NotifiableEvent,
-	#category : 'Kepler-Notifications-Tests'
+	#name : 'TestEvent',
+	#superclass : 'NotifiableEvent',
+	#category : 'Kepler-Notifications-Tests',
+	#package : 'Kepler-Notifications-Tests'
 }
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 TestEvent >> negate: aBoolean [
  
 	^ aBoolean not

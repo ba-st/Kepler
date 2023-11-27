@@ -5,13 +5,14 @@ I provide the system's current date and time.
 
 "
 Class {
-	#name : #SystemTimeSource,
-	#superclass : #TimeSource,
-	#category : #'Kepler-Time'
+	#name : 'SystemTimeSource',
+	#superclass : 'TimeSource',
+	#category : 'Kepler-Time',
+	#package : 'Kepler-Time'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SystemTimeSource >> dateTime [
 
-	^ GregorianCalendar currentDateTime 
+	^ (ChaltenEnvironment calendarNamed: #GregorianCalendar) currentDateTime 
 ]

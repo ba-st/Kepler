@@ -2,12 +2,13 @@
 A FixedTimeSourceTest is a test class for testing the behavior of FixedTimeSource
 "
 Class {
-	#name : #FixedTimeSourceTest,
-	#superclass : #TestCase,
-	#category : 'Kepler-Time-Tests'
+	#name : 'FixedTimeSourceTest',
+	#superclass : 'TestCase',
+	#category : 'Kepler-Time-Tests',
+	#package : 'Kepler-Time-Tests'
 }
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 FixedTimeSourceTest >> testDateTime [
 
 	| datetime timeSource |
@@ -21,7 +22,7 @@ FixedTimeSourceTest >> testDateTime [
 	self assert: timeSource dateTime equals: datetime
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 FixedTimeSourceTest >> testSetTimeTo [
 
 	| date timeSource |

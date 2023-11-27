@@ -2,12 +2,13 @@
 Unit test for SystemInstallation
 "
 Class {
-	#name : #SystemInstallationTest,
-	#superclass : #TestCase,
-	#category : #'Kepler-System-Tests'
+	#name : 'SystemInstallationTest',
+	#superclass : 'TestCase',
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemInstallationTest >> testCreatedSystem [
 
 	| rootSystem |
@@ -23,7 +24,7 @@ SystemInstallationTest >> testCreatedSystem [
 		assert: rootSystem name equals: 'Sample'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemInstallationTest >> testInstallRepeatedModules [
 
 	| rootSystem |
@@ -34,7 +35,7 @@ SystemInstallationTest >> testInstallRepeatedModules [
 	self assert: (rootSystem systemsImplementing: #CustomerManagementSystem) size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemInstallationTest >> testReinstall [
 
 	| rootSystem |
@@ -45,7 +46,7 @@ SystemInstallationTest >> testReinstall [
 	self shouldnt: [ rootSystem reinstall ] raise: SystemControlError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SystemInstallationTest >> testRestart [
 
 	| rootSystem |

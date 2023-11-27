@@ -2,12 +2,13 @@
 Test Case
 "
 Class {
-	#name : #CompositeSystemTest,
-	#superclass : #TestCase,
-	#category : #'Kepler-System-Tests'
+	#name : 'CompositeSystemTest',
+	#superclass : 'TestCase',
+	#category : 'Kepler-System-Tests',
+	#package : 'Kepler-System-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
 
 	| composite |
@@ -23,7 +24,7 @@ CompositeSystemTest >> testCannotRegisterAnAlreadyStartedSystem [
 			withMessageText: 'Cannot register a subsystem not stopped (CMS)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testDependencies [
 
 	| system |
@@ -43,7 +44,7 @@ CompositeSystemTest >> testDependencies [
 		assert: (system >> #ProjectManagementSystem) name equals: 'Project Management'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testDependenciesAreResolvedOnSystemStartUp [
 
 	| system |
@@ -57,7 +58,7 @@ CompositeSystemTest >> testDependenciesAreResolvedOnSystemStartUp [
 	self should: [ (system systemImplementing: #ProjectManagementSystem) addProjectNamed: 'Landing Page' for: 'Tesla' ] raise: AssertionFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testEmptySystem [
 
 	| system |
@@ -80,7 +81,7 @@ CompositeSystemTest >> testEmptySystem [
 	self assert: system isStopped
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testGettingSystemImplementingInterface [
 
 	| system cms |
@@ -100,7 +101,7 @@ CompositeSystemTest >> testGettingSystemImplementingInterface [
 		withMessageText: 'System implementing "Project Management" not found.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testInvalidControlSequences [
 
 	| system |
@@ -120,7 +121,7 @@ CompositeSystemTest >> testInvalidControlSequences [
 		withExceptionDo: [ :error | self assert: (error messageText endsWith: ' is already started.') ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testNotEmptySystem [
 
 	| system cms pms |
@@ -153,7 +154,7 @@ CompositeSystemTest >> testNotEmptySystem [
 		assert: pms isStopped
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testRestart [
 
 	| system |
@@ -169,7 +170,7 @@ CompositeSystemTest >> testRestart [
 	self assert: system isStarted
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependencyFails [
 
 	| system |
@@ -185,7 +186,7 @@ CompositeSystemTest >> testSendingMessagesToSystemWithUnresolvedSystemDependency
 		withMessageText: 'Unresolved system dependency to "Customer Querying"'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testSystemImplementingIfFoundIfNone [
 
 	| system cms |
@@ -208,7 +209,7 @@ CompositeSystemTest >> testSystemImplementingIfFoundIfNone [
 		assert: (system systemImplementing: #ProjectManagementSystem ifFound: [ :subsystem | self fail ] ifNone: [ true ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testSystemMissingDependenciesWillNotStart [
 
 	| composite |
@@ -222,7 +223,7 @@ CompositeSystemTest >> testSystemMissingDependenciesWillNotStart [
 		withMessageText: 'System implementing "Customer Querying" not found.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testSystemsImplementing [
 
 	| system cms |
@@ -242,7 +243,7 @@ CompositeSystemTest >> testSystemsImplementing [
 	self assert: (system systemsImplementing: #ProjectManagementSystem) isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeSystemTest >> testWontStartWhenRequiredSystemNotFound [
 
 	| system |

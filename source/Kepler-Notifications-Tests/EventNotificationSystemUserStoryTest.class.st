@@ -1,50 +1,51 @@
 Class {
-	#name : #EventNotificationSystemUserStoryTest,
-	#superclass : #SystemBasedUserStoryTest,
+	#name : 'EventNotificationSystemUserStoryTest',
+	#superclass : 'SystemBasedUserStoryTest',
 	#instVars : [
 		'hasBeenNotified'
 	],
-	#category : 'Kepler-Notifications-Tests'
+	#category : 'Kepler-Notifications-Tests',
+	#package : 'Kepler-Notifications-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 EventNotificationSystemUserStoryTest >> eventNotificationSystem [
 
 	^ rootSystem >> #EventNotificationSystemInterface
 ]
 
-{ #category : #'tests support' }
+{ #category : 'tests support' }
 EventNotificationSystemUserStoryTest >> setHasBeenNotifiedToTrue [
 
 	hasBeenNotified := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 EventNotificationSystemUserStoryTest >> setHasBeenNotifiedUsing: aTestEvent [ 
 
 	hasBeenNotified := aTestEvent negate: hasBeenNotified 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 EventNotificationSystemUserStoryTest >> setUp [
 
 	super setUp.
 	hasBeenNotified := false
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 EventNotificationSystemUserStoryTest >> setUpRequirements [
 
 	self registerSubsystem: EventNotificationSystem new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testAccessing [
 
 	self assert: self eventNotificationSystem name equals: 'Event Notification'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testNotifyingEventSendingKeyworkMessage [
 
 	self eventNotificationSystem subscribe: self to: TestEvent toBeNotifiedSending: #setHasBeenNotifiedUsing:.
@@ -54,7 +55,7 @@ EventNotificationSystemUserStoryTest >> testNotifyingEventSendingKeyworkMessage 
 	self assert: hasBeenNotified
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testNotifyingEventSendingUnaryMessage [
 
 	self eventNotificationSystem notifySubscribersTo: NotifiableEvent new.
@@ -67,7 +68,7 @@ EventNotificationSystemUserStoryTest >> testNotifyingEventSendingUnaryMessage [
 	self assert: hasBeenNotified
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testRevokingSubscription [
 
 	self eventNotificationSystem subscribe: self to: NotifiableEvent toBeNotifiedSending: #setHasBeenNotifiedToTrue.
@@ -77,14 +78,14 @@ EventNotificationSystemUserStoryTest >> testRevokingSubscription [
 	self assert: self eventNotificationSystem subscriptions isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testSubscribing [
 
 	self eventNotificationSystem subscribe: self to: NotifiableEvent toBeNotifiedSending: #setHasBeenNotifiedToTrue.
 	self assert: self eventNotificationSystem subscriptions size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EventNotificationSystemUserStoryTest >> testSubscribingTwiceToSameEventTypeMustFail [
 
 	self eventNotificationSystem subscribe: self to: NotifiableEvent toBeNotifiedSending: #setHasBeenNotifiedToTrue.

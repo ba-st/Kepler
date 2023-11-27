@@ -2,27 +2,28 @@
 I'm a facility to install a subsystem on an already started composite.
 "
 Class {
-	#name : #SystemHotInstaller,
-	#superclass : #Object,
+	#name : 'SystemHotInstaller',
+	#superclass : 'Object',
 	#instVars : [
 		'subsystems'
 	],
-	#category : #'Kepler-System'
+	#category : 'Kepler-System',
+	#package : 'Kepler-System'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SystemHotInstaller class >> installing: aSubsystem [
 
 	^ self installingAll: {aSubsystem}
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SystemHotInstaller class >> installingAll: aSubsystemCollection [
 
 	^self new initializeInstallingAll: aSubsystemCollection
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 SystemHotInstaller >> applyTo: aCompositeSystem [
 
 	subsystems
@@ -33,7 +34,7 @@ SystemHotInstaller >> applyTo: aCompositeSystem [
 	aCompositeSystem resolveSubsystemDependencies
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SystemHotInstaller >> initializeInstallingAll: aSubsystemCollection [
 
 	subsystems := aSubsystemCollection

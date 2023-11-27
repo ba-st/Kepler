@@ -1,1 +1,1 @@
-Package { #name : #'Kepler-Notifications' }
+Package { #name : 'Kepler-Notifications' }
