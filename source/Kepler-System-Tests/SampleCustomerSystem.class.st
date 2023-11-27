@@ -15,12 +15,12 @@ Class {
 SampleCustomerSystem class >> registerInterfaces [
 <ignoreForCoverage>
 	self
-		safelyRegisterInterfaceAt: #CustomerManagementSystem
+		registerInterfaceAt: #CustomerManagementSystem
 		named: 'Customer Management'
 		declaring: #( #addCustomer: ).
 
 	self
-		safelyRegisterInterfaceAt: #CustomerQueryingSystem
+		registerInterfaceAt: #CustomerQueryingSystem
 		named: 'Customer Querying'
 		declaring: #( #customers )
 ]

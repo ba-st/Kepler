@@ -16,15 +16,7 @@ Class {
 SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: selectors [
 
 	<ignoreForCoverage>
-	SystemInterfaces bind: aKey to: (Interface named: aName declaring: selectors)
-]
-
-{ #category : 'registering' }
-SystemImplementation class >> safelyRegisterInterfaceAt: aKey named: aName declaring: selectors [
-<ignoreForCoverage>
-	[ self registerInterfaceAt: aKey named: aName declaring: selectors ]
-		on: ConflictingObjectFound
-		do: [ :ex | ex return ]
+	SystemInterfaces rebind: aKey to: (Interface named: aName declaring: selectors)
 ]
 
 { #category : 'initialization' }

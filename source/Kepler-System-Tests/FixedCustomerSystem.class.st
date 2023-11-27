@@ -12,7 +12,7 @@ Class {
 FixedCustomerSystem class >> registerInterfaces [
 <ignoreForCoverage>
 	self
-		safelyRegisterInterfaceAt: #CustomerQueryingSystem
+		registerInterfaceAt: #CustomerQueryingSystem
 		named: 'Customer Querying'
 		declaring: #( #customers )
 ]
