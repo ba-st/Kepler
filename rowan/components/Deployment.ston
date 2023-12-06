@@ -5,6 +5,7 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ 'Chalten' ],
   #componentNames : [	],
   #packageNames : [
+    'Kepler-GS64-Extensions',
     'Kepler-Notifications',
     'Kepler-System',
     'Kepler-Time'
@@ -13,6 +14,7 @@ RwSimpleProjectLoadComponentV2 {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
+          'Kepler-GS64-Extensions' : { 'symbolDictName' : 'Kepler' },
           'Kepler-Notifications' : { 'symbolDictName' : 'Kepler' },
           'Kepler-System' : { 'symbolDictName' : 'Kepler' },
           'Kepler-Time' : { 'symbolDictName' : 'Kepler' }
