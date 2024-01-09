@@ -1,0 +1,4 @@
+FixedCustomerManagementSystem registerInterfaces.
+FixedCustomerSystem registerInterfaces.
+SampleCustomerSystem registerInterfaces.
+SampleProjectSystem registerInterfaces

@@ -1,8 +1,10 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Deployment',
   #preloadDoitName : 'scripts/deploymentPreLoad',
-  #postloadDoitName : 'scripts/deploymentPostLoad',
-  #projectNames : [ 'Chalten' ],
+  #postloadDoitName : 'scripts/declareDeploymentInterfaces',
+  #projectNames : [ 
+    'Chalten'
+  ],
   #componentNames : [	],
   #packageNames : [
     'Kepler-GS64-Extensions',
