@@ -1,6 +1,6 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Tests',
-  #preloadDoitName : 'scripts/declareTestInterfaces',
+  #postloadDoitName : 'scripts/declareTestInterfaces',
   #condition : 'tests',
   #componentNames : [
     'Deployment',
