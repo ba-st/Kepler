@@ -1,0 +1,12 @@
+RwLoadSpecificationV2 {
+  #specName: 'Kepler-Dependent-SUnit-Extensions',
+  #projectName : 'Kepler',
+  #diskUrl : 'Kepler',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+      'Dependent-SUnit-Extensions'
+  ],
+  #customConditionalAttributes : [
+    'sunit'
+  ]
+}

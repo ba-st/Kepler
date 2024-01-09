@@ -1,0 +1,19 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Dependent-SUnit-Extensions',
+  #condition : 'sunit',
+  #componentNames : [
+    'Deployment'
+  ],
+  #packageNames : [
+    'Kepler-SUnit-Model'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Kepler-SUnit-Model' : { 'symbolDictName' : 'Kepler' }
+        }
+      }
+    }
+  }
+}

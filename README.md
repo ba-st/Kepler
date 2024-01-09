@@ -7,15 +7,21 @@ loosely-coupled systems, where each can be easily accessed and has a
 well-defined responsibility.
 
 [![Unit Tests](https://github.com/ba-st/Kepler/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st/Kepler/actions/workflows/unit-tests.yml/badge.svg)
+[![GS64 - Unit Tests](https://github.com/ba-st/Kepler/actions/workflows/unit-tests-gs64.yml/badge.svg)](https://github.com/ba-st/Kepler/actions/workflows/unit-tests-gs64.yml)
 [![Coverage Status](https://codecov.io/github/ba-st/Kepler/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Kepler/branch/release-candidate)
+
 [![Baseline Groups](https://github.com/ba-st/Kepler/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st/Kepler/actions/workflows/loading-groups.yml)
+[![GS64 Components](https://github.com/ba-st/Kepler/actions/workflows/loading-gs64-components.yml/badge.svg)](https://github.com/ba-st/Kepler/actions/workflows/loading-gs64-components.yml)
 [![Markdown Lint](https://github.com/ba-st/Kepler/actions/workflows/markdown-lint.yml/badge.svg)](https://github.com/ba-st/Kepler/actions/workflows/markdown-lint.yml)
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Kepler.svg)](https://github.com/ba-st/Kepler/releases/latest)
+
 [![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
+
+[![GS64 3.7.0](https://img.shields.io/badge/GS64-3.7.0-informational)](https://gemtalksystems.com/products/gs64/)
 
 > *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler)
 > is best known for his laws of planetary motion that describes how planets move
