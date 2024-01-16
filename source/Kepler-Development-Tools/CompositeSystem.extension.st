@@ -1,6 +1,6 @@
-Extension { #name : #CompositeSystem }
+Extension { #name : 'CompositeSystem' }
 
-{ #category : #'*Kepler-Development-Tools' }
+{ #category : '*Kepler-Development-Tools' }
 CompositeSystem >> subsystemsInspectorTab [
 
 	<inspectorPresentationOrder: 0 title: 'Subsystems'>
