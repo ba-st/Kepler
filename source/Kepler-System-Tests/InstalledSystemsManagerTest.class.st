@@ -11,6 +11,13 @@ Class {
 	#package : 'Kepler-System-Tests'
 }
 
+{ #category : 'running' }
+InstalledSystemsManagerTest >> setUp [
+
+	super setUp.
+	manager := InstalledSystemsManager new
+]
+
 { #category : 'tests' }
 InstalledSystemsManagerTest >> testAddSeveralSystems [
 
