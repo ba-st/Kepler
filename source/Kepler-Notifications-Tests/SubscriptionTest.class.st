@@ -4,9 +4,8 @@ Class {
 	#instVars : [
 		'notificationReceived'
 	],
-	#category : 'Kepler-Notifications-Tests-',
-	#package : 'Kepler-Notifications-Tests',
-	#tag : ''
+	#category : 'Kepler-Notifications-Tests',
+	#package : 'Kepler-Notifications-Tests'
 }
 
 { #category : 'listening' }
