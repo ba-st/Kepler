@@ -4,7 +4,8 @@ SmalltalkCISpec {
       #baseline : 'Kepler',
       #directory : '../source',
       #load : [ 'Development' ],
-      #platforms : [  #pharo ]
+      #platforms : [  #pharo ],
+      #failOn : [ #Warning ]
     }
   ],
   #testing : {

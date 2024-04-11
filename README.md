@@ -22,6 +22,7 @@ well-defined responsibility.
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
 
 [![GS64 3.7.0](https://img.shields.io/badge/GS64-3.7.0-informational)](https://gemtalksystems.com/products/gs64/)
+[![GS64 3.7.1](https://img.shields.io/badge/GS64-3.7.1-informational)](https://gemtalksystems.com/products/gs64/)
 
 > *Name origin*: Mathematician and astronomer [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler)
 > is best known for his laws of planetary motion that describes how planets move
