@@ -1,7 +1,5 @@
 name: Release Notifications
-
 on: workflow_dispatch
-
 jobs:
   notify:
     runs-on: ubuntu-latest
