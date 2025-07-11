@@ -21,7 +21,7 @@ BaselineOfKepler >> baseline: spec [
 			group: 'default' with: 'Development'.
 		spec postLoadDoIt: #postLoadInitialization
 		].
-	spec for: #( 'pharo10.x' 'pharo11.x' 'pharo12.x' ) do: [ self setUpPharo10Packages: spec ]
+	spec for: #( 'pharo10.x' 'pharo11.x' 'pharo12.x' 'pharo13.x' ) do: [ self setUpPharo10Packages: spec ]
 ]
 
 { #category : 'post load' }
