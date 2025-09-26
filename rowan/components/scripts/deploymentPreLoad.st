@@ -8,4 +8,4 @@ symbolDictionary := Rowan image
 
 "Preliminar definition of global variables for source code to compile.
  These will be properly replaced later in the post load script."
-symbolDictionary at: #SystemInterfaces put: nil.
+symbolDictionary at: #SystemInterfaces ifAbsentPut: [nil].
