@@ -15,6 +15,13 @@ Class {
 	#package : 'Kepler-System'
 }
 
+{ #category : 'testing' }
+SubsystemImplementation class >> isAbstract [
+
+  <ignoreForCoverage>
+  ^ self = SubsystemImplementation
+]
+
 { #category : 'subsystem lookup' }
 SubsystemImplementation >> >> anInterfaceKey [
 

@@ -14,6 +14,13 @@ Class {
 	#package : 'Kepler-System'
 }
 
+{ #category : 'testing' }
+SystemInstallation class >> isAbstract [
+
+  <ignoreForCoverage>
+  ^ self = SystemInstallation
+]
+
 { #category : 'installing' }
 SystemInstallation >> beAwareOfShutDownOf: aCompositeSystem [ 
 

@@ -17,6 +17,13 @@ SystemState class >> for: aSystem [
 	^ self new initializeFor: aSystem
 ]
 
+{ #category : 'testing' }
+SystemState class >> isAbstract [
+
+  <ignoreForCoverage>
+  ^ self = SystemState
+]
+
 { #category : 'initialization' }
 SystemState >> initializeFor: aSystem [
 

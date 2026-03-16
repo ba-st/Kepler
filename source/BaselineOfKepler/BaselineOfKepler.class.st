@@ -29,7 +29,7 @@ BaselineOfKepler >> postLoadInitialization [
 
   ( self classNamed: #LanguagePlatform ) current
     globalNamed: #SystemInterfaces
-    ifAbsentPut: [ Namespace new ].
+    ifAbsentPut: [ (self classNamed: #Namespace) new ].
   ( self classNamed: #SubsystemImplementation ) allSubclassesDo: [ :each | each registerInterfaces ]
 ]
 
@@ -42,38 +42,30 @@ BaselineOfKepler >> projectClass [
 { #category : 'baselines' }
 BaselineOfKepler >> setUpDependencies: spec [
 
-	spec
-		baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v8' ];
-		project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
-		project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
-		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
-
-	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v11' ];
-		project: 'Chalten-Core' copyFrom: 'Chalten' with: [ spec loads: 'Core' ].
+  spec
+    baseline: 'Buoy' with: [ spec repository: 'github://ba-st/Buoy:v8' ];
+    project: 'Buoy-Deployment' copyFrom: 'Buoy' with: [ spec loads: 'Deployment' ];
+    project: 'Buoy-SUnit' copyFrom: 'Buoy' with: [ spec loads: 'Dependent-SUnit-Extensions' ];
+    project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ]
 ]
 
 { #category : 'baselines' }
 BaselineOfKepler >> setUpPackages: spec [
 
-	spec
-		package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
-		group: 'Core' with: 'Kepler-System';
-		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Core') ];
-		group: 'Extended' with: 'Kepler-Time';
-		package: 'Kepler-Notifications' with: [ spec requires: 'Core' ];
-		group: 'Extended' with: 'Kepler-Notifications';
-		package: 'Kepler-SUnit-Model' with: [ spec requires: #('Core' 'Buoy-SUnit') ];
-		group: 'Dependent-SUnit-Extensions' with: 'Kepler-SUnit-Model'.
+  spec
+    package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
+    group: 'Core' with: 'Kepler-System';
+    package: 'Kepler-Notifications' with: [ spec requires: 'Core' ];
+    group: 'Extended' with: 'Kepler-Notifications';
+    package: 'Kepler-SUnit-Model' with: [ spec requires: #( 'Core' 'Buoy-SUnit' ) ];
+    group: 'Dependent-SUnit-Extensions' with: 'Kepler-SUnit-Model'.
 
-	spec
-		package: 'Kepler-System-Tests' with: [ spec requires: #('Core' 'Buoy-SUnit') ];
-		group: 'Tests' with: 'Kepler-System-Tests';
-		package: 'Kepler-Time-Tests' with: [ spec requires: 'Kepler-Time' ];
-		group: 'Tests' with: 'Kepler-Time-Tests';
-		package: 'Kepler-Notifications-Tests'
-			with: [ spec requires: #('Kepler-Notifications' 'Kepler-SUnit-Model') ];
-		group: 'Tests' with: 'Kepler-Notifications-Tests'
+  spec
+    package: 'Kepler-System-Tests' with: [ spec requires: #( 'Core' 'Buoy-SUnit' ) ];
+    group: 'Tests' with: 'Kepler-System-Tests';
+    package: 'Kepler-Notifications-Tests'
+    with: [ spec requires: #( 'Kepler-Notifications' 'Kepler-SUnit-Model' ) ];
+    group: 'Tests' with: 'Kepler-Notifications-Tests'
 ]
 
 { #category : 'initialization' }
