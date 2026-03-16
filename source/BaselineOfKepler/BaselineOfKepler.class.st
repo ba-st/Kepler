@@ -27,8 +27,10 @@ BaselineOfKepler >> baseline: spec [
 { #category : 'post load' }
 BaselineOfKepler >> postLoadInitialization [
 
-	Smalltalk at: #SystemInterfaces put: Namespace new.
-	SubsystemImplementation allSubclassesDo: [ :each | each registerInterfaces ]
+  ( self classNamed: #LanguagePlatform ) current
+    globalNamed: #SystemInterfaces
+    ifAbsentPut: [ Namespace new ].
+  ( self classNamed: #SubsystemImplementation ) allSubclassesDo: [ :each | each registerInterfaces ]
 ]
 
 { #category : 'accessing' }
@@ -47,8 +49,8 @@ BaselineOfKepler >> setUpDependencies: spec [
 		project: 'Buoy-Tools' copyFrom: 'Buoy' with: [ spec loads: 'Tools' ].
 
 	spec
-		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v10' ];
-		project: 'Chalten-Deployment-Gregorian' copyFrom: 'Chalten' with: [ spec loads: 'Deployment-Gregorian' ].
+		baseline: 'Chalten' with: [ spec repository: 'github://ba-st/Chalten:v11' ];
+		project: 'Chalten-Core' copyFrom: 'Chalten' with: [ spec loads: 'Core' ].
 ]
 
 { #category : 'baselines' }
@@ -57,7 +59,7 @@ BaselineOfKepler >> setUpPackages: spec [
 	spec
 		package: 'Kepler-System' with: [ spec requires: 'Buoy-Deployment' ];
 		group: 'Core' with: 'Kepler-System';
-		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Deployment-Gregorian') ];
+		package: 'Kepler-Time' with: [ spec requires: #('Core' 'Chalten-Core') ];
 		group: 'Extended' with: 'Kepler-Time';
 		package: 'Kepler-Notifications' with: [ spec requires: 'Core' ];
 		group: 'Extended' with: 'Kepler-Notifications';
