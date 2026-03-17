@@ -53,10 +53,14 @@ CompositeSystem >> name [
 { #category : 'subsystem management' }
 CompositeSystem >> register: aSubsystem [
 
-	AssertionChecker enforce: [ aSubsystem isStopped ] because: [ 'Cannot register a subsystem not stopped (<1s>)' expandMacrosWith: aSubsystem name ] raising: SystemControlError.
-	subsystems add: aSubsystem.
-	aSubsystem beChildOf: self.
-	^ aSubsystem
+  AssertionChecker
+    enforce: [ aSubsystem isStopped ]
+    because: [
+      'Cannot register a subsystem not stopped ({1})' localizedWithAll: { aSubsystem name } ]
+    raising: SystemControlError.
+  subsystems add: aSubsystem.
+  aSubsystem beChildOf: self.
+  ^ aSubsystem
 ]
 
 { #category : 'installing' }
@@ -98,7 +102,11 @@ CompositeSystem >> startUpWhenStopped [
 { #category : 'subsystem lookup' }
 CompositeSystem >> systemImplementing: anInterfaceKey [
 
-	^ self systemImplementing: anInterfaceKey ifNone: [ SystemControlError signal: ('System implementing "<1p>" not found.' expandMacrosWith: (self interfaceAt: anInterfaceKey)) ]
+  ^ self systemImplementing: anInterfaceKey ifNone: [
+        SystemControlError signal:
+          ( 'System implementing "{1}" not found.' localizedWithAll:
+              { self interfaceAt: anInterfaceKey } )
+      ]
 ]
 
 { #category : 'subsystem lookup' }

@@ -25,9 +25,11 @@ SubsystemImplementation class >> isAbstract [
 { #category : 'subsystem lookup' }
 SubsystemImplementation >> >> anInterfaceKey [
 
-	^ dependencies
-		at: anInterfaceKey
-		ifAbsent: [ SystemControlError signal: ('Unresolved system dependency to "<1p>"' expandMacrosWith: SystemInterfaces >> anInterfaceKey) ]
+  ^ dependencies at: anInterfaceKey ifAbsent: [
+        SystemControlError signal:
+          ( 'Unresolved system dependency to "{1}"' localizedWithAll:
+              { SystemInterfaces >> anInterfaceKey } )
+      ]
 ]
 
 { #category : 'installing' }
@@ -41,7 +43,10 @@ SubsystemImplementation >> aboutToReinstall [
 { #category : 'private - asserting' }
 SubsystemImplementation >> assertIsOrphan [
 
-	AssertionChecker refuse: [ parentBinding isDefined ] because: 'Cannot register a subsystem already managed by other composite.' raising: SystemControlError
+  AssertionChecker
+    refuse: [ parentBinding isDefined ]
+    because: 'Cannot register a subsystem already managed by other composite.' localized
+    raising: SystemControlError
 ]
 
 { #category : 'initialization' }
@@ -54,7 +59,10 @@ SubsystemImplementation >> beChildOf: aCompositeSystem [
 { #category : 'initialization' }
 SubsystemImplementation >> beOrphan [
 
-	parentBinding := Binding undefinedExplainedBy: 'This subsystem is not registered in any composite system' raising: SystemControlError
+  parentBinding := Binding
+                     undefinedExplainedBy:
+                     'This subsystem is not registered in any composite system' localized
+                     raising: SystemControlError
 ]
 
 { #category : 'installing' }

@@ -22,7 +22,7 @@ InstalledSystemsManager class >> current [
 	^ current
 ]
 
-{ #category : 'adding' }
+{ #category : 'management' }
 InstalledSystemsManager >> addSystem: aCompositeSystem as: aName [
 
 	managed bind: aName to: aCompositeSystem
@@ -41,7 +41,7 @@ InstalledSystemsManager >> managedSystems [
 	^ managed names collect: [ :name | managed at: name ]
 ]
 
-{ #category : 'accessing' }
+{ #category : 'management' }
 InstalledSystemsManager >> removeSystemAt: aName [
 
 	managed removeBindingFor: aName

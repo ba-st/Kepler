@@ -19,13 +19,13 @@ BaselineOfKepler >> baseline: spec [
 			group: 'Tools' with: #( 'Buoy-Tools' 'Deployment' );
 			group: 'Development' with: #( 'Tests' 'Tools' );
 			group: 'default' with: 'Development'.
-		spec postLoadDoIt: #postLoadInitialization
+		spec postLoadDoIt: #postLoad
 		].
 	spec for: #( 'pharo10.x' 'pharo11.x' 'pharo12.x' 'pharo13.x' ) do: [ self setUpPharo10Packages: spec ]
 ]
 
 { #category : 'post load' }
-BaselineOfKepler >> postLoadInitialization [
+BaselineOfKepler >> postLoad [
 
   ( self classNamed: #LanguagePlatform ) current
     globalNamed: #SystemInterfaces

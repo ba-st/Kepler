@@ -15,12 +15,13 @@ Class {
 
 { #category : 'registering' }
 EventNotificationSystem class >> registerInterfaces [
-<ignoreForCoverage>
-	self
-		registerInterfaceAt: #EventNotificationSystemInterface
-		named: 'Event Notification System Interface'
-		declaring: #( #subscribe:to:toBeNotifiedSending:
-			   #revokeSubscriptionTo:of: #notifySubscribersTo: )
+
+  <ignoreForCoverage>
+  self
+    registerInterfaceAt: #EventNotificationSystem
+    named: 'Event Notification System Interface'
+    declaring:
+    #( #subscribe:to:toBeNotifiedSending: #revokeSubscriptionTo:of: #notifySubscribersTo: )
 ]
 
 { #category : 'private - subscribing' }
@@ -43,7 +44,7 @@ EventNotificationSystem >> dependencies [
 { #category : 'installing' }
 EventNotificationSystem >> implementedInterfaces [
 
-	^ #(#EventNotificationSystemInterface)
+  ^ #( #EventNotificationSystem )
 ]
 
 { #category : 'initialization' }
