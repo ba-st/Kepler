@@ -29,8 +29,10 @@ BaselineOfKepler >> postLoad [
 
   ( self classNamed: #LanguagePlatform ) current
     globalNamed: #SystemInterfaces
-    ifAbsentPut: [ (self classNamed: #Namespace) new ].
-  ( self classNamed: #SubsystemImplementation ) allSubclassesDo: [ :each | each registerInterfaces ]
+    ifAbsentPut: [ ( self classNamed: #Namespace ) new ].
+  ( self classNamed: #SubsystemImplementation ) allSubclassesDo: [ :each | each registerInterfaces ].
+  self withSourceDirectoryReferenceDo: [ :source |
+      NaturalLanguageTranslator current loadJSONTranslationFilesIn: source parent / 'locales' ]
 ]
 
 { #category : 'accessing' }
