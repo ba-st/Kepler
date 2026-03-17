@@ -1,12 +1,12 @@
 {
 	"Kepler" : {
-		"382f8c7cd8a68dd129e9a74de2848a2d654fcf5130fd272ac26660a3781acaf4" : "Cannot register a subsystem already managed by other composite.",
-		"835fde45aa567e305f90b1bad2aa1acb9d53cdfb43272a25016c90e32bfbe551" : "Cannot register a subsystem not stopped ({1})",
-		"fcc0ea2e3107c7ae7173c8856563c355fece25bef6e47cf210cf166f8611c5ba" : "No module found installing \"{1}\"",
-		"773be4f987f730a491644d4f28889466db54925b8d6deada53bf5d405050f5bd" : "System implementing \"{1}\" not found.",
-		"46db3988d0fbb87f4c98e3113097587bcf0664777c5d51bfc3cedf958acd9393" : "This subsystem is not registered in any composite system",
-		"1276b6792bd700b55ba0ee8b627fdeeea2b29bd10da56cc5a74619f98036e5a9" : "Unresolved system dependency to \"{1}\"",
-		"9ca59c8ffc470e556b2dfef39561a892be6719039b7fc25f74d9eec011d10a11" : "{1} is already started.",
-		"460d8f2395cd3dde74bfef895e862351214f0a7f20028e74c4fbad404ba77440" : "{1} is already stopped."
+		"382f8c7cd8a68dd129e9a74de2848a2d654fcf5130fd272ac26660a3781acaf4" : "No se puede registrar un subsistema que ya administra otro sistema compuesto.",
+		"835fde45aa567e305f90b1bad2aa1acb9d53cdfb43272a25016c90e32bfbe551" : "No se puede registrar un subsistema no detenido ({1})",
+		"fcc0ea2e3107c7ae7173c8856563c355fece25bef6e47cf210cf166f8611c5ba" : "No se encontró un módulo que instale \"{1}\"",
+		"773be4f987f730a491644d4f28889466db54925b8d6deada53bf5d405050f5bd" : "No se encontró un sistema que implemente \"{1}\".",
+		"46db3988d0fbb87f4c98e3113097587bcf0664777c5d51bfc3cedf958acd9393" : "Este subsistema no está registrado en ningún sistema compuesto",
+		"1276b6792bd700b55ba0ee8b627fdeeea2b29bd10da56cc5a74619f98036e5a9" : "Dependencia con \"{1}\" no resuelta",
+		"9ca59c8ffc470e556b2dfef39561a892be6719039b7fc25f74d9eec011d10a11" : "{1} ya está iniciado.",
+		"460d8f2395cd3dde74bfef895e862351214f0a7f20028e74c4fbad404ba77440" : "{1} ya está detenido."
 	}
 }
