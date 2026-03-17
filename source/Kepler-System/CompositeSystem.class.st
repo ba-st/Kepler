@@ -103,9 +103,8 @@ CompositeSystem >> startUpWhenStopped [
 CompositeSystem >> systemImplementing: anInterfaceKey [
 
   ^ self systemImplementing: anInterfaceKey ifNone: [
-        SystemControlError signal:
-          ( 'System implementing "{1}" not found.' localizedWithAll:
-              { self interfaceAt: anInterfaceKey } )
+        SystemControlError signal: ( 'System implementing "{1}" not found.' localizedWithAll:
+              { ( self interfaceAt: anInterfaceKey ) printString } )
       ]
 ]
 

@@ -26,9 +26,8 @@ SubsystemImplementation class >> isAbstract [
 SubsystemImplementation >> >> anInterfaceKey [
 
   ^ dependencies at: anInterfaceKey ifAbsent: [
-        SystemControlError signal:
-          ( 'Unresolved system dependency to "{1}"' localizedWithAll:
-              { SystemInterfaces >> anInterfaceKey } )
+        SystemControlError signal: ( 'Unresolved system dependency to "{1}"' localizedWithAll:
+              { ( SystemInterfaces >> anInterfaceKey ) printString } )
       ]
 ]
 
