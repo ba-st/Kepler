@@ -1,7 +1,7 @@
 Class {
 	#name : 'SystemInterfacesInitialization',
 	#superclass : 'Object',
-	#category : 'Kepler-GS64-Extensions-',
+	#category : 'Kepler-GS64-Extensions',
 	#package : 'Kepler-GS64-Extensions',
 	#tag : ''
 }

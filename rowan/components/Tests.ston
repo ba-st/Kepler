@@ -8,16 +8,14 @@ RwSimpleProjectLoadComponentV2 {
   ],
   #packageNames : [
     'Kepler-Notifications-Tests',
-    'Kepler-System-Tests',
-    'Kepler-Time-Tests'
+    'Kepler-System-Tests'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'Kepler-Notifications-Tests' : { 'symbolDictName' : 'Kepler' },
-          'Kepler-System-Tests' : { 'symbolDictName' : 'Kepler' },
-          'Kepler-Time-Tests' : { 'symbolDictName' : 'Kepler' }
+          'Kepler-System-Tests' : { 'symbolDictName' : 'Kepler' }
         }
       }
     }

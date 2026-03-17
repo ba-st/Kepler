@@ -1,3 +1,2 @@
 InstalledModuleRegistrationSystem registerInterfaces.
 EventNotificationSystem registerInterfaces.
-TimeSystem	registerInterfaces
