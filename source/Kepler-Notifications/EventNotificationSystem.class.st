@@ -19,7 +19,7 @@ EventNotificationSystem class >> registerInterfaces [
   <ignoreForCoverage>
   self
     registerInterfaceAt: #EventNotificationSystem
-    named: 'Event Notification System Interface'
+    named: 'Event Notification System'
     declaring:
     #( #subscribe:to:toBeNotifiedSending: #revokeSubscriptionTo:of: #notifySubscribersTo: )
 ]
