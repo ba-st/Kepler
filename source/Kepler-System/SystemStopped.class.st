@@ -17,7 +17,7 @@ SystemStopped >> isStopped [
 { #category : 'controlling' }
 SystemStopped >> shutDown [
 
-	SystemControlError signal: ('<1s> is already stopped.' expandMacrosWith: system name)
+  SystemControlError signal: ( '{1} is already stopped.' localizedWithAll: { system name } )
 ]
 
 { #category : 'controlling' }

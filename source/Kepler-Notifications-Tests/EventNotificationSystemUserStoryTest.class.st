@@ -11,7 +11,7 @@ Class {
 { #category : 'accessing' }
 EventNotificationSystemUserStoryTest >> eventNotificationSystem [
 
-	^ rootSystem >> #EventNotificationSystemInterface
+  ^ rootSystem >> #EventNotificationSystem
 ]
 
 { #category : 'tests support' }

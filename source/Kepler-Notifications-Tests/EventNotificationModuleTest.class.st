@@ -29,13 +29,12 @@ EventNotificationModuleTest >> setUp [
 { #category : 'tests' }
 EventNotificationModuleTest >> testAccessing [
 
-	| eventNotificationModule |
+  | eventNotificationModule |
+  eventNotificationModule := self installedModuleRegistrationSystem
+                               installedModuleRegisteringSystemImplementing:
+                               #EventNotificationSystem.
 
-	eventNotificationModule := self installedModuleRegistrationSystem
-		installedModuleRegisteringSystemImplementing: #EventNotificationSystemInterface.
-
-	self
-		assert: eventNotificationModule name equals: 'Event notification';
-		assert: eventNotificationModule systemInterfacesToInstall
-			equals: #(#EventNotificationSystemInterface)
+  self
+    assert: eventNotificationModule name equals: 'Event notification';
+    assert: eventNotificationModule systemInterfacesToInstall equals: #( #EventNotificationSystem )
 ]

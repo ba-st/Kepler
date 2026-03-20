@@ -9,6 +9,13 @@ Class {
 	#package : 'Kepler-System'
 }
 
+{ #category : 'testing' }
+SystemModule class >> isAbstract [
+
+  <ignoreForCoverage>
+  ^ self = SystemModule
+]
+
 { #category : 'private' }
 SystemModule >> >> anInterfaceKey [
 
@@ -59,7 +66,10 @@ SystemModule >> printOn: aStream [
 { #category : 'private' }
 SystemModule >> register: aSystemCreationBlock in: systems [
 
-	^ systems add: aSystemCreationBlock value
+  | system |
+  system := aSystemCreationBlock value.
+  systems add: system.
+  ^ system
 ]
 
 { #category : 'actions' }

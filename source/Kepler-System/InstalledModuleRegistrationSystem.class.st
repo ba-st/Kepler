@@ -50,9 +50,11 @@ InstalledModuleRegistrationSystem >> initialize [
 { #category : 'API' }
 InstalledModuleRegistrationSystem >> installedModuleRegisteringSystemImplementing: anInterfaceKey [
 
-	^installedModules 
-		detect: [:aModule | aModule systemInterfacesToInstall includes: anInterfaceKey]
-		ifNone: [ ObjectNotFound signal: ('No module found installing "<1s>"' expandMacrosWith: anInterfaceKey ) ]
+  ^ installedModules
+      detect: [ :aModule | aModule systemInterfacesToInstall includes: anInterfaceKey ]
+      ifNone: [
+          ObjectNotFound signal:
+            ( 'No module found installing "{1}"' localizedWithAll: { anInterfaceKey } ) ]
 ]
 
 { #category : 'API' }

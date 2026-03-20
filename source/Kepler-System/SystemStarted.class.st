@@ -23,5 +23,5 @@ SystemStarted >> shutDown [
 { #category : 'controlling' }
 SystemStarted >> startUp [
 
-	SystemControlError signal: ('<1s> is already started.' expandMacrosWith: system name)
+  SystemControlError signal: ( '{1} is already started.' localizedWithAll: { system name } )
 ]

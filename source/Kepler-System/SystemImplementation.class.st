@@ -12,6 +12,13 @@ Class {
 	#package : 'Kepler-System'
 }
 
+{ #category : 'testing' }
+SystemImplementation class >> isAbstract [
+
+  <ignoreForCoverage>
+  ^ self = SystemImplementation
+]
+
 { #category : 'registering' }
 SystemImplementation class >> registerInterfaceAt: aKey named: aName declaring: selectors [
 

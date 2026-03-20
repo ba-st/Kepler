@@ -44,5 +44,5 @@ EventNotificationModule >> rootSystem [
 { #category : 'private' }
 EventNotificationModule >> systemInterfacesToInstall [
 
-	^ #(#EventNotificationSystemInterface)
+  ^ #( #EventNotificationSystem )
 ]
